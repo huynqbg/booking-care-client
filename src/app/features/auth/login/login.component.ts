@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '@shared/services/user.service';
+import { AuthService } from '@shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private route: Router
   ) {}
 
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     const valueForm = this.validateForm.value;
     if (this.validateForm.valid) {
       console.log(valueForm);
-      this.userService
+      this.authService
         .handleLogin(valueForm.email, valueForm.password)
         .subscribe((data) => {
           console.log(data);

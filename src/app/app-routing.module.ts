@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'system',
     loadChildren: () =>
-      import('./pages/pages.module').then((m) => m.PagesModule),
+      import('./features/user/user.module').then((m) => m.UserModule),
   },
   {
     path: 'auth',
