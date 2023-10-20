@@ -1,11 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { Component, Inject, Injector, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { AppComponentBase } from '@core/component-base/app-component-base';
 import { UserService } from '@shared/services/user.service';
 
 @Component({
@@ -13,16 +9,18 @@ import { UserService } from '@shared/services/user.service';
   templateUrl: './user-modal.component.html',
   styleUrls: ['./user-modal.component.scss'],
 })
-export class UserModalComponent implements OnInit {
-  formGroup!: FormGroup;
+export class UserModalComponent extends AppComponentBase implements OnInit {
   isEdit: boolean = false;
 
   constructor(
+    injector: Injector,
     private fb: FormBuilder,
     private userService: UserService,
     public modal: MatDialogRef<UserModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) {
+    super(injector);
+  }
 
   ngOnInit() {
     if (this.data.isEdit) {
@@ -57,8 +55,10 @@ export class UserModalComponent implements OnInit {
         lastName: valueForm.lastName,
         address: valueForm.address,
       };
+      this.showSpinner();
       this.userService.editUser(body).subscribe(
         (res) => {
+          this.hideSpinner();
           if (res && res['errCode'] === 0) {
             this.modal.close(true);
           } else {
@@ -67,17 +67,21 @@ export class UserModalComponent implements OnInit {
         },
         (error) => console.log(error)
       );
+      this.toastr.success('Update User successfully', 'Success');
     } else {
+      this.showSpinner();
       this.userService.createNewUser(valueForm).subscribe(
-        (result) => {
-          if (result && result['errCode'] === 0) {
+        (res) => {
+          this.hideSpinner();
+          if (res && res['errCode'] === 0) {
             this.modal.close(true);
           } else {
-            alert(result['errMessage']);
+            alert(res['errMessage']);
           }
         },
         (error) => console.log(error)
       );
+      this.toastr.success('Add User successfully', 'Success');
     }
   }
 }

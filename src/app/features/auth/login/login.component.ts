@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppComponentBase } from '@core/component-base/app-component-base';
 import { AuthService } from '@shared/services/auth.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { AuthService } from '@shared/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends AppComponentBase implements OnInit {
   validateForm!: FormGroup;
   email: FormControl;
   password: FormControl;
@@ -24,8 +25,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private route: Router
-  ) {}
+    injector: Injector
+  ) {
+    super(injector);
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -50,18 +53,19 @@ export class LoginComponent implements OnInit {
   submitForm(): void {
     const valueForm = this.validateForm.value;
     if (this.validateForm.valid) {
-      console.log(valueForm);
+      this.showSpinner();
       this.authService
         .handleLogin(valueForm.email, valueForm.password)
         .subscribe((data) => {
-          console.log(data);
+          this.hideSpinner();
           if (data && data['errCode'] === 0) {
             localStorage.setItem('userInfo', JSON.stringify(data));
-            this.route.navigate(['system/user-manage']);
+            this.router.navigate(['system/user-manage']);
           } else if (data && data['errCode'] !== 0) {
             this.errMessage = data['message'];
           }
         });
+      this.toastr.success('Login successfully', 'Sucess');
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {

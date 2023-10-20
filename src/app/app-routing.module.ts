@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -16,6 +16,20 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('./features/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./pages/pages.module').then((m) => m.PagesModule),
+  },
+  {
+    path: 'error',
+    loadChildren: () =>
+      import('./features/errors/errors.module').then((m) => m.ErrorsModule),
+  },
+  {
+    path: '**',
+    redirectTo: 'error/404',
   },
 ];
 

@@ -5,9 +5,10 @@ import { PagesRoutingModule } from './pages-routing.module';
 
 import { PagesComponent } from './pages.component';
 import { MaterialModule } from '@core/material/material.module';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   imports: [CommonModule, PagesRoutingModule, MaterialModule],
-  declarations: [PagesComponent],
+  declarations: [PagesComponent, HomePageComponent],
 })
 export class PagesModule {}
