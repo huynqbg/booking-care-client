@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { SwiperOptions } from 'swiper';
 
@@ -6,7 +6,6 @@ import { SwiperOptions } from 'swiper';
   selector: 'app-home-page-specialty',
   templateUrl: './home-page-specialty.component.html',
   styleUrls: ['./home-page-specialty.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class HomePageSpecialtyComponent implements OnInit {
   @Input() configSlide: SwiperOptions;

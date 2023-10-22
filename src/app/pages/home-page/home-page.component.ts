@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, ViewEncapsulation } from '@angular/core';
 import { AppComponentBase } from '@core/component-base/app-component-base';
 
 import SwiperCore, { Navigation, Autoplay, SwiperOptions } from 'swiper';
@@ -10,6 +10,7 @@ SwiperCore.use([Navigation, Autoplay]);
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class HomePageComponent extends AppComponentBase implements OnInit {
   constructor(injector: Injector) {
