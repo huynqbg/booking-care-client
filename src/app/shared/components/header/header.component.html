@@ -1,55 +1,95 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+<div class="home-header-container">
+  <div class="home-header-content">
+    <div class="left-content">
+      <mat-icon>menu</mat-icon>
+      <img
+        class="header-logo"
+        src="../../../../assets/images/bookingcare-logo.svg"
+        alt="logo"
+      />
+    </div>
+    <div class="center-content">
+      <div class="child-content">
+        <div>
+          <b>{{ "home_header.speciality" | translate }}</b>
+        </div>
+        <div class="subs-title">
+          {{ "home_header.search_doctor" | translate }}
+        </div>
+      </div>
+      <div class="child-content">
+        <div>
+          <b>{{ "home_header.health_facility" | translate }}</b>
+        </div>
+        <div class="subs-title">
+          {{ "home_header.select_room" | translate }}
+        </div>
+      </div>
+      <div class="child-content">
+        <div>
+          <b>{{ "home_header.doctor" | translate }}</b>
+        </div>
+        <div class="subs-title">
+          {{ "home_header.select_doctor" | translate }}
+        </div>
+      </div>
+      <div class="child-content">
+        <div>
+          <b>{{ "home_header.fee" | translate }}</b>
+        </div>
+        <div class="subs-title">
+          {{ "home_header.check_health" | translate }}
+        </div>
+      </div>
+    </div>
+    <div class="right-content">
+      <div class="support d-flex align-items-center me-1">
+        <mat-icon>contact_support</mat-icon>
+        {{ "home_header.support" | translate }}
+      </div>
+      <app-language-selector></app-language-selector>
     </div>
   </div>
-</nav>
+</div>
+
+<div class="home-header-banner">
+  <div class="content-up">
+    <h1 class="title1">{{ "banner.title1" | translate }}</h1>
+    <h1 class="title2">{{ "banner.title2" | translate }}</h1>
+    <div class="search">
+      <mat-icon>search</mat-icon>
+      <input type="text" placeholder="Tìm chuyên khoa khám bệnh" />
+    </div>
+  </div>
+
+  <div class="content-down">
+    <div class="options">
+      <div class="option-child">
+        <div class="icon-child"><i class="fa-regular fa-hospital"></i></div>
+        <div class="text-child">{{ "banner.child1" | translate }}</div>
+      </div>
+      <div class="option-child">
+        <div class="icon-child"><i class="fas fa-mobile-alt"></i></div>
+        <div class="text-child">{{ "banner.child2" | translate }}</div>
+      </div>
+      <div class="option-child">
+        <div class="icon-child"><i class="fas fa-procedures"></i></div>
+        <div class="text-child">{{ "banner.child3" | translate }}</div>
+      </div>
+      <div class="option-child">
+        <div class="icon-child"><i class="fas fa-flask"></i></div>
+        <div class="text-child">{{ "banner.child4" | translate }}</div>
+      </div>
+      <div class="option-child">
+        <div class="icon-child"><i class="fas fa-user-md"></i></div>
+        <div class="text-child">{{ "banner.child5" | translate }}</div>
+      </div>
+      <div class="option-child">
+        <div class="icon-child">
+          <i class="fas fa-briefcase-medical"></i>
+        </div>
+        <div class="text-child">{{ "banner.child6" | translate }}</div>
+      </div>
+    </div>
+  </div>
+</div>

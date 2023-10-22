@@ -3,12 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 
-import { PagesComponent } from './pages.component';
 import { MaterialModule } from '@core/material/material.module';
+
+import { PagesComponent } from './pages.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { HeaderComponent } from '@shared/components/header/header.component';
+import { LanguageSelectorComponent } from '@shared/components/language-selector/language-selector.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  imports: [CommonModule, PagesRoutingModule, MaterialModule],
-  declarations: [PagesComponent, HomePageComponent],
+  declarations: [
+    PagesComponent,
+    HomePageComponent,
+    HeaderComponent,
+    LanguageSelectorComponent,
+  ],
+  imports: [CommonModule, PagesRoutingModule, MaterialModule, TranslateModule],
 })
 export class PagesModule {}

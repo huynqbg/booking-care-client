@@ -1,0 +1,15 @@
+<nav>
+  <select
+    class="form-control text-danger text-center"
+    #selectedLang
+    (change)="changLanguage(selectedLang.value)"
+  >
+    <option
+      *ngFor="let language of translate.getLangs()"
+      [value]="language"
+      [selected]="language === translate.currentLang"
+    >
+      {{ language | uppercase }}
+    </option>
+  </select>
+</nav>
