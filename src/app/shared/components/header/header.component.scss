@@ -2,6 +2,10 @@
   height: 60px;
   width: 100%;
   padding: 0 40px;
+  position: fixed;
+  top: 0;
+  background-color: white;
+  z-index: 10000;
 
   .home-header-content {
     width: 100%;
@@ -64,6 +68,8 @@
 }
 
 .home-header-banner {
+  position: relative;
+  top: 60px;
   background-image: url("../../../../assets/images/bookingcare-cover-4.jpg");
   height: 485px;
   background-repeat: no-repeat;

@@ -15,17 +15,21 @@ import { HomePageSpecialtyComponent } from './home-page/home-page-specialty/home
 import { MedicalFacilityComponent } from './home-page/medical-facility/medical-facility.component';
 import { OutStandingDoctorComponent } from './home-page/out-standing-doctor/out-standing-doctor.component';
 import { HandbookComponent } from './home-page/handbook/handbook.component';
+import { HomePageAboutComponent } from './home-page/home-page-about/home-page-about.component';
+import { FooterComponent } from '@shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
     PagesComponent,
     HeaderComponent,
+    FooterComponent,
     HomePageComponent,
     HomePageSpecialtyComponent,
     LanguageSelectorComponent,
     MedicalFacilityComponent,
     OutStandingDoctorComponent,
     HandbookComponent,
+    HomePageAboutComponent,
   ],
   imports: [
     CommonModule,
