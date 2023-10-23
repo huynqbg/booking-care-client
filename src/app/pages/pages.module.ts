@@ -8,7 +8,7 @@ import { SwiperModule } from 'swiper/angular';
 
 import { PagesComponent } from './pages.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { HeaderComponent } from '@shared/components/header/header.component';
+import { HeaderComponent } from 'src/app/pages/home-page/header/header.component';
 import { LanguageSelectorComponent } from '@shared/components/language-selector/language-selector.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { HomePageSpecialtyComponent } from './home-page/home-page-specialty/home-page-specialty.component';
@@ -16,7 +16,8 @@ import { MedicalFacilityComponent } from './home-page/medical-facility/medical-f
 import { OutStandingDoctorComponent } from './home-page/out-standing-doctor/out-standing-doctor.component';
 import { HandbookComponent } from './home-page/handbook/handbook.component';
 import { HomePageAboutComponent } from './home-page/home-page-about/home-page-about.component';
-import { FooterComponent } from '@shared/components/footer/footer.component';
+import { FooterComponent } from 'src/app/pages/home-page/footer/footer.component';
+import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,6 @@ import { FooterComponent } from '@shared/components/footer/footer.component';
     FooterComponent,
     HomePageComponent,
     HomePageSpecialtyComponent,
-    LanguageSelectorComponent,
     MedicalFacilityComponent,
     OutStandingDoctorComponent,
     HandbookComponent,
@@ -37,6 +37,7 @@ import { FooterComponent } from '@shared/components/footer/footer.component';
     MaterialModule,
     TranslateModule,
     SwiperModule,
+    SharedModule,
   ],
 })
 export class PagesModule {}

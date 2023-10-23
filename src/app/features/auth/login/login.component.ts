@@ -61,11 +61,11 @@ export class LoginComponent extends AppComponentBase implements OnInit {
           if (data && data['errCode'] === 0) {
             localStorage.setItem('userInfo', JSON.stringify(data));
             this.router.navigate(['system/user-manage']);
+            this.toastr.success('Login successfully', 'Sucess');
           } else if (data && data['errCode'] !== 0) {
             this.errMessage = data['message'];
           }
         });
-      this.toastr.success('Login successfully', 'Sucess');
     } else {
       Object.values(this.validateForm.controls).forEach((control) => {
         if (control.invalid) {

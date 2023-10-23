@@ -1,8 +1,19 @@
 <div class="header-container">
-  <div class="header-tabs-container p-2 border-end">Hệ thống</div>
-  <button class="btn btn-logout d-flex align-items-center" (click)="onLogout()">
-    <mat-icon>output</mat-icon>
-  </button>
+  <div class="header-tabs-container p-2 border-end">
+    {{ "menu.system.header" | translate }}
+  </div>
+  <div class="d-flex align-items-center">
+    <div class="languages">
+      <app-language-selector></app-language-selector>
+    </div>
+    <button
+      class="btn btn-logout d-flex align-items-center"
+      (click)="onLogout()"
+      title="Logout"
+    >
+      <mat-icon>output</mat-icon>
+    </button>
+  </div>
 </div>
 
 <div class="container-fluid">

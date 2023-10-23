@@ -10,9 +10,17 @@ import { UserComponent } from './user.component';
 import { UserManageComponent } from './user-manage/user-manage.component';
 import { UserModalComponent } from './user-manage/user-modal/user-modal.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '@shared/shared.module';
+import { UserReduxComponent } from './user-redux/user-redux.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  declarations: [UserComponent, UserManageComponent, UserModalComponent],
+  declarations: [
+    UserComponent,
+    UserManageComponent,
+    UserModalComponent,
+    UserReduxComponent,
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -20,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    SharedModule,
+    TranslateModule,
   ],
 })
 export class UserModule {}

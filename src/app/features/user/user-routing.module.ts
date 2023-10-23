@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user.component';
 import { UserManageComponent } from './user-manage/user-manage.component';
+import { UserReduxComponent } from './user-redux/user-redux.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'user-manage',
         component: UserManageComponent,
+      },
+      {
+        path: 'user-redux',
+        component: UserReduxComponent,
       },
     ],
   },
