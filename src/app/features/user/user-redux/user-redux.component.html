@@ -1,3 +1,70 @@
-<p>
-  user-redux works!
-</p>
+<h1 class="text-center text-success mt-3">CRUD USER</h1>
+
+<div class="container">
+  <h2 class="text-primary">{{ "manage_user.add" | translate }}</h2>
+  <form class="row g-3">
+    <div class="col-md-3">
+      <label class="form-label">{{ "manage_user.email" | translate }}</label>
+      <input type="email" class="form-control" />
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">{{ "manage_user.password" | translate }}</label>
+      <input type="password" class="form-control" />
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">
+        {{ "manage_user.first_name" | translate }}
+      </label>
+      <input type="text" class="form-control" />
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">
+        {{ "manage_user.last_name" | translate }}
+      </label>
+      <input type="text" class="form-control" />
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">
+        {{ "manage_user.phone_number" | translate }}
+      </label>
+      <input type="tel" class="form-control" />
+    </div>
+    <div class="col-9">
+      <label class="form-label">{{ "manage_user.address" | translate }}</label>
+      <input type="text" class="form-control" />
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">{{ "manage_user.gender" | translate }}</label>
+      <select class="form-select">
+        <option>...</option>
+        <option *ngFor="let gender of genderList">
+          {{ language === "vi" ? gender.valueVi : gender.valueEn }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">{{ "manage_user.position" | translate }}</label>
+      <select class="form-select">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label class="form-label">{{ "manage_user.role" | translate }}</label>
+      <select class="form-select">
+        <option selected>Choose...</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label for="inputState" class="form-label">
+        {{ "manage_user.image" | translate }}
+      </label>
+      <input type="file" class="form-control" />
+    </div>
+    <div class="col-12 d-flex justify-content-end">
+      <button type="submit" class="btn btn-primary">
+        {{ "manage_user.add" | translate }}
+      </button>
+    </div>
+  </form>
+</div>

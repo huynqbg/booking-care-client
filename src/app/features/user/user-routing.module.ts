@@ -23,6 +23,7 @@ const routes: Routes = [
       {
         path: 'user-redux',
         component: UserReduxComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },
