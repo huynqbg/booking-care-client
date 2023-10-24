@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user.component';
 import { UserManageComponent } from './user-manage/user-manage.component';
 import { UserReduxComponent } from './user-redux/user-redux.component';
+import { AuthGuard } from '@core/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       {
         path: 'user-manage',
         component: UserManageComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'user-redux',

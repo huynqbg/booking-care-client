@@ -23,4 +23,13 @@ export class AuthService extends BaseService {
     localStorage.removeItem('userInfo');
     this.router.navigate(['auth/login']);
   }
+
+  public getAuthFromLocalStorage() {
+    try {
+      const userInfo = localStorage.getItem('userInfo');
+      return userInfo ? JSON.parse(userInfo).user : null;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }

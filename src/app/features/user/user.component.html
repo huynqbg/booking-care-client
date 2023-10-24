@@ -1,8 +1,34 @@
 <div class="header-container">
-  <div class="header-tabs-container p-2 border-end">
-    {{ "menu.system.header" | translate }}
+  <div class="d-flex align-items-center">
+    <div
+      class="dropdown header-tabs-container p-2 border-end"
+      *ngFor="let menuList of adminMenu"
+    >
+      <div
+        class="dropdown-toggle"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        {{ menuList["name"] | translate }}
+      </div>
+
+      <ul class="dropdown-menu">
+        <li *ngFor="let menuItem of menuList['menus']">
+          <a
+            class="dropdown-item btn btn-link"
+            routerLink="{{ menuItem.link }}"
+            >{{ menuItem.name | translate }}</a
+          >
+        </li>
+      </ul>
+    </div>
   </div>
   <div class="d-flex align-items-center">
+    <div class="user-info me-2">
+      {{ "home_header.welcome" | translate }},
+      {{ userInfo && userInfo.firstName ? userInfo.firstName : "" }}
+    </div>
     <div class="languages">
       <app-language-selector></app-language-selector>
     </div>
