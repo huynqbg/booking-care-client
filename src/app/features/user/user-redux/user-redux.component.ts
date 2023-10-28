@@ -1,7 +1,9 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AppComponentBase } from '@core/component-base/app-component-base';
+import CommonUntils from '@core/utils/ultils';
 import { UserService } from '@shared/services/user.service';
+import { Buffer } from 'buffer';
 
 @Component({
   selector: 'app-user-redux',
@@ -38,7 +40,7 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
       gender: ['', Validators.required],
       position: ['', Validators.required],
       role: ['', Validators.required],
-      avatar: ['', Validators.required],
+      avatar: [null, Validators.required],
     });
   }
 
@@ -83,6 +85,7 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
         gender: valueForm.gender,
         roleId: valueForm.role,
         positionId: valueForm.position,
+        avatar: valueForm.avatar,
       };
 
       this.showSpinner();
@@ -95,6 +98,7 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
           this.isEdit = false;
           this.formGroup.controls['email'].enable();
           this.formGroup.controls['password'].enable();
+          this.previewImgURL = '';
         } else {
           this.toastr.error(res['errMessage']);
         }
@@ -113,17 +117,14 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
         gender: valueForm.gender,
         roleId: valueForm.role,
         positionId: valueForm.position,
+        avatar: valueForm.avatar,
       };
       this.showSpinner();
+      console.log(body);
       this.userService.createNewUser(body).subscribe((res) => {
         this.hideSpinner();
         if (res && res['errCode'] === 0) {
-          this.toastr.success(
-            `
-            Create User Successfully  ..!, 
-            Please see new user in below!
-          `
-          );
+          this.toastr.success(`Create User Successfully  ..!`);
           this.renderUsers();
           this.formGroup.reset();
           this.previewImgURL = '';
@@ -135,6 +136,10 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
   }
 
   handleEditUser(user) {
+    let imageBase64 = '';
+    if (user.image) {
+      imageBase64 = new Buffer(user.image, 'base64').toString('binary');
+    }
     if (user) {
       this.isEdit = true;
       this.userId = user.id;
@@ -149,7 +154,10 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
         gender: user.gender,
         role: user.roleId,
         position: user.positionId,
+        // avatar: user.image,
       });
+
+      this.previewImgURL = imageBase64;
     }
   }
 
@@ -216,13 +224,14 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
     });
   }
 
-  handleImage($event) {
+  async handleImage($event) {
     let data = $event.target.files;
     let file = data[0];
     if (file) {
+      let base64 = await CommonUntils.getBase64(file);
       let objectUrl = URL.createObjectURL(file);
       this.previewImgURL = objectUrl;
-      this.formGroup.value.avatar = file;
+      this.formGroup.value.avatar = base64;
     }
   }
 }

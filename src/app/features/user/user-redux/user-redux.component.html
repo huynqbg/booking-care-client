@@ -84,17 +84,22 @@
         ></div>
       </div>
     </div>
-    <div class="col-12 d-flex justify-content-end">
-      <button
-        type="submit"
-        class="btn {{ isEdit ? 'btn-warning' : 'btn-primary' }}"
-      >
-        {{
-          isEdit
-            ? ("manage_user.edit" | translate)
-            : ("manage_user.save" | translate)
-        }}
-      </button>
+    <div class="d-flex justify-content-between col-12">
+      <span class="text-danger" *ngIf="isEdit">
+        Nếu thay đổi avatar. Vui lòng chọn ảnh có cùng định dạng đuôi
+      </span>
+      <div class="d-flex align-items-center">
+        <button
+          type="submit"
+          class="btn {{ isEdit ? 'btn-warning' : 'btn-primary' }}"
+        >
+          {{
+            isEdit
+              ? ("manage_user.edit" | translate)
+              : ("manage_user.save" | translate)
+          }}
+        </button>
+      </div>
     </div>
   </form>
 
