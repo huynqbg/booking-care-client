@@ -28,7 +28,7 @@ export class UserService extends BaseService {
     });
   }
 
-  getAllcode(type) {
+  getAllCode(type) {
     return this.http.get(`${this.baseUrl}/api/allcode?type=${type}`);
   }
 }

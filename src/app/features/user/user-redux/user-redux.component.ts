@@ -8,8 +8,11 @@ import { UserService } from '@shared/services/user.service';
   styleUrls: ['./user-redux.component.scss'],
 })
 export class UserReduxComponent extends AppComponentBase implements OnInit {
-  genderList: Array<any> = [];
   language: string = '';
+  previewImgURL: string = '';
+  genderList: Array<any> = [];
+  positionList: Array<any> = [];
+  roleList: Array<any> = [];
 
   constructor(injector: Injector, private userService: UserService) {
     super(injector);
@@ -20,13 +23,48 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
   }
 
   render() {
-    this.showSpinner();
     this.language = localStorage.getItem('LANGUAGE');
-    this.userService.getAllcode('gender').subscribe((res) => {
+    this.getGender();
+    this.getPosition();
+    this.getRole();
+  }
+
+  getGender() {
+    this.showSpinner();
+    this.userService.getAllCode('gender').subscribe((res) => {
       this.hideSpinner();
       if (res && res['errCode'] === 0) {
         this.genderList = res['data'];
       }
     });
+  }
+
+  getPosition() {
+    this.showSpinner();
+    this.userService.getAllCode('position').subscribe((res) => {
+      this.hideSpinner();
+      if (res && res['errCode'] === 0) {
+        this.positionList = res['data'];
+      }
+    });
+  }
+
+  getRole() {
+    this.showSpinner();
+    this.userService.getAllCode('role').subscribe((res) => {
+      this.hideSpinner();
+      if (res && res['errCode'] === 0) {
+        this.roleList = res['data'];
+      }
+    });
+  }
+
+  handleImage($event) {
+    let data = $event.target.files;
+    let file = data[0];
+    if (file) {
+      let objectUrl = URL.createObjectURL(file);
+      this.previewImgURL = objectUrl;
+    }
   }
 }

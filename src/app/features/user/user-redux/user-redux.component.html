@@ -36,7 +36,7 @@
     <div class="col-md-3">
       <label class="form-label">{{ "manage_user.gender" | translate }}</label>
       <select class="form-select">
-        <option>...</option>
+        <option>Choose...</option>
         <option *ngFor="let gender of genderList">
           {{ language === "vi" ? gender.valueVi : gender.valueEn }}
         </option>
@@ -45,21 +45,43 @@
     <div class="col-md-3">
       <label class="form-label">{{ "manage_user.position" | translate }}</label>
       <select class="form-select">
-        <option selected>Choose...</option>
-        <option>...</option>
+        <option>Choose...</option>
+        <option *ngFor="let position of positionList">
+          {{ language === "vi" ? position.valueVi : position.valueEn }}
+        </option>
       </select>
     </div>
     <div class="col-md-3">
       <label class="form-label">{{ "manage_user.role" | translate }}</label>
       <select class="form-select">
-        <option selected>Choose...</option>
+        <option>Choose...</option>
+        <option *ngFor="let role of roleList">
+          {{ language === "vi" ? role.valueVi : role.valueEn }}
+        </option>
       </select>
     </div>
     <div class="col-md-3">
-      <label for="inputState" class="form-label">
+      <label class="form-label">
         {{ "manage_user.image" | translate }}
       </label>
-      <input type="file" class="form-control" />
+      <div class="preview-img-container">
+        <label for="previewImg" class="label-img-upload">
+          Tải ảnh
+          <i class="fas fa-upload"></i>
+        </label>
+        <input
+          type="file"
+          class="form-control"
+          id="previewImg"
+          hidden
+          (change)="handleImage($event)"
+        />
+        <div
+          class="preview-image"
+          *ngIf="previewImgURL"
+          [ngStyle]="{ 'background-image': 'url(' + previewImgURL + ')' }"
+        ></div>
+      </div>
     </div>
     <div class="col-12 d-flex justify-content-end">
       <button type="submit" class="btn btn-primary">
