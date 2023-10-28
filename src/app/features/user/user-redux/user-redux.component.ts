@@ -11,6 +11,7 @@ import { UserService } from '@shared/services/user.service';
 export class UserReduxComponent extends AppComponentBase implements OnInit {
   language: string = '';
   previewImgURL: string = '';
+  listUsers: Array<any> = [];
   genderList: Array<any> = [];
   positionList: Array<any> = [];
   roleList: Array<any> = [];
@@ -82,7 +83,35 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
       positionId: valueForm.position,
     };
 
-    this.userService.createNewUser(data).subscribe((res) => console.log(res));
+    this.userService.createNewUser(data).subscribe((res) => {
+      console.log(res);
+      if (res && res['errCode'] === 0) {
+        this.toastr.success(
+          `
+          Create User Successfully  ..!, 
+          Please see new user in below!
+        `
+        );
+        this.renderUsers();
+        this.formGroup.reset();
+        this.previewImgURL = '';
+      } else {
+        this.toastr.error(res['errMessage']);
+      }
+    });
+  }
+
+  handleDeleteUser(user) {
+    this.showSpinner();
+    this.userService.deleteUser(user.id).subscribe((res) => {
+      this.hideSpinner();
+      if (res && res['errCode'] === 0) {
+        this.renderUsers();
+      } else {
+        this.toastr.error(res['errMessage']);
+      }
+    });
+    this.toastr.success('Delete User Successfully ..!');
   }
 
   render() {
@@ -90,6 +119,19 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
     this.getGender();
     this.getPosition();
     this.getRole();
+    this.renderUsers();
+  }
+
+  renderUsers() {
+    this.showSpinner();
+    this.userService.getAllUsers('ALL').subscribe((data) => {
+      this.hideSpinner();
+      if (data && data['errCode'] === 0) {
+        this.listUsers = data['users'];
+        this.listUsers.reverse();
+        console.log(this.listUsers);
+      }
+    });
   }
 
   getGender() {

@@ -27,7 +27,7 @@
       <label class="form-label">
         {{ "manage_user.phone_number" | translate }}
       </label>
-      <input type="tel" class="form-control" formControlName="phoneNumber" />
+      <input type="text" class="form-control" formControlName="phoneNumber" />
     </div>
     <div class="col-9">
       <label class="form-label">{{ "manage_user.address" | translate }}</label>
@@ -65,7 +65,7 @@
         {{ "manage_user.image" | translate }}
       </label>
       <div class="preview-img-container">
-        <label for="previewImg" class="label-img-upload text-success">
+        <label for="previewImg" class="btn btn-link">
           Tải ảnh
           <i class="fas fa-upload"></i>
         </label>
@@ -90,4 +90,41 @@
       </button>
     </div>
   </form>
+
+  <div class="mt-5">
+    <h2 class="text-primary">Danh sách người dùng</h2>
+    <table class="table table-hover table-bordered mt-3">
+      <thead>
+        <tr>
+          <th scope="col" class="text-center">#</th>
+          <th scope="col" class="text-center">Email</th>
+          <th scope="col" class="text-center">First Name</th>
+          <th scope="col" class="text-center">Last Name</th>
+          <th scope="col" class="text-center">Address</th>
+          <th scope="col" class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of listUsers; let i = index">
+          <th class="text-center" scope="row">{{ i + 1 }}</th>
+          <td class="text-center">{{ user.email }}</td>
+          <td class="text-center">{{ user.firstName }}</td>
+          <td class="text-center">{{ user.lastName }}</td>
+          <td class="text-center">{{ user.address }}</td>
+          <td class="text-center">
+            <button class="btn btn-link text-warning">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              class="btn btn-link text-danger"
+              (click)="handleDeleteUser(user)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="height: 1000px"></div>
 </div>
