@@ -2,60 +2,60 @@
 
 <div class="container">
   <h2 class="text-primary">{{ "manage_user.add" | translate }}</h2>
-  <form class="row g-3">
+  <form class="row g-3" [formGroup]="formGroup" (ngSubmit)="handleSaveUser()">
     <div class="col-md-3">
       <label class="form-label">{{ "manage_user.email" | translate }}</label>
-      <input type="email" class="form-control" />
+      <input type="email" class="form-control" formControlName="email" />
     </div>
     <div class="col-md-3">
       <label class="form-label">{{ "manage_user.password" | translate }}</label>
-      <input type="password" class="form-control" />
+      <input type="password" class="form-control" formControlName="password" />
     </div>
     <div class="col-md-3">
       <label class="form-label">
         {{ "manage_user.first_name" | translate }}
       </label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" formControlName="firstName" />
     </div>
     <div class="col-md-3">
       <label class="form-label">
         {{ "manage_user.last_name" | translate }}
       </label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" formControlName="lastName" />
     </div>
     <div class="col-md-3">
       <label class="form-label">
         {{ "manage_user.phone_number" | translate }}
       </label>
-      <input type="tel" class="form-control" />
+      <input type="tel" class="form-control" formControlName="phoneNumber" />
     </div>
     <div class="col-9">
       <label class="form-label">{{ "manage_user.address" | translate }}</label>
-      <input type="text" class="form-control" />
+      <input type="text" class="form-control" formControlName="address" />
     </div>
     <div class="col-md-3">
       <label class="form-label">{{ "manage_user.gender" | translate }}</label>
-      <select class="form-select">
-        <option>Choose...</option>
-        <option *ngFor="let gender of genderList">
+      <select class="form-select" formControlName="gender">
+        <option *ngFor="let gender of genderList" value="{{ gender.key }}">
           {{ language === "vi" ? gender.valueVi : gender.valueEn }}
         </option>
       </select>
     </div>
     <div class="col-md-3">
       <label class="form-label">{{ "manage_user.position" | translate }}</label>
-      <select class="form-select">
-        <option>Choose...</option>
-        <option *ngFor="let position of positionList">
+      <select class="form-select" formControlName="position">
+        <option
+          *ngFor="let position of positionList"
+          value="{{ position.key }}"
+        >
           {{ language === "vi" ? position.valueVi : position.valueEn }}
         </option>
       </select>
     </div>
     <div class="col-md-3">
       <label class="form-label">{{ "manage_user.role" | translate }}</label>
-      <select class="form-select">
-        <option>Choose...</option>
-        <option *ngFor="let role of roleList">
+      <select class="form-select" formControlName="role">
+        <option *ngFor="let role of roleList" value="{{ role.key }}">
           {{ language === "vi" ? role.valueVi : role.valueEn }}
         </option>
       </select>
@@ -65,7 +65,7 @@
         {{ "manage_user.image" | translate }}
       </label>
       <div class="preview-img-container">
-        <label for="previewImg" class="label-img-upload">
+        <label for="previewImg" class="label-img-upload text-success">
           Tải ảnh
           <i class="fas fa-upload"></i>
         </label>
@@ -73,6 +73,7 @@
           type="file"
           class="form-control"
           id="previewImg"
+          formControlName="avatar"
           hidden
           (change)="handleImage($event)"
         />

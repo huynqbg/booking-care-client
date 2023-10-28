@@ -10,8 +10,12 @@
     }
   }
 
+  .label-img-upload {
+    cursor: pointer;
+  }
+
   .preview-image {
-    height: 50px;
+    height: 100px;
     width: 100%;
     background: center center no-repeat;
     background-size: contain;
