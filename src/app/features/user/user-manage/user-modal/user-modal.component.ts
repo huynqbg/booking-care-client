@@ -31,11 +31,17 @@ export class UserModalComponent extends AppComponentBase implements OnInit {
       email: [
         {
           value: null,
-          disabled: this.isEdit,
+          // disabled: this.isEdit,
         },
         [Validators.email, Validators.required],
       ],
-      password: [{ value: null, disabled: this.isEdit }, Validators.required],
+      password: [
+        {
+          value: null,
+          // disabled: this.isEdit
+        },
+        Validators.required,
+      ],
       firstName: [null, Validators.required],
       lastName: [null, Validators.required],
       address: [null, Validators.required],

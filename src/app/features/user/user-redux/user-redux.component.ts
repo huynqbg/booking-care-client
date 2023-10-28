@@ -11,6 +11,8 @@ import { UserService } from '@shared/services/user.service';
 export class UserReduxComponent extends AppComponentBase implements OnInit {
   language: string = '';
   previewImgURL: string = '';
+  isEdit: boolean = false;
+  userId: any;
   listUsers: Array<any> = [];
   genderList: Array<any> = [];
   positionList: Array<any> = [];
@@ -26,9 +28,8 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
 
   ngOnInit() {
     this.render();
-
     this.formGroup = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.email, Validators.required]],
       password: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -59,46 +60,97 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
     for (let i = 0; i < listForm.length; i++) {
       if (!this.formGroup.value[`${listForm[i]}`]) {
         isValid = false;
-        alert('This input is required: ' + listForm[i]);
+        this.toastr.error('This input is required: ' + listForm[i]);
         break;
       }
     }
     return isValid;
   }
 
-  handleSaveUser() {
+  submitForm() {
     const valueForm = this.formGroup.value;
-    const isValid = this.checkValidateForm();
-    if (isValid === false) return;
 
-    const data = {
-      email: valueForm.email,
-      password: valueForm.password,
-      firstName: valueForm.firstName,
-      lastName: valueForm.lastName,
-      address: valueForm.address,
-      phoneNumber: valueForm.phoneNumberd,
-      gender: valueForm.gender,
-      roleId: valueForm.role,
-      positionId: valueForm.position,
-    };
+    if (this.isEdit) {
+      // edit user
+      const body = {
+        id: this.userId,
+        // email: valueForm.email,
+        // password: valueForm.password,
+        firstName: valueForm.firstName,
+        lastName: valueForm.lastName,
+        address: valueForm.address,
+        phoneNumber: valueForm.phoneNumber,
+        gender: valueForm.gender,
+        roleId: valueForm.role,
+        positionId: valueForm.position,
+      };
 
-    this.userService.createNewUser(data).subscribe((res) => {
-      console.log(res);
-      if (res && res['errCode'] === 0) {
-        this.toastr.success(
+      this.showSpinner();
+      this.userService.editUser(body).subscribe((res) => {
+        this.hideSpinner();
+        if (res && res['errCode'] === 0) {
+          this.toastr.success('Update User Successfully ..!');
+          this.renderUsers();
+          this.formGroup.reset();
+          this.isEdit = false;
+          this.formGroup.controls['email'].enable();
+          this.formGroup.controls['password'].enable();
+        } else {
+          this.toastr.error(res['errMessage']);
+        }
+      });
+    } else {
+      // add user
+      const isValid = this.checkValidateForm();
+      if (isValid === false) return;
+      const body = {
+        email: valueForm.email,
+        password: valueForm.password,
+        firstName: valueForm.firstName,
+        lastName: valueForm.lastName,
+        address: valueForm.address,
+        phoneNumber: valueForm.phoneNumber,
+        gender: valueForm.gender,
+        roleId: valueForm.role,
+        positionId: valueForm.position,
+      };
+      this.showSpinner();
+      this.userService.createNewUser(body).subscribe((res) => {
+        this.hideSpinner();
+        if (res && res['errCode'] === 0) {
+          this.toastr.success(
+            `
+            Create User Successfully  ..!, 
+            Please see new user in below!
           `
-          Create User Successfully  ..!, 
-          Please see new user in below!
-        `
-        );
-        this.renderUsers();
-        this.formGroup.reset();
-        this.previewImgURL = '';
-      } else {
-        this.toastr.error(res['errMessage']);
-      }
-    });
+          );
+          this.renderUsers();
+          this.formGroup.reset();
+          this.previewImgURL = '';
+        } else {
+          this.toastr.error(res['errMessage']);
+        }
+      });
+    }
+  }
+
+  handleEditUser(user) {
+    if (user) {
+      this.isEdit = true;
+      this.userId = user.id;
+      this.formGroup.controls['email'].disable();
+      this.formGroup.controls['password'].disable();
+      this.formGroup.patchValue({
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        address: user.address,
+        phoneNumber: user.phoneNumber,
+        gender: user.gender,
+        role: user.roleId,
+        position: user.positionId,
+      });
+    }
   }
 
   handleDeleteUser(user) {
