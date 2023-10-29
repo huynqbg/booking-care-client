@@ -6,80 +6,28 @@
     </div>
     <div class="section-body">
       <swiper [config]="configSlide">
-        <ng-template swiperSlide>
+        <ng-template swiperSlide *ngFor="let doctor of listDoctor">
           <div class="section-customize">
             <div class="customize-border">
               <div class="outer-bg">
-                <div class="bg-image section-outstanding-doctor"></div>
+                <div
+                  class="bg-image section-outstanding-doctor"
+                  [ngStyle]="{
+                    'background-image': 'url(' + doctor.image + ')'
+                  }"
+                ></div>
               </div>
               <div class="position text-center">
-                <div>Giáo sư, Tiến sĩ Tony Xoăn</div>
+                <div>
+                  {{
+                    language === "vi"
+                      ? doctor.positionData.valueVi
+                      : doctor.positionData.valueEn
+                  }},
+                  {{ language === "vi" ? doctor.lastName : doctor.firstName }}
+                  {{ language === "vi" ? doctor.firstName : doctor.lastName }}
+                </div>
                 <div>Cơ xương khớp 1</div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="section-customize">
-            <div class="customize-border">
-              <div class="outer-bg">
-                <div class="bg-image section-outstanding-doctor"></div>
-              </div>
-              <div class="position text-center">
-                <div>Giáo sư, Tiến sĩ Tony Xoăn</div>
-                <div>Cơ xương khớp 2</div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="section-customize">
-            <div class="customize-border">
-              <div class="outer-bg">
-                <div class="bg-image section-outstanding-doctor"></div>
-              </div>
-              <div class="position text-center">
-                <div>Giáo sư, Tiến sĩ Tony Xoăn</div>
-                <div>Cơ xương khớp 3</div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="section-customize">
-            <div class="customize-border">
-              <div class="outer-bg">
-                <div class="bg-image section-outstanding-doctor"></div>
-              </div>
-              <div class="position text-center">
-                <div>Giáo sư, Tiến sĩ Tony Xoăn</div>
-                <div>Cơ xương khớp 4</div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="section-customize">
-            <div class="customize-border">
-              <div class="outer-bg">
-                <div class="bg-image section-outstanding-doctor"></div>
-              </div>
-              <div class="position text-center">
-                <div>Giáo sư, Tiến sĩ Tony Xoăn</div>
-                <div>Cơ xương khớp 5</div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="section-customize">
-            <div class="customize-border">
-              <div class="outer-bg">
-                <div class="bg-image section-outstanding-doctor"></div>
-              </div>
-              <div class="position text-center">
-                <div>Giáo sư, Tiến sĩ Tony Xoăn</div>
-                <div>Cơ xương khớp 6</div>
               </div>
             </div>
           </div>

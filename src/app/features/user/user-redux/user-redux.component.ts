@@ -200,6 +200,7 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
       this.hideSpinner();
       if (res && res['errCode'] === 0) {
         this.genderList = res['data'];
+        console.log(this.genderList);
       }
     });
   }

@@ -36,7 +36,7 @@
     <div class="col-md-3">
       <label class="form-label">{{ "manage_user.gender" | translate }}</label>
       <select class="form-select" formControlName="gender">
-        <option *ngFor="let gender of genderList" value="{{ gender.key }}">
+        <option *ngFor="let gender of genderList" value="{{ gender.keyMap }}">
           {{ language === "vi" ? gender.valueVi : gender.valueEn }}
         </option>
       </select>
@@ -46,7 +46,7 @@
       <select class="form-select" formControlName="position">
         <option
           *ngFor="let position of positionList"
-          value="{{ position.key }}"
+          value="{{ position.keyMap }}"
         >
           {{ language === "vi" ? position.valueVi : position.valueEn }}
         </option>
@@ -55,7 +55,7 @@
     <div class="col-md-3">
       <label class="form-label">{{ "manage_user.role" | translate }}</label>
       <select class="form-select" formControlName="role">
-        <option *ngFor="let role of roleList" value="{{ role.key }}">
+        <option *ngFor="let role of roleList" value="{{ role.keyMap }}">
           {{ language === "vi" ? role.valueVi : role.valueEn }}
         </option>
       </select>
@@ -85,9 +85,6 @@
       </div>
     </div>
     <div class="d-flex justify-content-between col-12">
-      <span class="text-danger" *ngIf="isEdit">
-        Nếu thay đổi avatar. Vui lòng chọn ảnh có cùng định dạng đuôi
-      </span>
       <div class="d-flex align-items-center">
         <button
           type="submit"
@@ -100,6 +97,9 @@
           }}
         </button>
       </div>
+      <span class="text-danger d-flex align-items-center" *ngIf="isEdit">
+        Nếu thay đổi avatar. Vui lòng chọn ảnh có cùng định dạng đuôi
+      </span>
     </div>
   </form>
 
@@ -141,5 +141,5 @@
       </tbody>
     </table>
   </div>
-  <div style="height: 1000px"></div>
+  <div style="height: 50px"></div>
 </div>

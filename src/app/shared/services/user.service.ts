@@ -31,4 +31,8 @@ export class UserService extends BaseService {
   getAllCode(type) {
     return this.http.get(`${this.baseUrl}/api/allcode?type=${type}`);
   }
+
+  getDoctorHome(limit) {
+    return this.http.get(`${this.baseUrl}/api/top-doctor-home?limit=${limit}`);
+  }
 }
