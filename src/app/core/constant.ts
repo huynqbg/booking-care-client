@@ -20,7 +20,7 @@ export const adminMenu = [
       },
       {
         name: 'menu.admin.manage-doctor',
-        link: '/system/user-doctor',
+        link: '/system/manage-doctor',
       },
       {
         name: 'menu.admin.manage-admin',

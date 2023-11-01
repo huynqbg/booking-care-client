@@ -1,0 +1,54 @@
+<div class="container">
+  <h1 class="text-center text-primary mt-3">Tạo chi tiết thông tin Bác sĩ</h1>
+  <div class="row mt-2">
+    <div class="col-md-6">
+      <label for="">Chọn bác sĩ</label>
+      <nz-select
+        class="w-100"
+        nzShowSearch
+        nzAllowClear
+        nzPlaceHolder="Select a person"
+        [(ngModel)]="selectedValue"
+      >
+        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
+        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
+        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+      </nz-select>
+    </div>
+    <div class="col-md-6">
+      <label for="">Thông tin giới thiệu</label>
+      <textarea
+        nz-input
+        placeholder="Thông tin Bác sĩ"
+        [(ngModel)]="description"
+      ></textarea>
+    </div>
+  </div>
+  <div class="mt-1">
+    <h2 class="mb-1">Mô tả thông tin chi tiết</h2>
+    <span class="mb-2 text-danger">
+      Điền thông tin ở dạng markdown vào ô bên trái và xem review ở ô bên phải
+    </span>
+    <br />
+    <span class="text-danger">
+      Để viết thông tin ở dạng markdown:
+      <a target="_blank" href="https://stackedit.io/app#" class="btn btn-link">
+        Bấm vào đây!
+      </a>
+    </span>
+    <div class="h-markdown row container">
+      <textarea
+        class="col-md-6 rounded"
+        [(ngModel)]="markdown"
+        placeholder="Nhập thông tin chi tiết ở dạng markdown vào đây"
+      ></textarea>
+      <div class="h-markdown col-md-6 border border-secondary rounded">
+        <markdown class="" [data]="markdown"></markdown>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary mt-2" type="submit" (click)="submit()">
+    Save
+  </button>
+  <div style="height: 500px"></div>
+</div>

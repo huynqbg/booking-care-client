@@ -4,7 +4,6 @@ import { AppComponentBase } from '@core/component-base/app-component-base';
 import CommonUntils from '@core/utils/ultils';
 import { UserService } from '@shared/services/user.service';
 import { Buffer } from 'buffer';
-import { marked } from 'marked';
 
 @Component({
   selector: 'app-user-redux',
@@ -20,23 +19,6 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
   genderList: Array<any> = [];
   positionList: Array<any> = [];
   roleList: Array<any> = [];
-
-  markdown = `## Markdown __rulez__!
----
-
-### Syntax highlight
-\`\`\`typescript
-const language = 'typescript';
-\`\`\`
-
-### Lists
-1. Ordered list
-2. Another bullet point
-   - Unordered list
-   - Another unordered bullet
-
-### Blockquote
-> Blockquote to the max`;
 
   constructor(
     injector: Injector,
@@ -60,7 +42,6 @@ const language = 'typescript';
       role: ['', Validators.required],
       avatar: [null, Validators.required],
     });
-    console.log(this.transformMarkdownToHtml(this.markdown));
   }
 
   checkValidateForm() {
@@ -253,16 +234,5 @@ const language = 'typescript';
       this.previewImgURL = objectUrl;
       this.formGroup.value.avatar = base64;
     }
-  }
-
-  transformMarkdownToHtml(
-    markdown: string,
-    options?: marked.MarkedOptions
-  ): any {
-    let html = '';
-    if (markdown) {
-      html = marked(markdown, options); // options can be undefined, merged onto marked's defaults
-    }
-    return html;
   }
 }
