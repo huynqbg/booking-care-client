@@ -1,8 +1,10 @@
 <div class="section-share section-outstanding-doctor">
   <div class="section-container">
     <div class="section-header">
-      <div class="title-section">Bác sĩ nổi bật tuần qua</div>
-      <div class="btn-section">Xem thêm</div>
+      <div class="title-section">
+        {{ "homepage.out_standing_doctor" | translate }}
+      </div>
+      <div class="btn-section">{{ "homepage.more_info" | translate }}</div>
     </div>
     <div class="section-body">
       <swiper [config]="configSlide">

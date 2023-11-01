@@ -31,6 +31,7 @@ export class OutStandingDoctorComponent
     this.showSpinner();
     this.userService.getDoctorHome('10').subscribe((res) => {
       if (res && res['errCode'] === 0) {
+        // config image from db to base64 để có thể hiển thị ra giao diện
         res['data'].forEach((item) => {
           if (item.image) {
             let imageBase64 = '';

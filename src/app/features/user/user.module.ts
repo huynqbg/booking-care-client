@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '@shared/shared.module';
 import { UserReduxComponent } from './user-redux/user-redux.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { TranslateModule } from '@ngx-translate/core';
     HttpClientModule,
     SharedModule,
     TranslateModule,
+    MarkdownModule.forRoot(),
   ],
 })
 export class UserModule {}
