@@ -4,8 +4,12 @@
 
 - Sửa phần chuyển đổi ngôn ngữ để không bị reload lại trang.
 
+- Chuyển đổi hết css sang dùng tailwind css.
+
+- những components của boostrap sẽ thay thế bằng ng-zorro
+
 # Update
 
-- Chuyển boostrap sang tailwind css
-- Upgrade to angular version 14
-- Xoá bỏ material UI, chỉ sử dụng ng-zorro (ant-design)
+- Chuyển boostrap sang tailwind css.
+- Upgrade to angular version 14.
+- Xoá bỏ material UI, chỉ sử dụng ng-zorro (ant-design).
