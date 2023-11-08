@@ -1,8 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+// @import "~@fortawesome/fontawesome-free/scss/light";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/regular";
-// @import "~@fortawesome/fontawesome-free/scss/light";
+
+// tailwind
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+// custom styles
+@import ".//app/core/styles/button.scss";
 
 html,
 body {

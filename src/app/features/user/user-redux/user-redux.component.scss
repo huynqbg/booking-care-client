@@ -9,12 +9,17 @@
       opacity: 0.9;
     }
   }
+}
 
-  .preview-image {
-    height: 100px;
-    width: 100%;
-    background: center center no-repeat;
-    background-size: contain;
-    cursor: pointer;
-  }
+.preview-image {
+  height: 100px;
+  width: 100%;
+  background: center center no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+:host ::ng-deep .avatar-uploader > .ant-upload {
+  width: 128px;
+  height: 128px;
 }

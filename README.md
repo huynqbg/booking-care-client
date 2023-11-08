@@ -6,10 +6,16 @@
 
 - Chuyển đổi hết css sang dùng tailwind css.
 
-- những components của boostrap sẽ thay thế bằng ng-zorro
+- Những components của boostrap sẽ thay thế bằng ng-zorro
+
+- Sử dụng cả ant-design và materialUI
 
 # Update
 
-- Chuyển boostrap sang tailwind css.
+- Chuyển boostrap sang tailwind css. (Xoá bỏ boostrap)
 - Upgrade to angular version 14.
-- Xoá bỏ material UI, chỉ sử dụng ng-zorro (ant-design).
+
+# Fix
+
+- fix upload image in user-reduce
+- css lại login form

@@ -4,6 +4,7 @@ import { AppComponentBase } from '@core/component-base/app-component-base';
 import CommonUntils from '@core/utils/ultils';
 import { UserService } from '@shared/services/user.service';
 import { Buffer } from 'buffer';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
 
 @Component({
   selector: 'app-user-redux',

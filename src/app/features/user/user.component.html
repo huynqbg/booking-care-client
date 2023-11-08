@@ -1,31 +1,25 @@
-<div class="header-container">
-  <div class="d-flex align-items-center">
-    <div
-      class="dropdown header-tabs-container p-2 border-end"
-      *ngFor="let menuList of adminMenu"
-    >
-      <div
-        class="dropdown-toggle"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
+<div
+  class="flex items-center justify-between bg-sky-600 text-white h-10 z-[99] relative"
+>
+  <div class="flex items-center">
+    <div class="p-2 border-e" *ngFor="let menuList of adminMenu">
+      <a nz-dropdown [nzDropdownMenu]="menu" class="text-white">
         {{ menuList["name"] | translate }}
-      </div>
-
-      <ul class="dropdown-menu">
-        <li *ngFor="let menuItem of menuList['menus']">
-          <a
-            class="dropdown-item btn btn-link"
-            routerLink="{{ menuItem.link }}"
-            >{{ menuItem.name | translate }}</a
-          >
-        </li>
-      </ul>
+        <span nz-icon nzType="down"></span>
+      </a>
+      <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu nzSelectable>
+          <li nz-menu-item *ngFor="let menuItem of menuList['menus']">
+            <a routerLink="{{ menuItem.link }}">
+              {{ menuItem.name | translate }}
+            </a>
+          </li>
+        </ul>
+      </nz-dropdown-menu>
     </div>
   </div>
-  <div class="d-flex align-items-center">
-    <div class="user-info me-2">
+  <div class="flex items-center">
+    <div class="user-info mr-2">
       {{ "home_header.welcome" | translate }},
       {{ userInfo && userInfo.firstName ? userInfo.firstName : "" }}
     </div>
@@ -33,15 +27,18 @@
       <app-language-selector></app-language-selector>
     </div>
     <button
-      class="btn btn-logout d-flex align-items-center"
+      nz-button
+      nzType="default"
+      class="p-1 ml-2 mr-3"
+      nz-tooltip
+      nzTooltipTitle="Logout"
       (click)="onLogout()"
-      title="Logout"
     >
-      <mat-icon>output</mat-icon>
+      <i nz-icon nzType="logout" nzTheme="outline"></i>
     </button>
   </div>
 </div>
 
-<div class="container-fluid">
+<div>
   <router-outlet></router-outlet>
 </div>

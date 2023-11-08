@@ -39,15 +39,11 @@
               "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/theme.less",
               "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/marked/marked.min.js"
-            ]
+            "scripts": ["node_modules/marked/marked.min.js"]
           },
           "configurations": {
             "production": {

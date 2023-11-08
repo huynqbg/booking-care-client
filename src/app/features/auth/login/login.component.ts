@@ -5,7 +5,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AppComponentBase } from '@core/component-base/app-component-base';
 import { AuthService } from '@shared/services/auth.service';
 
@@ -78,7 +77,7 @@ export class LoginComponent extends AppComponentBase implements OnInit {
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'You must enter your email';
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';

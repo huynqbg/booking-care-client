@@ -41,7 +41,7 @@
 
   "manage_user": {
     "add": "Thêm mới người dùng",
-    "email": "Email",
+    "email": "E-mail",
     "password": "Mật khẩu",
     "first_name": "Tên",
     "last_name": "Họ",
