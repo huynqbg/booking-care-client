@@ -1,54 +1,66 @@
-<div class="container">
-  <h1 class="text-center text-primary mt-3">Tạo chi tiết thông tin Bác sĩ</h1>
-  <div class="row mt-2">
-    <div class="col-md-6">
+<div class="container h-full m-auto">
+  <h1 class="text-center text-cyan-700 pt-3">Tạo chi tiết thông tin Bác sĩ</h1>
+  <div class="grid grid-cols-2 gap-4">
+    <div>
       <label for="">Chọn bác sĩ</label>
       <nz-select
-        class="w-100"
+        class="w-full"
         nzShowSearch
         nzAllowClear
-        nzPlaceHolder="Select a person"
+        nzPlaceHolder="Select a Doctor"
         [(ngModel)]="selectedValue"
       >
-        <nz-option nzLabel="Jack" nzValue="jack"></nz-option>
-        <nz-option nzLabel="Lucy" nzValue="lucy"></nz-option>
-        <nz-option nzLabel="Tom" nzValue="tom"></nz-option>
+        <nz-option
+          *ngFor="let doctor of listDoctors"
+          nzLabel="{{ language === 'vi' ? doctor.nameVi : doctor.nameEn }}"
+          nzValue="{{ doctor.id }}"
+        ></nz-option>
       </nz-select>
     </div>
-    <div class="col-md-6">
-      <label for="">Thông tin giới thiệu</label>
+    <div>
+      <label>Thông tin giới thiệu</label>
       <textarea
         nz-input
+        rows="10"
         placeholder="Thông tin Bác sĩ"
         [(ngModel)]="description"
       ></textarea>
     </div>
   </div>
   <div class="mt-1">
-    <h2 class="mb-1">Mô tả thông tin chi tiết</h2>
-    <span class="mb-2 text-danger">
+    <h2 class="mb-1 text-cyan-700 text-base">Mô tả thông tin chi tiết</h2>
+    <span class="mb-2 text-red-600 text-base">
       Điền thông tin ở dạng markdown vào ô bên trái và xem review ở ô bên phải
     </span>
     <br />
     <span class="text-danger">
       Để viết thông tin ở dạng markdown:
-      <a target="_blank" href="https://stackedit.io/app#" class="btn btn-link">
+      <a
+        nz-button
+        nzType="primary"
+        target="_blank"
+        href="https://stackedit.io/app#"
+      >
         Bấm vào đây!
       </a>
     </span>
-    <div class="h-markdown row container">
+    <div class="grid grid-cols-2 mt-3 gap-6">
       <textarea
-        class="col-md-6 rounded"
+        nz-input
+        class="rounded h-[400px] markdown-block text-lg border border-blue-700"
         [(ngModel)]="markdown"
         placeholder="Nhập thông tin chi tiết ở dạng markdown vào đây"
       ></textarea>
-      <div class="h-markdown col-md-6 border border-secondary rounded">
+      <div class="h-[400px] border border-gray-500 rounded overflow-auto">
         <markdown class="" [data]="markdown"></markdown>
       </div>
     </div>
   </div>
-  <button class="btn btn-primary mt-2" type="submit" (click)="submit()">
+  <button
+    class="btn btn-primary mt-2 w-[300px] mb-4"
+    type="submit"
+    (click)="submit()"
+  >
     Save
   </button>
-  <div style="height: 500px"></div>
 </div>

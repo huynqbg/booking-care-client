@@ -1,4 +1,10 @@
-.h-markdown {
-  height: 400px;
-  overflow: auto;
+.markdown-block::placeholder {
+  font-size: 26px;
+}
+
+textarea::placeholder {
+  text-align: center;
+  transform: translateY(100px);
+  color: #7b7474;
+  font-size: 18px;
 }

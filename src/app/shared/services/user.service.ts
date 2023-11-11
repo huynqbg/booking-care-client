@@ -35,4 +35,12 @@ export class UserService extends BaseService {
   getDoctorHome(limit) {
     return this.http.get(`${this.baseUrl}/api/top-doctor-home?limit=${limit}`);
   }
+
+  getAllDoctors() {
+    return this.http.get(`${this.baseUrl}/api/get-all-doctors`);
+  }
+
+  saveDetailDoctor(data) {
+    return this.http.post(`${this.baseUrl}/api/save-info-doctor`, data);
+  }
 }
