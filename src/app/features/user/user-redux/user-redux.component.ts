@@ -4,7 +4,6 @@ import { AppComponentBase } from '@core/component-base/app-component-base';
 import CommonUntils from '@core/utils/ultils';
 import { UserService } from '@shared/services/user.service';
 import { Buffer } from 'buffer';
-import { NzUploadFile } from 'ng-zorro-antd/upload';
 
 @Component({
   selector: 'app-user-redux',
@@ -16,6 +15,7 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
   previewImgURL: string = '';
   isEdit: boolean = false;
   userId: any;
+  visibleForm = false;
   listUsers: Array<any> = [];
   genderList: Array<any> = [];
   positionList: Array<any> = [];
@@ -43,6 +43,15 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
       role: ['', Validators.required],
       avatar: [null, Validators.required],
     });
+  }
+
+  openForm(): void {
+    this.visibleForm = true;
+  }
+
+  closeForm(): void {
+    this.visibleForm = false;
+    this.formGroup.reset();
   }
 
   checkValidateForm() {
@@ -134,6 +143,7 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
         }
       });
     }
+    this.visibleForm = false;
   }
 
   handleEditUser(user) {
@@ -159,6 +169,7 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
       });
 
       this.previewImgURL = imageBase64;
+      this.visibleForm = true;
     }
   }
 

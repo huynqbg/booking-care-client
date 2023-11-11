@@ -3,10 +3,18 @@
   <h1 class="text-center text-green-600">CRUD USER</h1>
 
   <!-- container -->
-  <div class="md:container">
-    <h2 class="text-cyan-600">{{ "manage_user.add" | translate }}</h2>
-    <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
-      <div class="grid grid-cols-4 gap-4">
+  <nz-drawer
+    [nzBodyStyle]="{ overflow: 'auto' }"
+    [nzMaskClosable]="false"
+    [nzWidth]="720"
+    [nzVisible]="visibleForm"
+    nzTitle="
+    {{ isEdit ? 'Thay đổi thông tin người dùng' : 'Thêm mới người dùng' }}"
+    [nzFooter]="footerTpl"
+    (nzOnClose)="closeForm()"
+  >
+    <form [formGroup]="formGroup" *nzDrawerContent>
+      <div class="grid grid-cols-2 gap-4">
         <!-- Email -->
         <nz-form-item>
           <nz-form-label nzFor="email">
@@ -77,21 +85,6 @@
           </nz-form-control>
         </nz-form-item>
 
-        <!-- Address -->
-        <nz-form-item class="col-span-3">
-          <nz-form-label nzFor="address">
-            {{ "manage_user.address" | translate }}
-          </nz-form-label>
-          <nz-form-control>
-            <input
-              nz-input
-              type="text"
-              id="address"
-              formControlName="address"
-            />
-          </nz-form-control>
-        </nz-form-item>
-
         <!-- Gender -->
         <nz-form-item>
           <nz-form-label nzFor="gender">
@@ -103,7 +96,7 @@
                 *ngFor="let gender of genderList"
                 nzValue="{{ gender.keyMap }}"
                 nzLabel="
-              {{ language === 'vi' ? gender.valueVi : gender.valueEn }}"
+            {{ language === 'vi' ? gender.valueVi : gender.valueEn }}"
               ></nz-option>
             </nz-select>
           </nz-form-control>
@@ -120,8 +113,8 @@
                 *ngFor="let position of positionList"
                 nzValue="{{ position.keyMap }}"
                 nzLabel="
-              {{ language === 'vi' ? position.valueVi : position.valueEn }}
-              "
+            {{ language === 'vi' ? position.valueVi : position.valueEn }}
+            "
               ></nz-option>
             </nz-select>
           </nz-form-control>
@@ -138,15 +131,30 @@
                 *ngFor="let role of roleList"
                 nzValue="{{ role.keyMap }}"
                 nzLabel="
-              {{ language === 'vi' ? role.valueVi : role.valueEn }}
-              "
+            {{ language === 'vi' ? role.valueVi : role.valueEn }}
+            "
               ></nz-option>
             </nz-select>
           </nz-form-control>
         </nz-form-item>
 
+        <!-- Address -->
+        <nz-form-item class="col-span-2">
+          <nz-form-label nzFor="address">
+            {{ "manage_user.address" | translate }}
+          </nz-form-label>
+          <nz-form-control>
+            <textarea
+              nz-input
+              type="text"
+              id="address"
+              formControlName="address"
+            ></textarea>
+          </nz-form-control>
+        </nz-form-item>
+
         <!-- Avatar -->
-        <div>
+        <div class="col-span-2">
           <span class="m-0"></span>
           <nz-form-item>
             <nz-form-label>
@@ -179,29 +187,37 @@
           ></div>
         </div>
       </div>
-
-      <div class="flex justify-between columns-1">
-        <div class="flex items-center">
-          <button
-            type="submit"
-            class="btn {{ isEdit ? 'btn-warning' : 'btn-primary' }}"
-          >
-            {{
-              isEdit
-                ? ("manage_user.edit" | translate)
-                : ("manage_user.save" | translate)
-            }}
-          </button>
-        </div>
-        <span class="text-red-600 flex items-center" *ngIf="isEdit">
-          Nếu thay đổi avatar. Vui lòng chọn ảnh có cùng định dạng đuôi
-        </span>
-      </div>
+      <span class="text-red-600 flex items-center" *ngIf="isEdit">
+        Nếu thay đổi avatar. Vui lòng chọn ảnh có cùng định dạng đuôi
+      </span>
     </form>
 
-    <div class="mt-5">
+    <ng-template #footerTpl>
+      <div style="float: right">
+        <button class="btn" (click)="closeForm()">Cancel</button>
+        <button
+          type="submit"
+          class="btn {{ isEdit ? 'btn-warning' : 'btn-primary' }}"
+          (click)="submitForm()"
+        >
+          {{
+            isEdit
+              ? ("manage_user.edit" | translate)
+              : ("manage_user.save" | translate)
+          }}
+        </button>
+      </div>
+    </ng-template>
+  </nz-drawer>
+  `
+  <div class="md:container">
+    <div class="">
       <h2 class="text-cyan-600">Danh sách người dùng</h2>
-      <nz-table #dataTable [nzData]="listUsers" class="text-center">
+      <button nz-button nzType="primary" (click)="openForm()">
+        Thêm người dùng
+      </button>
+
+      <nz-table #dataTable [nzData]="listUsers">
         <thead>
           <tr>
             <th>#</th>
