@@ -1,0 +1,96 @@
+<div class="home-header-container">
+    <div class="home-header-content">
+        <div class="left-content">
+            <mat-icon>menu</mat-icon>
+            <img class="header-logo" src="../../../../assets/images/bookingcare-logo.svg" alt="logo" />
+        </div>
+        <div class="center-content">
+            <div class="child-content">
+                <div>
+                    <b>{{ 'home_header.speciality' | translate }}</b>
+                </div>
+                <div class="subs-title">
+                    {{ 'home_header.search_doctor' | translate }}
+                </div>
+            </div>
+            <div class="child-content">
+                <div>
+                    <b>{{ 'home_header.health_facility' | translate }}</b>
+                </div>
+                <div class="subs-title">
+                    {{ 'home_header.select_room' | translate }}
+                </div>
+            </div>
+            <div class="child-content">
+                <div>
+                    <b>{{ 'home_header.doctor' | translate }}</b>
+                </div>
+                <div class="subs-title">
+                    {{ 'home_header.select_doctor' | translate }}
+                </div>
+            </div>
+            <div class="child-content">
+                <div>
+                    <b>{{ 'home_header.fee' | translate }}</b>
+                </div>
+                <div class="subs-title">
+                    {{ 'home_header.check_health' | translate }}
+                </div>
+            </div>
+        </div>
+        <div class="right-content">
+            <a routerLink="/auth/login" class="flex mr-1" title="Login">
+                <mat-icon>account_circle</mat-icon>
+            </a>
+            <div class="support flex items-center mr-1">
+                <mat-icon>contact_support</mat-icon>
+                {{ 'home_header.support' | translate }}
+            </div>
+            <app-language-selector></app-language-selector>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="isShowBanner">
+    <div class="home-header-banner">
+        <div class="content-up">
+            <h1 class="title1">{{ 'banner.title1' | translate }}</h1>
+            <h1 class="title2">{{ 'banner.title2' | translate }}</h1>
+            <div class="search">
+                <mat-icon>search</mat-icon>
+                <input type="text" placeholder="Tìm chuyên khoa khám bệnh" />
+            </div>
+        </div>
+
+        <div class="content-down">
+            <div class="options">
+                <div class="option-child">
+                    <div class="icon-child"><i class="fa-regular fa-hospital"></i></div>
+                    <div class="text-child">{{ 'banner.child1' | translate }}</div>
+                </div>
+                <div class="option-child">
+                    <div class="icon-child"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="text-child">{{ 'banner.child2' | translate }}</div>
+                </div>
+                <div class="option-child">
+                    <div class="icon-child"><i class="fas fa-procedures"></i></div>
+                    <div class="text-child">{{ 'banner.child3' | translate }}</div>
+                </div>
+                <div class="option-child">
+                    <div class="icon-child"><i class="fas fa-flask"></i></div>
+                    <div class="text-child">{{ 'banner.child4' | translate }}</div>
+                </div>
+                <div class="option-child">
+                    <div class="icon-child"><i class="fas fa-user-md"></i></div>
+                    <div class="text-child">{{ 'banner.child5' | translate }}</div>
+                </div>
+                <div class="option-child">
+                    <div class="icon-child">
+                        <i class="fas fa-briefcase-medical"></i>
+                    </div>
+                    <div class="text-child">{{ 'banner.child6' | translate }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

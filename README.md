@@ -24,3 +24,4 @@
 
 - với form thì nên dùng MUI vì dễ validation
 - Còn với table và các component khác thì nên dùng ant-design
+- Khi sử dụng container của tailwind css thì phải dùng thêm m-auto để content được căn giữa.

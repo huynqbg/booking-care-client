@@ -1,40 +1,36 @@
 <div class="section-share section-outstanding-doctor">
-  <div class="section-container">
-    <div class="section-header">
-      <div class="title-section">
-        {{ "homepage.out_standing_doctor" | translate }}
-      </div>
-      <div class="btn-section">{{ "homepage.more_info" | translate }}</div>
-    </div>
-    <div class="section-body">
-      <swiper [config]="configSlide">
-        <ng-template swiperSlide *ngFor="let doctor of listDoctor">
-          <div class="section-customize">
-            <div class="customize-border">
-              <div class="outer-bg">
-                <div
-                  class="bg-image section-outstanding-doctor"
-                  [ngStyle]="{
-                    'background-image': 'url(' + doctor.image + ')'
-                  }"
-                ></div>
-              </div>
-              <div class="position text-center">
-                <div>
-                  {{
-                    language === "vi"
-                      ? doctor.positionData.valueVi
-                      : doctor.positionData.valueEn
-                  }},
-                  {{ language === "vi" ? doctor.lastName : doctor.firstName }}
-                  {{ language === "vi" ? doctor.firstName : doctor.lastName }}
-                </div>
-                <div>Cơ xương khớp 1</div>
-              </div>
+    <div class="section-container">
+        <div class="section-header">
+            <div class="title-section">
+                {{ 'homepage.out_standing_doctor' | translate }}
             </div>
-          </div>
-        </ng-template>
-      </swiper>
+            <div class="btn-section">{{ 'homepage.more_info' | translate }}</div>
+        </div>
+        <div class="section-body">
+            <swiper [config]="configSlide">
+                <ng-template swiperSlide *ngFor="let doctor of listDoctor">
+                    <div class="section-customize cursor-pointer" routerLink="/home/doctor/{{ doctor.id }}">
+                        <div class="customize-border">
+                            <div class="outer-bg">
+                                <div
+                                    class="bg-image section-outstanding-doctor"
+                                    [ngStyle]="{
+                                        'background-image': 'url(' + doctor.image + ')'
+                                    }"
+                                ></div>
+                            </div>
+                            <div class="position text-center">
+                                <div>
+                                    {{ language === 'vi' ? doctor.positionData.valueVi : doctor.positionData.valueEn }},
+                                    {{ language === 'vi' ? doctor.lastName : doctor.firstName }}
+                                    {{ language === 'vi' ? doctor.firstName : doctor.lastName }}
+                                </div>
+                                <div>Cơ xương khớp 1</div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </swiper>
+        </div>
     </div>
-  </div>
 </div>
