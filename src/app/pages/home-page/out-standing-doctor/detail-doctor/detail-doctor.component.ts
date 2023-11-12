@@ -22,9 +22,8 @@ export class DetailDoctorComponent extends AppComponentBase implements OnInit {
             this.doctorId = param.get('id');
             this.showSpinner();
             this.userService.getDetailInfoDoctor(this.doctorId).subscribe((res) => {
-                this.hideSpinner();
                 this.detailDoctor = res['data'];
-                console.log(this.detailDoctor.image);
+                this.hideSpinner();
             });
         });
     }

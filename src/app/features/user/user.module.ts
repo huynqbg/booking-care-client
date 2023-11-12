@@ -18,24 +18,18 @@ import { MarkdownModule } from 'ngx-markdown';
 import { ManageDoctorComponent } from './manage-doctor/manage-doctor.component';
 
 @NgModule({
-  declarations: [
-    UserComponent,
-    UserManageComponent,
-    UserModalComponent,
-    UserReduxComponent,
-    ManageDoctorComponent,
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    NgZorroAntdModule,
-    UserRoutingRoutes,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
-    SharedModule,
-    TranslateModule,
-    MarkdownModule.forRoot(),
-  ],
+    declarations: [UserComponent, UserManageComponent, UserModalComponent, UserReduxComponent, ManageDoctorComponent],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        NgZorroAntdModule,
+        UserRoutingRoutes,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule,
+        SharedModule,
+        TranslateModule,
+        MarkdownModule.forRoot(),
+    ],
 })
 export class UserModule {}

@@ -1,262 +1,211 @@
 <div class="mt-4">
-  <!-- Title -->
-  <h1 class="text-center text-green-600">CRUD USER</h1>
+    <!-- Title -->
+    <h1 class="text-center text-green-600">CRUD USER</h1>
 
-  <!-- container -->
-  <nz-drawer
-    [nzBodyStyle]="{ overflow: 'auto' }"
-    [nzMaskClosable]="false"
-    [nzWidth]="720"
-    [nzVisible]="visibleForm"
-    nzTitle="
+    <!-- container -->
+    <nz-drawer
+        [nzBodyStyle]="{ overflow: 'auto' }"
+        [nzMaskClosable]="false"
+        [nzWidth]="720"
+        [nzVisible]="visibleForm"
+        nzTitle="
     {{ isEdit ? 'Thay đổi thông tin người dùng' : 'Thêm mới người dùng' }}"
-    [nzFooter]="footerTpl"
-    (nzOnClose)="closeForm()"
-  >
-    <form [formGroup]="formGroup" *nzDrawerContent>
-      <div class="grid grid-cols-2 gap-4">
-        <!-- Email -->
-        <nz-form-item>
-          <nz-form-label nzFor="email">
-            {{ "manage_user.email" | translate }}
-          </nz-form-label>
-          <nz-form-control>
-            <input nz-input type="email" id="email" formControlName="email" />
-          </nz-form-control>
-        </nz-form-item>
+        [nzFooter]="footerTpl"
+        (nzOnClose)="closeForm()"
+    >
+        <form [formGroup]="formGroup" *nzDrawerContent>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Email -->
+                <nz-form-item>
+                    <nz-form-label nzFor="email">
+                        {{ 'manage_user.email' | translate }}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input type="email" id="email" formControlName="email" />
+                    </nz-form-control>
+                </nz-form-item>
 
-        <!-- Password -->
-        <nz-form-item>
-          <nz-form-label nzFor="password">
-            {{ "manage_user.password" | translate }}
-          </nz-form-label>
-          <nz-form-control>
-            <input
-              nz-input
-              type="password"
-              id="password"
-              formControlName="password"
-            />
-          </nz-form-control>
-        </nz-form-item>
+                <!-- Password -->
+                <nz-form-item>
+                    <nz-form-label nzFor="password">
+                        {{ 'manage_user.password' | translate }}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input type="password" id="password" formControlName="password" />
+                    </nz-form-control>
+                </nz-form-item>
 
-        <!-- First Name -->
-        <nz-form-item>
-          <nz-form-label nzFor="firstName">
-            {{ "manage_user.first_name" | translate }}
-          </nz-form-label>
-          <nz-form-control>
-            <input
-              nz-input
-              type="text"
-              id="firstName"
-              formControlName="firstName"
-            />
-          </nz-form-control>
-        </nz-form-item>
+                <!-- First Name -->
+                <nz-form-item>
+                    <nz-form-label nzFor="firstName">
+                        {{ 'manage_user.first_name' | translate }}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input type="text" id="firstName" formControlName="firstName" />
+                    </nz-form-control>
+                </nz-form-item>
 
-        <!-- Last Name -->
-        <nz-form-item>
-          <nz-form-label nzFor="lastName">
-            {{ "manage_user.last_name" | translate }}
-          </nz-form-label>
-          <nz-form-control>
-            <input
-              nz-input
-              type="text"
-              id="lastName"
-              formControlName="lastName"
-            />
-          </nz-form-control>
-        </nz-form-item>
+                <!-- Last Name -->
+                <nz-form-item>
+                    <nz-form-label nzFor="lastName">
+                        {{ 'manage_user.last_name' | translate }}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input type="text" id="lastName" formControlName="lastName" />
+                    </nz-form-control>
+                </nz-form-item>
 
-        <!-- Phone Number -->
-        <nz-form-item>
-          <nz-form-label nzFor="phoneNumber">
-            {{ "manage_user.phone_number" | translate }}
-          </nz-form-label>
-          <nz-form-control>
-            <input
-              nz-input
-              type="text"
-              id="phoneNumber"
-              formControlName="phoneNumber"
-            />
-          </nz-form-control>
-        </nz-form-item>
+                <!-- Phone Number -->
+                <nz-form-item>
+                    <nz-form-label nzFor="phoneNumber">
+                        {{ 'manage_user.phone_number' | translate }}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <input nz-input type="text" id="phoneNumber" formControlName="phoneNumber" />
+                    </nz-form-control>
+                </nz-form-item>
 
-        <!-- Gender -->
-        <nz-form-item>
-          <nz-form-label nzFor="gender">
-            {{ "manage_user.gender" | translate }}
-          </nz-form-label>
-          <nz-form-control>
-            <nz-select id="gender" formControlName="gender">
-              <nz-option
-                *ngFor="let gender of genderList"
-                nzValue="{{ gender.keyMap }}"
-                nzLabel="
+                <!-- Gender -->
+                <nz-form-item>
+                    <nz-form-label nzFor="gender">
+                        {{ 'manage_user.gender' | translate }}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <nz-select id="gender" formControlName="gender">
+                            <nz-option
+                                *ngFor="let gender of genderList"
+                                nzValue="{{ gender.keyMap }}"
+                                nzLabel="
             {{ language === 'vi' ? gender.valueVi : gender.valueEn }}"
-              ></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
+                            ></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
 
-        <!-- Position -->
-        <nz-form-item>
-          <nz-form-label nzFor="position">
-            {{ "manage_user.position" | translate }}
-          </nz-form-label>
-          <nz-form-control>
-            <nz-select id="position" formControlName="position">
-              <nz-option
-                *ngFor="let position of positionList"
-                nzValue="{{ position.keyMap }}"
-                nzLabel="
+                <!-- Position -->
+                <nz-form-item>
+                    <nz-form-label nzFor="position">
+                        {{ 'manage_user.position' | translate }}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <nz-select id="position" formControlName="position">
+                            <nz-option
+                                *ngFor="let position of positionList"
+                                nzValue="{{ position.keyMap }}"
+                                nzLabel="
             {{ language === 'vi' ? position.valueVi : position.valueEn }}
             "
-              ></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
+                            ></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
 
-        <!-- Role -->
-        <nz-form-item>
-          <nz-form-label nzFor="role">
-            {{ "manage_user.role" | translate }}
-          </nz-form-label>
-          <nz-form-control>
-            <nz-select id="role" formControlName="role">
-              <nz-option
-                *ngFor="let role of roleList"
-                nzValue="{{ role.keyMap }}"
-                nzLabel="
+                <!-- Role -->
+                <nz-form-item>
+                    <nz-form-label nzFor="role">
+                        {{ 'manage_user.role' | translate }}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <nz-select id="role" formControlName="role">
+                            <nz-option
+                                *ngFor="let role of roleList"
+                                nzValue="{{ role.keyMap }}"
+                                nzLabel="
             {{ language === 'vi' ? role.valueVi : role.valueEn }}
             "
-              ></nz-option>
-            </nz-select>
-          </nz-form-control>
-        </nz-form-item>
+                            ></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                </nz-form-item>
 
-        <!-- Address -->
-        <nz-form-item class="col-span-2">
-          <nz-form-label nzFor="address">
-            {{ "manage_user.address" | translate }}
-          </nz-form-label>
-          <nz-form-control>
-            <textarea
-              nz-input
-              type="text"
-              id="address"
-              formControlName="address"
-            ></textarea>
-          </nz-form-control>
-        </nz-form-item>
+                <!-- Address -->
+                <nz-form-item class="col-span-2">
+                    <nz-form-label nzFor="address">
+                        {{ 'manage_user.address' | translate }}
+                    </nz-form-label>
+                    <nz-form-control>
+                        <textarea nz-input type="text" id="address" formControlName="address"></textarea>
+                    </nz-form-control>
+                </nz-form-item>
 
-        <!-- Avatar -->
-        <div class="col-span-2">
-          <span class="m-0"></span>
-          <nz-form-item>
-            <nz-form-label>
-              {{ "manage_user.image" | translate }}
-            </nz-form-label>
-            <label for="previewImg" class="flex items-center btn btn-primary">
-              Tải lên
-              <span
-                nz-icon
-                nzType="cloud-upload"
-                nzTheme="outline"
-                class="ml-1"
-              ></span>
-            </label>
-            <nz-form-control>
-              <input
-                nz-input
-                hidden
-                type="file"
-                id="previewImg"
-                formControlName="avatar"
-                (change)="handleImage($event)"
-              />
-            </nz-form-control>
-          </nz-form-item>
-          <div
-            class="preview-image"
-            *ngIf="previewImgURL"
-            [ngStyle]="{ 'background-image': 'url(' + previewImgURL + ')' }"
-          ></div>
+                <!-- Avatar -->
+                <div class="col-span-2">
+                    <span class="m-0"></span>
+                    <nz-form-item>
+                        <nz-form-label>
+                            {{ 'manage_user.image' | translate }}
+                        </nz-form-label>
+                        <label for="previewImg" class="flex items-center btn btn-primary">
+                            Tải lên
+                            <span nz-icon nzType="cloud-upload" nzTheme="outline" class="ml-1"></span>
+                        </label>
+                        <nz-form-control>
+                            <input
+                                nz-input
+                                hidden
+                                type="file"
+                                id="previewImg"
+                                formControlName="avatar"
+                                (change)="handleImage($event)"
+                            />
+                        </nz-form-control>
+                    </nz-form-item>
+                    <div
+                        class="preview-image"
+                        *ngIf="previewImgURL"
+                        [ngStyle]="{ 'background-image': 'url(' + previewImgURL + ')' }"
+                    ></div>
+                </div>
+            </div>
+            <span class="text-red-600 flex items-center" *ngIf="isEdit">
+                Nếu thay đổi avatar. Vui lòng chọn ảnh có cùng định dạng đuôi
+            </span>
+        </form>
+
+        <ng-template #footerTpl>
+            <div style="float: right">
+                <button class="btn" (click)="closeForm()">Cancel</button>
+                <button type="submit" class="btn {{ isEdit ? 'btn-warning' : 'btn-primary' }}" (click)="submitForm()">
+                    {{ isEdit ? ('manage_user.edit' | translate) : ('manage_user.save' | translate) }}
+                </button>
+            </div>
+        </ng-template>
+    </nz-drawer>
+    <div>
+        <div class="">
+            <h2 class="text-cyan-600">Danh sách người dùng</h2>
+            <button class="mb-3" nz-button nzType="primary" (click)="openForm()">Thêm người dùng</button>
+
+            <nz-table #dataTable [nzData]="listUsers">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Email</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of dataTable.data; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.address }}</td>
+                        <td>
+                            <button nz-button nzType="default" (click)="handleEditUser(user)" class="mr-1">
+                                <i nz-icon nzType="edit" nzTheme="outline"></i>
+                            </button>
+
+                            <button nz-button nzType="default" (click)="handleDeleteUser(user)" nzDanger>
+                                <i nz-icon nzType="delete" nzTheme="outline"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </nz-table>
         </div>
-      </div>
-      <span class="text-red-600 flex items-center" *ngIf="isEdit">
-        Nếu thay đổi avatar. Vui lòng chọn ảnh có cùng định dạng đuôi
-      </span>
-    </form>
-
-    <ng-template #footerTpl>
-      <div style="float: right">
-        <button class="btn" (click)="closeForm()">Cancel</button>
-        <button
-          type="submit"
-          class="btn {{ isEdit ? 'btn-warning' : 'btn-primary' }}"
-          (click)="submitForm()"
-        >
-          {{
-            isEdit
-              ? ("manage_user.edit" | translate)
-              : ("manage_user.save" | translate)
-          }}
-        </button>
-      </div>
-    </ng-template>
-  </nz-drawer>
-  `
-  <div>
-    <div class="">
-      <h2 class="text-cyan-600">Danh sách người dùng</h2>
-      <button class="mb-3" nz-button nzType="primary" (click)="openForm()">
-        Thêm người dùng
-      </button>
-
-      <nz-table #dataTable [nzData]="listUsers">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Email</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Address</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of dataTable.data; let i = index">
-            <td>{{ i + 1 }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.address }}</td>
-            <td>
-              <button
-                nz-button
-                nzType="default"
-                (click)="handleEditUser(user)"
-                class="mr-1"
-              >
-                <i nz-icon nzType="edit" nzTheme="outline"></i>
-              </button>
-
-              <button
-                nz-button
-                nzType="default"
-                (click)="handleDeleteUser(user)"
-                nzDanger
-              >
-                <i nz-icon nzType="delete" nzTheme="outline"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </nz-table>
     </div>
-  </div>
 </div>

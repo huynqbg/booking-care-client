@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { USER_ROLE, adminMenu, doctorMenu } from '@core/constant';
 import { AuthService } from '@shared/services/auth.service';
-import { adminMenu, USER_ROLE, doctorMenu } from '@core/constant';
 
 @Component({
-    selector: 'app-user',
-    templateUrl: './user.component.html',
-    styleUrls: ['./user.component.scss'],
+    selector: 'app-header-system',
+    templateUrl: './header-system.component.html',
+    styleUrls: ['./header-system.component.scss'],
 })
-export class UserComponent implements OnInit {
+export class HeaderSystemComponent implements OnInit {
     userInfo: any;
     menuApp: Array<object> = [];
     userRole: string = '';

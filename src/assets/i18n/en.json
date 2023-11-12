@@ -1,62 +1,66 @@
 {
-  "home_header": {
-    "speciality": "Medical speciality",
-    "search_doctor": "Find a doctor by speciality",
-    "health_facility": "Health facilities",
-    "select_room": "Choose hospital clinic",
-    "doctor": "Doctor",
-    "select_doctor": "Choose a good doctor",
-    "fee": "Checkup package",
-    "check_health": "General health check",
-    "support": "Support",
-    "welcome": "Welcome"
-  },
+    "home_header": {
+        "speciality": "Medical speciality",
+        "search_doctor": "Find a doctor by speciality",
+        "health_facility": "Health facilities",
+        "select_room": "Choose hospital clinic",
+        "doctor": "Doctor",
+        "select_doctor": "Choose a good doctor",
+        "fee": "Checkup package",
+        "check_health": "General health check",
+        "support": "Support",
+        "welcome": "Welcome"
+    },
 
-  "banner": {
-    "title1": "MEDICAL PLATFORM",
-    "title2": "COMPREHENSIVE HEALTH CARE",
-    "child1": "Specialized examination",
-    "child2": "Remote examination",
-    "child3": "General examination",
-    "child4": "Medical test",
-    "child5": "Medical health",
-    "child6": "Dental examination"
-  },
+    "banner": {
+        "title1": "MEDICAL PLATFORM",
+        "title2": "COMPREHENSIVE HEALTH CARE",
+        "child1": "Specialized examination",
+        "child2": "Remote examination",
+        "child3": "General examination",
+        "child4": "Medical test",
+        "child5": "Medical health",
+        "child6": "Dental examination"
+    },
 
-  "menu": {
-    "admin": {
-      "manage-user": "Users System",
-      "manage-doctor": "Manage doctors",
-      "manage-admin": "Manage admins",
-      "crud": "CRUD user",
-      "crud-redux": "CRUD Redux",
-      "clinic": "Clinics",
-      "manage-clinic": "Manage Clinics",
-      "specialty": "Specialties",
-      "manage-specialty": "Manage Specialties",
-      "handbook": "Handbook",
-      "manage-handbook": "Manage Handbook"
+    "menu": {
+        "admin": {
+            "manage-user": "Users System",
+            "manage-doctor": "Manage doctors",
+            "manage-admin": "Manage admins",
+            "crud": "CRUD user",
+            "crud-redux": "CRUD Redux",
+            "clinic": "Clinics",
+            "manage-clinic": "Manage Clinics",
+            "specialty": "Specialties",
+            "manage-specialty": "Manage Specialties",
+            "handbook": "Handbook",
+            "manage-handbook": "Manage Handbook"
+        },
+
+        "doctor": {
+            "manage-schedule": "Manage Doctor's Schedule"
+        }
+    },
+
+    "manage_user": {
+        "add": "Add new user",
+        "email": "E-mail",
+        "password": "Password",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "phone_number": "Phone Number",
+        "address": "Address",
+        "gender": "Gender",
+        "position": "Position",
+        "role": "Role",
+        "image": "Avatar",
+        "save": "Save User",
+        "edit": "Update User"
+    },
+
+    "homepage": {
+        "out_standing_doctor": "Last week's featured doctor",
+        "more_info": "More infor"
     }
-  },
-
-  "manage_user": {
-    "add": "Add new user",
-    "email": "E-mail",
-    "password": "Password",
-    "first_name": "First Name",
-    "last_name": "Last Name",
-    "phone_number": "Phone Number",
-    "address": "Address",
-    "gender": "Gender",
-    "position": "Position",
-    "role": "Role",
-    "image": "Avatar",
-    "save": "Save User",
-    "edit": "Update User"
-  },
-
-  "homepage": {
-    "out_standing_doctor": "Last week's featured doctor",
-    "more_info": "More infor"
-  }
 }

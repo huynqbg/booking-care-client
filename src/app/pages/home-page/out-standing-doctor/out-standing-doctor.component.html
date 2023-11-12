@@ -9,7 +9,7 @@
         <div class="section-body">
             <swiper [config]="configSlide">
                 <ng-template swiperSlide *ngFor="let doctor of listDoctor">
-                    <div class="section-customize cursor-pointer" routerLink="/home/doctor/{{ doctor.id }}">
+                    <div class="section-customize cursor-pointer" routerLink="/home/doctor-detail/{{ doctor.id }}">
                         <div class="customize-border">
                             <div class="outer-bg">
                                 <div
