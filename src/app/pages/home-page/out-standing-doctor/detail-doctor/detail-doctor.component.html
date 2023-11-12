@@ -1,22 +1,24 @@
-<app-header [isShowBanner]="false"></app-header>
+<div>
+    <app-header [isShowBanner]="false"></app-header>
+</div>
 
 <div class="container m-auto mt-20">
-    <div class="doctor-detail-container h-[500px] my-0 border-red-500 border">
-        <div class="intro-doctor flex border border-gray-500">
+    <div class="doctor-detail-container my-0">
+        <div class="intro-doctor flex border-b border-gray-300">
             <div
                 class="content-left bg w-[120px] h-[120px] rounded-full mx-5 my-2 bg-center bg-no-repeat bg-cover"
                 [ngStyle]="{ 'background-image': 'url(' + detailDoctor.image + ')' }"
             ></div>
             <div class="content-right w-4/5 flex flex-col pl-2">
                 <div class="up pt-4 text-xl font-semibold">
-                    {{ language === 'vi' ? detailDoctor.positionData.valueVi : detailDoctor.positionData.valueEn }},
+                    {{ language === 'vi' ? detailDoctor.positionData.valueVi : detailDoctor.positionData.valueEn }}:
                     {{ language === 'vi' ? detailDoctor.lastName : detailDoctor.firstName }}
                     {{ language === 'vi' ? detailDoctor.firstName : detailDoctor.lastName }}
                 </div>
                 <div class="down pt-2">
                     <span>
                         {{
-                            detailDoctor.Markdown && detailDoctor.Markdown.description
+                            detailDoctor && detailDoctor.Markdown && detailDoctor.Markdown.description
                                 ? detailDoctor.Markdown.description
                                 : ''
                         }}
@@ -26,9 +28,13 @@
         </div>
         <div class="schedule-doctor"></div>
         <div
-            class="detail-info-doctor"
-            [innerHTML]="detailDoctor.Markdown.contentHTML ? detailDoctor.Markdown.contentHTML : ''"
+            class="detail-info-doctor pt-5 px-4 bg-gray-200 mt-2 rounded"
+            [innerHTML]="
+                detailDoctor && detailDoctor.Markdown && detailDoctor.Markdown.contentHTML
+                    ? detailDoctor.Markdown.contentHTML
+                    : ''
+            "
         ></div>
-        <div class="comment-doctor"></div>
+        <div class="comment-doctor h-[500px]"></div>
     </div>
 </div>

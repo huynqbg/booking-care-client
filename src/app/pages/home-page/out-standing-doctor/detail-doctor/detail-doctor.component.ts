@@ -20,11 +20,12 @@ export class DetailDoctorComponent extends AppComponentBase implements OnInit {
         this.language = localStorage.getItem('LANGUAGE');
         this._route.paramMap.subscribe((param) => {
             this.doctorId = param.get('id');
-        });
-
-        this.userService.getDetailInfoDoctor(this.doctorId).subscribe((res) => {
-            this.detailDoctor = res['data'];
-            console.log(this.detailDoctor.image);
+            this.showSpinner();
+            this.userService.getDetailInfoDoctor(this.doctorId).subscribe((res) => {
+                this.hideSpinner();
+                this.detailDoctor = res['data'];
+                console.log(this.detailDoctor.image);
+            });
         });
     }
 }
