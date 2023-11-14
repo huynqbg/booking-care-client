@@ -1,3 +1,45 @@
-<p>
-  manage-schedule works!
-</p>
+<div>
+    <div class="text-center font-semibold my-4 uppercase text-lg">{{ 'manage-schedule.title' | translate }}</div>
+
+    <div class="grid grid-cols-2 gap-4">
+        <div>
+            <label for="">Chọn bác sĩ</label>
+            <nz-select
+                class="w-full"
+                nzShowSearch
+                nzAllowClear
+                nzPlaceHolder="Select a Doctor"
+                [(ngModel)]="selectedDoctor"
+                (ngModelChange)="handleChangeSelect(selectedDoctor)"
+            >
+                <nz-option
+                    *ngFor="let doctor of listDoctors"
+                    nzLabel="{{ language === 'vi' ? doctor.nameVi : doctor.nameEn }}"
+                    nzValue="{{ doctor.id }}"
+                ></nz-option>
+            </nz-select>
+        </div>
+
+        <div>
+            <label for="">{{ 'manage-schedule.choose-date' | translate }}</label>
+            <nz-date-picker
+                class="w-full"
+                nzFormat="dd-MM-yyyy"
+                [nzDisabledDate]="disabledDate"
+                [(ngModel)]="date"
+                (ngModelChange)="handleChangeDate(date)"
+            ></nz-date-picker>
+        </div>
+
+        <div class="col-span-2 py-5 flex gap-5 flex-wrap">
+            <ng-container *ngIf="listTime && listTime.length > 0">
+                <button class="btn py-1 px-4 border !border-gray-600" *ngFor="let item of listTime">
+                    {{ language === 'vi' ? item.valueVi : item.valueEn }}
+                </button>
+            </ng-container>
+        </div>
+        <div class="col-span-2">
+            <button class="btn btn-primary mt-5">{{ 'manage-schedule.save' | translate }}</button>
+        </div>
+    </div>
+</div>

@@ -75,8 +75,7 @@
                             <nz-option
                                 *ngFor="let gender of genderList"
                                 nzValue="{{ gender.keyMap }}"
-                                nzLabel="
-            {{ language === 'vi' ? gender.valueVi : gender.valueEn }}"
+                                nzLabel="{{ language === 'vi' ? gender.valueVi : gender.valueEn }}"
                             ></nz-option>
                         </nz-select>
                     </nz-form-control>
@@ -92,9 +91,7 @@
                             <nz-option
                                 *ngFor="let position of positionList"
                                 nzValue="{{ position.keyMap }}"
-                                nzLabel="
-            {{ language === 'vi' ? position.valueVi : position.valueEn }}
-            "
+                                nzLabel="{{ language === 'vi' ? position.valueVi : position.valueEn }}"
                             ></nz-option>
                         </nz-select>
                     </nz-form-control>
@@ -110,9 +107,7 @@
                             <nz-option
                                 *ngFor="let role of roleList"
                                 nzValue="{{ role.keyMap }}"
-                                nzLabel="
-            {{ language === 'vi' ? role.valueVi : role.valueEn }}
-            "
+                                nzLabel="{{ language === 'vi' ? role.valueVi : role.valueEn }}"
                             ></nz-option>
                         </nz-select>
                     </nz-form-control>
