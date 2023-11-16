@@ -47,4 +47,8 @@ export class UserService extends BaseService {
     getDetailInfoDoctor(id) {
         return this.http.get(`${this.baseUrl}/api/get-detail-doctor-by-id?id=${id}`);
     }
+
+    saveBulkScheduleDoctor(data) {
+        return this.http.post(`${this.baseUrl}/api/bulk-create-schedule`, data);
+    }
 }

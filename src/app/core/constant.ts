@@ -96,7 +96,7 @@ export const manageActions = {
 };
 
 export const dateFormat = {
-    SEND_TO_SERVER: 'DD/MM/YYYY',
+    dateVN: 'dd/MM/yyyy',
 };
 
 export const YesNoObj = {

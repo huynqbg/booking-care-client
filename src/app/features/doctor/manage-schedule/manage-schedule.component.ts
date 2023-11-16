@@ -1,6 +1,8 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { AppComponentBase } from '@core/component-base/app-component-base';
 import { UserService } from '@shared/services/user.service';
+import { setHours } from 'date-fns';
+import { formatDate } from '@angular/common';
 
 @Component({
     selector: 'app-manage-schedule',
@@ -10,10 +12,11 @@ import { UserService } from '@shared/services/user.service';
 export class ManageScheduleComponent extends AppComponentBase implements OnInit {
     language: string = '';
     selectedDoctor = null;
-    date: Date = null;
+    chooseDate: Date = null;
+    // timeDefaultValue: Date = setHours(0, 0);
     listDoctors: Array<any> = [];
     today = new Date();
-    listTime: Array<any> = [];
+    listTimeHour: Array<any> = [];
 
     constructor(injector: Injector, private userService: UserService) {
         super(injector);
@@ -21,24 +24,63 @@ export class ManageScheduleComponent extends AppComponentBase implements OnInit 
 
     ngOnInit() {
         this.render();
-        this.renderTime();
+        this.renderTimeHour();
     }
 
-    handleChangeSelect(doctorId) {
-        console.log(doctorId);
+    handleSaveSchedule() {
+        let result = [];
+        // let formatedDate = formatDate(this.chooseDate, dateFormat.dateVN, 'en-US');
+
+        if (!this.selectedDoctor) {
+            this.toastr.error('Please choose Doctor');
+            return;
+        }
+
+        if (!this.chooseDate) {
+            this.toastr.error('Please choose Date');
+            return;
+        }
+
+        let formatedDate = new Date(this.chooseDate.toDateString()).getTime();
+
+        if (this.listTimeHour && this.listTimeHour.length > 0) {
+            let selectedTimeHour = this.listTimeHour.filter((time) => time.isSelected);
+            if (selectedTimeHour && selectedTimeHour.length > 0) {
+                selectedTimeHour.forEach((time) => {
+                    result.push({
+                        doctorId: this.selectedDoctor,
+                        date: formatedDate,
+                        timeType: time.keyMap,
+                    });
+                });
+            } else {
+                this.toastr.error('Please choose Time Hour');
+                return;
+            }
+        }
+
+        this.userService
+            .saveBulkScheduleDoctor({
+                arrSchedule: result,
+                doctorId: this.selectedDoctor,
+                formatedDate: formatedDate,
+            })
+            .subscribe((res) => {});
     }
 
-    handleChangeDate(date) {
-        console.log(date);
+    handleClickTimeHour(timeHour) {
+        timeHour.isSelected = !timeHour.isSelected;
     }
 
-    renderTime() {
+    renderTimeHour() {
         this.showSpinner();
         this.userService.getAllCode('TIME').subscribe((res) => {
             this.hideSpinner();
             if (res && res['errCode'] === 0) {
-                this.listTime = res['data'];
-                console.log(this.listTime);
+                this.listTimeHour = res['data'].map((data) => ({
+                    ...data,
+                    isSelected: false,
+                }));
             }
         });
     }
