@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 export abstract class AppComponentBase {
+    language: string = '';
     spinner: NgxSpinnerService;
     toastr: ToastrService;
     _route: ActivatedRoute;

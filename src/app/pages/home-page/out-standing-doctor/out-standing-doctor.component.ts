@@ -12,7 +12,6 @@ import { AppComponentBase } from '@core/component-base/app-component-base';
 export class OutStandingDoctorComponent extends AppComponentBase implements OnInit {
     @Input() configSlide: SwiperOptions;
 
-    language: string = '';
     listDoctor: Array<any> = [];
 
     constructor(private userService: UserService, injector: Injector) {
@@ -32,7 +31,7 @@ export class OutStandingDoctorComponent extends AppComponentBase implements OnIn
                 res['data'].forEach((item) => {
                     if (item.image) {
                         let imageBase64 = '';
-                        imageBase64 = new Buffer(item.image, 'base64').toString('binary');
+                        imageBase64 = Buffer.from(item.image, 'base64').toString('binary');
                         item.image = imageBase64;
                     }
                 });

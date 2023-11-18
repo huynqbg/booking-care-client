@@ -6,6 +6,7 @@ import { SharedModule } from '@shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { MaterialModule } from '@core/material/material.module';
+import { NgZorroAntdModule } from '@core/zorro/ng-zorro-antd.module';
 import { SwiperModule } from 'swiper/angular';
 
 import { PagesComponent } from './pages.component';
@@ -19,6 +20,8 @@ import { HandbookComponent } from './home-page/handbook/handbook.component';
 import { HomePageAboutComponent } from './home-page/home-page-about/home-page-about.component';
 import { FooterComponent } from 'src/app/pages/home-page/layout/footer/footer.component';
 import { DetailDoctorComponent } from './home-page/out-standing-doctor/detail-doctor/detail-doctor.component';
+import { DoctorScheduleComponent } from './home-page/out-standing-doctor/doctor-schedule/doctor-schedule.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -32,7 +35,17 @@ import { DetailDoctorComponent } from './home-page/out-standing-doctor/detail-do
         HandbookComponent,
         HomePageAboutComponent,
         DetailDoctorComponent,
+        DoctorScheduleComponent,
     ],
-    imports: [CommonModule, PagesRoutingModule, MaterialModule, TranslateModule, SwiperModule, SharedModule],
+    imports: [
+        CommonModule,
+        PagesRoutingModule,
+        NgZorroAntdModule,
+        MaterialModule,
+        FormsModule,
+        TranslateModule,
+        SwiperModule,
+        SharedModule,
+    ],
 })
 export class PagesModule {}

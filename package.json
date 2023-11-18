@@ -25,6 +25,7 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "marked": "^4.3.0",
+    "moment": "^2.29.4",
     "ng-zorro-antd": "^13.4.0",
     "ngx-markdown": "^13.1.0",
     "ngx-spinner": "^13.1.1",

@@ -1,7 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { AppComponentBase } from '@core/component-base/app-component-base';
 import { UserService } from '@shared/services/user.service';
-import { map } from 'rxjs/operators';
 
 @Component({
     selector: 'app-detail-doctor',
@@ -11,7 +10,8 @@ import { map } from 'rxjs/operators';
 export class DetailDoctorComponent extends AppComponentBase implements OnInit {
     doctorId?: string;
     detailDoctor: any = {};
-    language: string = '';
+    positionList: any = [];
+
     constructor(injector: Injector, private userService: UserService) {
         super(injector);
     }
@@ -20,11 +20,14 @@ export class DetailDoctorComponent extends AppComponentBase implements OnInit {
         this.language = localStorage.getItem('LANGUAGE');
         this._route.paramMap.subscribe((param) => {
             this.doctorId = param.get('id');
-            this.showSpinner();
-            this.userService.getDetailInfoDoctor(this.doctorId).subscribe((res) => {
+        });
+        this.showSpinner();
+        this.userService.getDetailInfoDoctor(this.doctorId).subscribe((res) => {
+            this.hideSpinner();
+            if (res && res['errCode'] === 0) {
                 this.detailDoctor = res['data'];
-                this.hideSpinner();
-            });
+                this.positionList = res['data'].positionData;
+            }
         });
     }
 }

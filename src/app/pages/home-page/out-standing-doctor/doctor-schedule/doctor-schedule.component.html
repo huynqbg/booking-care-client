@@ -1,0 +1,10 @@
+<nz-select
+    class="w-[200px]"
+    nzShowSearch
+    nzAllowClear
+    nzPlaceHolder="Select a person"
+    [(ngModel)]="selectedDate"
+    (ngModelChange)="handleSelectDate(selectedDate)"
+>
+    <nz-option *ngFor="let date of listDate" nzLabel="{{ date.label }}" nzValue="{{ date.value }}"></nz-option>
+</nz-select>

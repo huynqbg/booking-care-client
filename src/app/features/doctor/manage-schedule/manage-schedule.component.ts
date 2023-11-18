@@ -10,7 +10,6 @@ import { formatDate } from '@angular/common';
     styleUrls: ['./manage-schedule.component.scss'],
 })
 export class ManageScheduleComponent extends AppComponentBase implements OnInit {
-    language: string = '';
     selectedDoctor = null;
     chooseDate: Date = null;
     // timeDefaultValue: Date = setHours(0, 0);
@@ -65,7 +64,13 @@ export class ManageScheduleComponent extends AppComponentBase implements OnInit 
                 doctorId: this.selectedDoctor,
                 formatedDate: formatedDate,
             })
-            .subscribe((res) => {});
+            .subscribe((res) => {
+                if (res && res['errCode'] === 0) {
+                    this.toastr.success('Save Schedule Successfully');
+                } else {
+                    this.toastr.error('Save Schedule Failed');
+                }
+            });
     }
 
     handleClickTimeHour(timeHour) {

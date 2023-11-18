@@ -13,7 +13,6 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
     markdown: string = ``;
     selectedValue = null;
     description: string = '';
-    language: string = '';
     hasOldData: boolean = false;
 
     constructor(injector: Injector, private userService: UserService) {

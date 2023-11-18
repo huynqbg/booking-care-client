@@ -11,7 +11,7 @@
             ></div>
             <div class="content-right w-4/5 flex flex-col pl-2">
                 <div class="up pt-4 text-xl font-semibold">
-                    {{ language === 'vi' ? detailDoctor.positionData.valueVi : detailDoctor.positionData.valueEn }}:
+                    {{ language === 'vi' && positionList ? positionList.valueVi : positionList.valueEn }}:
                     {{ language === 'vi' ? detailDoctor.lastName : detailDoctor.firstName }}
                     {{ language === 'vi' ? detailDoctor.firstName : detailDoctor.lastName }}
                 </div>
@@ -26,7 +26,13 @@
                 </div>
             </div>
         </div>
-        <div class="schedule-doctor"></div>
+        <div class="schedule-doctor flex h-[200px] border border-red-600">
+            <div class="content-left w-1/2">
+                <app-doctor-schedule></app-doctor-schedule>
+            </div>
+
+            <div class="content-right w-1/2"></div>
+        </div>
         <div
             class="detail-info-doctor pt-5 px-4 bg-gray-200 mt-2 rounded"
             [innerHTML]="

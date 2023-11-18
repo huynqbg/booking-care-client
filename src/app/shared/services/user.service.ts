@@ -51,4 +51,8 @@ export class UserService extends BaseService {
     saveBulkScheduleDoctor(data) {
         return this.http.post(`${this.baseUrl}/api/bulk-create-schedule`, data);
     }
+
+    getSchedulesDoctorByDate(doctorId, date) {
+        return this.http.get(`${this.baseUrl}/api/get-schedule-doctor-by-date?doctorId=${doctorId}&date=${date}`);
+    }
 }

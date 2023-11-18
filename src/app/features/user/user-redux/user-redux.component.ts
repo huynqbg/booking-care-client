@@ -11,7 +11,6 @@ import { Buffer } from 'buffer';
     styleUrls: ['./user-redux.component.scss'],
 })
 export class UserReduxComponent extends AppComponentBase implements OnInit {
-    language: string = '';
     previewImgURL: string = '';
     isEdit: boolean = false;
     userId: any;
@@ -126,7 +125,6 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
                 avatar: valueForm.avatar,
             };
             this.showSpinner();
-            console.log(body);
             this.userService.createNewUser(body).subscribe((res) => {
                 this.hideSpinner();
                 if (res && res['errCode'] === 0) {
@@ -145,7 +143,7 @@ export class UserReduxComponent extends AppComponentBase implements OnInit {
     handleEditUser(user) {
         let imageBase64 = '';
         if (user.image) {
-            imageBase64 = new Buffer(user.image, 'base64').toString('binary');
+            imageBase64 = Buffer.from(user.image, 'base64').toString('binary');
         }
         if (user) {
             this.isEdit = true;
