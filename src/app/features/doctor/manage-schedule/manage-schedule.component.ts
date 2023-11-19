@@ -1,8 +1,6 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { AppComponentBase } from '@core/component-base/app-component-base';
 import { UserService } from '@shared/services/user.service';
-import { setHours } from 'date-fns';
-import { formatDate } from '@angular/common';
 
 @Component({
     selector: 'app-manage-schedule',

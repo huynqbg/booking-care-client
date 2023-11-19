@@ -10,8 +10,9 @@ import * as moment from 'moment';
     styleUrls: ['./doctor-schedule.component.scss'],
 })
 export class DoctorScheduleComponent extends AppComponentBase implements OnInit {
-    selectedDate = null;
+    selectedDate = 'abc';
     listDate: Array<any> = [];
+    availableTime: Array<any> = [];
 
     constructor(injector: Injector, private userService: UserService) {
         super(injector);
@@ -31,7 +32,8 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
         for (let i = 0; i < 7; i++) {
             let object = {};
             if (this.language === LANGUAGES.VI) {
-                object['label'] = moment(new Date()).add(i, 'days').locale('vi').format('dddd - DD/MM');
+                let labelVi = moment(new Date()).add(i, 'days').locale('vi').format('dddd - DD/MM');
+                object['label'] = this.capitalizeFirstLetter(labelVi);
             }
             if (this.language === LANGUAGES.EN) {
                 object['label'] = moment(new Date()).add(i, 'days').format('ddd - MM/DD');
@@ -49,8 +51,13 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
         });
         this.userService.getSchedulesDoctorByDate(doctorId, valueDate).subscribe((res) => {
             if (res && res['errCode'] === 0) {
-                console.log(res);
+                this.availableTime = res['data'] ? res['data'] : [];
+                console.log(this.availableTime);
             }
         });
+    }
+
+    capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
 }
