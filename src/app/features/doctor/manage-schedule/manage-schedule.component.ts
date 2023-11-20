@@ -10,9 +10,7 @@ import { UserService } from '@shared/services/user.service';
 export class ManageScheduleComponent extends AppComponentBase implements OnInit {
     selectedDoctor = null;
     chooseDate: Date = null;
-    // timeDefaultValue: Date = setHours(0, 0);
     listDoctors: Array<any> = [];
-    today = new Date();
     listTimeHour: Array<any> = [];
 
     constructor(injector: Injector, private userService: UserService) {
@@ -22,6 +20,21 @@ export class ManageScheduleComponent extends AppComponentBase implements OnInit 
     ngOnInit() {
         this.render();
         this.renderTimeHour();
+    }
+
+    render() {
+        this.language = localStorage.getItem('LANGUAGE');
+        this.userService.getAllDoctors().subscribe((res) => {
+            if (res && res['errCode'] === 0) {
+                this.listDoctors = res['data'].map((data) => {
+                    return {
+                        id: data.id,
+                        nameVi: `${data.lastName} ${data.firstName}`,
+                        nameEn: `${data.firstName} ${data.lastName}`,
+                    };
+                });
+            }
+        });
     }
 
     handleSaveSchedule() {
@@ -88,22 +101,9 @@ export class ManageScheduleComponent extends AppComponentBase implements OnInit 
         });
     }
 
-    render() {
-        this.language = localStorage.getItem('LANGUAGE');
-        this.userService.getAllDoctors().subscribe((res) => {
-            if (res && res['errCode'] === 0) {
-                this.listDoctors = res['data'].map((data) => {
-                    return {
-                        id: data.id,
-                        nameVi: `${data.lastName} ${data.firstName}`,
-                        nameEn: `${data.firstName} ${data.lastName}`,
-                    };
-                });
-            }
-        });
-    }
-
     disabledDate = (current: Date): boolean => {
-        return current < this.today;
+        let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
+        // let today = new Date();
+        return current < yesterday;
     };
 }

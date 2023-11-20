@@ -10,7 +10,7 @@ import * as moment from 'moment';
     styleUrls: ['./doctor-schedule.component.scss'],
 })
 export class DoctorScheduleComponent extends AppComponentBase implements OnInit {
-    selectedDate = 'abc';
+    selectedDate: any;
     listDate: Array<any> = [];
     availableTime: Array<any> = [];
 
@@ -25,6 +25,8 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
     render() {
         this.language = localStorage.getItem('LANGUAGE') || 'vi';
         this.setArrDate();
+        this.selectedDate = this.listDate[0].value;
+        this.handleSelectDate(this.selectedDate);
     }
 
     setArrDate() {
@@ -32,11 +34,23 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
         for (let i = 0; i < 7; i++) {
             let object = {};
             if (this.language === LANGUAGES.VI) {
-                let labelVi = moment(new Date()).add(i, 'days').locale('vi').format('dddd - DD/MM');
-                object['label'] = this.capitalizeFirstLetter(labelVi);
+                if (i === 0) {
+                    let ddMM = moment(new Date()).locale('vi').format('DD/MM');
+                    let today = `Hôm nay - ${ddMM}`;
+                    object['label'] = today;
+                } else {
+                    let labelVi = moment(new Date()).add(i, 'days').locale('vi').format('dddd - DD/MM');
+                    object['label'] = this.capitalizeFirstLetter(labelVi);
+                }
             }
             if (this.language === LANGUAGES.EN) {
-                object['label'] = moment(new Date()).add(i, 'days').format('ddd - MM/DD');
+                if (i === 0) {
+                    let ddMM = moment(new Date()).format('MM/DD');
+                    let today = `Today - ${ddMM}`;
+                    object['label'] = today;
+                } else {
+                    object['label'] = moment(new Date()).add(i, 'days').format('ddd - MM/DD');
+                }
             }
             object['value'] = moment(new Date()).add(i, 'days').startOf('day').valueOf();
             allDate.push(object);
@@ -50,10 +64,7 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
             doctorId = param.get('id');
         });
         this.userService.getSchedulesDoctorByDate(doctorId, valueDate).subscribe((res) => {
-            if (res && res['errCode'] === 0) {
-                this.availableTime = res['data'] ? res['data'] : [];
-                console.log(this.availableTime);
-            }
+            if (res && res['errCode'] === 0) this.availableTime = res['data'];
         });
     }
 

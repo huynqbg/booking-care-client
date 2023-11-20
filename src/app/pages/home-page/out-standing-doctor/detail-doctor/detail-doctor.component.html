@@ -4,7 +4,7 @@
 
 <div class="container m-auto mt-20">
     <div class="doctor-detail-container my-0">
-        <div class="intro-doctor flex border-b border-gray-300">
+        <div class="intro-doctor flex">
             <div
                 class="content-left bg w-[120px] h-[120px] rounded-full mx-5 my-2 bg-center bg-no-repeat bg-cover"
                 [ngStyle]="{ 'background-image': 'url(' + detailDoctor.image + ')' }"
@@ -26,12 +26,12 @@
                 </div>
             </div>
         </div>
-        <div class="schedule-doctor flex h-[200px]">
-            <div class="content-left w-1/2">
+        <div class="schedule-doctor flex min-h-[200px] py-3">
+            <div class="content-left w-[55%]">
                 <app-doctor-schedule></app-doctor-schedule>
             </div>
 
-            <div class="content-right w-1/2"></div>
+            <div class="content-right w-[45%]"></div>
         </div>
         <div
             class="detail-info-doctor pt-5 px-4 bg-gray-200 mt-2 rounded"

@@ -21,7 +21,7 @@ import { HomePageAboutComponent } from './home-page/home-page-about/home-page-ab
 import { FooterComponent } from 'src/app/pages/home-page/layout/footer/footer.component';
 import { DetailDoctorComponent } from './home-page/out-standing-doctor/detail-doctor/detail-doctor.component';
 import { DoctorScheduleComponent } from './home-page/out-standing-doctor/doctor-schedule/doctor-schedule.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -43,6 +43,7 @@ import { FormsModule } from '@angular/forms';
         NgZorroAntdModule,
         MaterialModule,
         FormsModule,
+        ReactiveFormsModule,
         TranslateModule,
         SwiperModule,
         SharedModule,
