@@ -9,10 +9,19 @@ import { marked } from 'marked';
     styleUrls: ['./manage-doctor.component.scss'],
 })
 export class ManageDoctorComponent extends AppComponentBase implements OnInit {
-    listDoctors: Array<any> = [];
     markdown: string = ``;
-    selectedValue = null;
     description: string = '';
+    nameClinic: string = '';
+    addressClinic: string = '';
+    note: string = '';
+    selectedDoctor = null;
+    selectedPrice = null;
+    selectedPayment = null;
+    selectedProvince = null;
+    listDoctors: Array<any> = [];
+    listPrice: Array<any> = [];
+    listPayment: Array<any> = [];
+    listProvince: Array<any> = [];
     hasOldData: boolean = false;
 
     constructor(injector: Injector, private userService: UserService) {
@@ -20,10 +29,11 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
     }
 
     ngOnInit() {
-        this.render();
+        this.language = localStorage.getItem('LANGUAGE');
+        this.renderApi();
     }
 
-    selectedDoctor(value) {
+    handleSelectedDoctor(value) {
         this.userService.getDetailInfoDoctor(value).subscribe((res) => {
             if (res && res['errCode'] === 0 && res['data'] && res['data'].Markdown) {
                 let data = res['data'].Markdown;
@@ -38,8 +48,7 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
         });
     }
 
-    render() {
-        this.language = localStorage.getItem('LANGUAGE');
+    renderApi() {
         this.userService.getAllDoctors().subscribe((res) => {
             if (res && res['errCode'] === 0) {
                 this.listDoctors = res['data'].map((data) => {
@@ -51,6 +60,22 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
                 });
             }
         });
+        this.userService.getAllCode('PRICE').subscribe((res) => {
+            if (res && res['errCode'] === 0) {
+                this.listPrice = res['data'];
+                console.log(this.listPrice);
+            }
+        });
+        this.userService.getAllCode('PAYMENT').subscribe((res) => {
+            if (res && res['errCode'] === 0) {
+                this.listPayment = res['data'];
+            }
+        });
+        this.userService.getAllCode('PROVINCE').subscribe((res) => {
+            if (res && res['errCode'] === 0) {
+                this.listProvince = res['data'];
+            }
+        });
     }
 
     submit() {
@@ -58,7 +83,7 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
             contentHTML: this.transformMarkdownToHtml(this.markdown),
             contentMarkdown: this.markdown,
             description: this.description,
-            doctorId: this.selectedValue,
+            doctorId: this.selectedDoctor,
             action: this.hasOldData ? 'EDIT' : 'CREATE',
         };
         this.showSpinner();

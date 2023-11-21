@@ -1,15 +1,15 @@
 <div class="container h-full m-auto">
-    <h1 class="text-center text-cyan-700 pt-3">Tạo chi tiết thông tin Bác sĩ</h1>
+    <h1 class="text-center text-cyan-700 pt-3" translate="admin.manage-doctor.title"></h1>
     <div class="grid grid-cols-2 gap-4">
         <div>
-            <label for="">Chọn bác sĩ</label>
+            <label translate="admin.manage-doctor.select_doctor"></label>
             <nz-select
                 class="w-full"
                 nzShowSearch
                 nzAllowClear
                 nzPlaceHolder="Select a Doctor"
-                [(ngModel)]="selectedValue"
-                (ngModelChange)="selectedDoctor(selectedValue)"
+                [(ngModel)]="selectedDoctor"
+                (ngModelChange)="handleSelectedDoctor($event)"
             >
                 <nz-option
                     *ngFor="let doctor of listDoctors"
@@ -19,19 +19,83 @@
             </nz-select>
         </div>
         <div>
-            <label>Thông tin giới thiệu</label>
-            <textarea nz-input rows="10" placeholder="Thông tin Bác sĩ" [(ngModel)]="description"></textarea>
+            <label translate="admin.manage-doctor.introduction_info"></label>
+            <textarea nz-input placeholder="Thông tin Bác sĩ" [(ngModel)]="description"></textarea>
         </div>
     </div>
+
+    <div class="more-info-extra grid grid-cols-3 gap-4 mt-3">
+        <div>
+            <label for="">Chọn giá</label>
+            <nz-form-control>
+                <nz-select [(ngModel)]="selectedPrice" nzPlaceHolder="Chọn giá">
+                    <nz-option
+                        *ngFor="let price of listPrice"
+                        [nzLabel]="language === 'vi' ? price.valueVi : price.valueEn"
+                        [nzValue]="price.keyMap"
+                    ></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </div>
+
+        <div>
+            <label for="">Chọn phương thức thanh toán</label>
+            <nz-form-control>
+                <nz-select [(ngModel)]="selectedPayment" nzPlaceHolder="Chọn phương thức thanh toán">
+                    <nz-option
+                        *ngFor="let payment of listPayment"
+                        [nzLabel]="language === 'vi' ? payment.valueVi : payment.valueEn"
+                        [nzValue]="payment.keyMap"
+                    ></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </div>
+
+        <div>
+            <label> Chọn tỉnh thành </label>
+            <nz-form-control>
+                <nz-select [(ngModel)]="selectedProvince" nzPlaceHolder="Chọn tỉnh thành">
+                    <nz-option
+                        *ngFor="let province of listProvince"
+                        [nzLabel]="language === 'vi' ? province.valueVi : province.valueEn"
+                        [nzValue]="province.keyMap"
+                    ></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </div>
+
+        <nz-form-item>
+            <nz-form-label> Tên phòng khám </nz-form-label>
+            <nz-form-control>
+                <input nz-input type="text" placeholder="" [(ngModel)]="nameClinic" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label> Địa chỉ phòng khám </nz-form-label>
+            <nz-form-control>
+                <input nz-input type="text" placeholder="" [(ngModel)]="addressClinic" />
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+            <nz-form-label> Note </nz-form-label>
+            <nz-form-control>
+                <input nz-input type="text" placeholder="" [(ngModel)]="note" />
+            </nz-form-control>
+        </nz-form-item>
+    </div>
     <div class="mt-1">
-        <h2 class="mb-1 text-cyan-700 text-base">Mô tả thông tin chi tiết</h2>
+        <h2 class="mb-1 text-cyan-700 text-base" translate="admin.manage-doctor.detail_info"></h2>
         <span class="mb-2 text-red-600 text-base">
-            Điền thông tin ở dạng markdown vào ô bên trái và xem review ở ô bên phải
+            {{ 'admin.manage-doctor.guide_1' | translate }}
         </span>
         <br />
         <span class="text-danger">
-            Để viết thông tin ở dạng markdown:
-            <a nz-button nzType="primary" target="_blank" href="https://stackedit.io/app#"> Bấm vào đây! </a>
+            {{ 'admin.manage-doctor.guide_2' | translate }}
+            <a nz-button nzType="primary" target="_blank" href="https://stackedit.io/app#">
+                {{ 'admin.manage-doctor.guide_3' | translate }}
+            </a>
         </span>
         <div class="grid grid-cols-2 mt-3 gap-6">
             <textarea
@@ -45,5 +109,10 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-primary mt-2 w-[300px] mb-4" type="submit" (click)="submit()">Save</button>
+    <button
+        class="btn {{ hasOldData ? 'btn-warning' : 'btn-primary' }} mt-2 w-[300px] mb-4"
+        type="submit"
+        (click)="submit()"
+        translate="{{ hasOldData ? 'admin.manage-doctor.save' : 'admin.manage-doctor.add' }}"
+    ></button>
 </div>

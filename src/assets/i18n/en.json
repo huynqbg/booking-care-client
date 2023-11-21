@@ -77,5 +77,19 @@
             "choose": "Choose ",
             "book_free": " and book (free)"
         }
+    },
+
+    "admin": {
+        "manage-doctor": {
+            "title": "Create detailed Doctor information",
+            "select_doctor": "Select Doctor",
+            "introduction_info": "Introductory Information: ",
+            "add": "Create",
+            "save": "Save Information",
+            "detail_info": "Describe detailed information",
+            "guide_1": "Fill in information in markdown form in the left box and see review in the right box",
+            "guide_2": "To write information in markdown: ",
+            "guide_3": "Click here!"
+        }
     }
 }

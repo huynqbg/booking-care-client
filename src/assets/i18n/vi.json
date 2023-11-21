@@ -77,5 +77,19 @@
             "choose": "Chọn ",
             "book_free": " và đặt (miễn phí)"
         }
+    },
+
+    "admin": {
+        "manage-doctor": {
+            "title": "Tạo chi tiết thông tin Bác sĩ",
+            "select_doctor": "Chọn bác sĩ",
+            "introduction_info": "Thông tin giới thiệu: ",
+            "add": "Tạo mới",
+            "save": "Lưu thông tin",
+            "detail_info": "Mô tả thông tin chi tiết",
+            "guide_1": "Điền thông tin ở dạng markdown vào ô bên trái và xem review ở ô bên phải",
+            "guide_2": " Để viết thông tin ở dạng markdown: ",
+            "guide_3": "Bấm vào đây!"
+        }
     }
 }
