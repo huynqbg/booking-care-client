@@ -83,13 +83,20 @@
         "manage-doctor": {
             "title": "Create detailed Doctor information",
             "select_doctor": "Select Doctor",
-            "introduction_info": "Introductory Information: ",
+            "introduction_info": "Introductory Information",
             "add": "Create",
             "save": "Save Information",
             "detail_info": "Describe detailed information",
             "guide_1": "Fill in information in markdown form in the left box and see review in the right box",
             "guide_2": "To write information in markdown: ",
-            "guide_3": "Click here!"
+            "guide_3": "Click here!",
+            "guide_4": "Enter information in markdown format here",
+            "price": "Price",
+            "payment": "Payment",
+            "province": "Province/City",
+            "nameClinic": "Clinic's Name",
+            "addressClinic": "Clinic's Address",
+            "note": "Note"
         }
     }
 }

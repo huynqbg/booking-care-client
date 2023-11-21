@@ -22,6 +22,7 @@ import { FooterComponent } from 'src/app/pages/home-page/layout/footer/footer.co
 import { DetailDoctorComponent } from './home-page/out-standing-doctor/detail-doctor/detail-doctor.component';
 import { DoctorScheduleComponent } from './home-page/out-standing-doctor/doctor-schedule/doctor-schedule.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DoctorExtraInfoComponent } from './home-page/out-standing-doctor/doctor-extra-info/doctor-extra-info.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         HomePageAboutComponent,
         DetailDoctorComponent,
         DoctorScheduleComponent,
+        DoctorExtraInfoComponent,
     ],
     imports: [
         CommonModule,

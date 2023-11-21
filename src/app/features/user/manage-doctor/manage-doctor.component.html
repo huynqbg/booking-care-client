@@ -7,7 +7,7 @@
                 class="w-full"
                 nzShowSearch
                 nzAllowClear
-                nzPlaceHolder="Select a Doctor"
+                nzPlaceHolder="{{ 'admin.manage-doctor.select_doctor' | translate }}"
                 [(ngModel)]="selectedDoctor"
                 (ngModelChange)="handleSelectedDoctor($event)"
             >
@@ -20,18 +20,22 @@
         </div>
         <div>
             <label translate="admin.manage-doctor.introduction_info"></label>
-            <textarea nz-input placeholder="Thông tin Bác sĩ" [(ngModel)]="description"></textarea>
+            <textarea
+                nz-input
+                placeholder="{{ 'admin.manage-doctor.introduction_info' | translate }}"
+                [(ngModel)]="description"
+            ></textarea>
         </div>
     </div>
 
     <div class="more-info-extra grid grid-cols-3 gap-4 mt-3">
         <div>
-            <label for="">Chọn giá</label>
+            <label for="">{{ 'admin.manage-doctor.price' | translate }}</label>
             <nz-form-control>
-                <nz-select [(ngModel)]="selectedPrice" nzPlaceHolder="Chọn giá">
+                <nz-select [(ngModel)]="selectedPrice" nzPlaceHolder="{{ 'admin.manage-doctor.price' | translate }}">
                     <nz-option
                         *ngFor="let price of listPrice"
-                        [nzLabel]="language === 'vi' ? price.valueVi : price.valueEn"
+                        [nzLabel]="language === 'vi' ? price.valueVi + ' VNĐ' : price.valueEn + ' USD'"
                         [nzValue]="price.keyMap"
                     ></nz-option>
                 </nz-select>
@@ -39,9 +43,12 @@
         </div>
 
         <div>
-            <label for="">Chọn phương thức thanh toán</label>
+            <label for="">{{ 'admin.manage-doctor.payment' | translate }}</label>
             <nz-form-control>
-                <nz-select [(ngModel)]="selectedPayment" nzPlaceHolder="Chọn phương thức thanh toán">
+                <nz-select
+                    [(ngModel)]="selectedPayment"
+                    nzPlaceHolder="{{ 'admin.manage-doctor.payment' | translate }}"
+                >
                     <nz-option
                         *ngFor="let payment of listPayment"
                         [nzLabel]="language === 'vi' ? payment.valueVi : payment.valueEn"
@@ -52,9 +59,13 @@
         </div>
 
         <div>
-            <label> Chọn tỉnh thành </label>
+            <label> {{ 'admin.manage-doctor.province' | translate }} </label>
             <nz-form-control>
-                <nz-select [(ngModel)]="selectedProvince" nzPlaceHolder="Chọn tỉnh thành">
+                <nz-select
+                    [(ngModel)]="selectedProvince"
+                    nzShowSearch
+                    nzPlaceHolder="{{ 'admin.manage-doctor.province' | translate }}"
+                >
                     <nz-option
                         *ngFor="let province of listProvince"
                         [nzLabel]="language === 'vi' ? province.valueVi : province.valueEn"
@@ -65,35 +76,50 @@
         </div>
 
         <nz-form-item>
-            <nz-form-label> Tên phòng khám </nz-form-label>
+            <nz-form-label> {{ 'admin.manage-doctor.nameClinic' | translate }} </nz-form-label>
             <nz-form-control>
-                <input nz-input type="text" placeholder="" [(ngModel)]="nameClinic" />
+                <input
+                    nz-input
+                    type="text"
+                    placeholder="{{ 'admin.manage-doctor.nameClinic' | translate }}"
+                    [(ngModel)]="nameClinic"
+                />
             </nz-form-control>
         </nz-form-item>
 
         <nz-form-item>
-            <nz-form-label> Địa chỉ phòng khám </nz-form-label>
+            <nz-form-label>{{ 'admin.manage-doctor.addressClinic' | translate }} </nz-form-label>
             <nz-form-control>
-                <input nz-input type="text" placeholder="" [(ngModel)]="addressClinic" />
+                <input
+                    nz-input
+                    type="text"
+                    placeholder="{{ 'admin.manage-doctor.addressClinic' | translate }}"
+                    [(ngModel)]="addressClinic"
+                />
             </nz-form-control>
         </nz-form-item>
 
         <nz-form-item>
-            <nz-form-label> Note </nz-form-label>
+            <nz-form-label> {{ 'admin.manage-doctor.note' | translate }} </nz-form-label>
             <nz-form-control>
-                <input nz-input type="text" placeholder="" [(ngModel)]="note" />
+                <input
+                    nz-input
+                    type="text"
+                    placeholder="{{ 'admin.manage-doctor.note' | translate }}"
+                    [(ngModel)]="note"
+                />
             </nz-form-control>
         </nz-form-item>
     </div>
     <div class="mt-1">
-        <h2 class="mb-1 text-cyan-700 text-base" translate="admin.manage-doctor.detail_info"></h2>
+        <h2 class="mb-1 text-cyan-700 text-base !m-0" translate="admin.manage-doctor.detail_info"></h2>
         <span class="mb-2 text-red-600 text-base">
             {{ 'admin.manage-doctor.guide_1' | translate }}
         </span>
         <br />
-        <span class="text-danger">
+        <span class="text-danger mt-1">
             {{ 'admin.manage-doctor.guide_2' | translate }}
-            <a nz-button nzType="primary" target="_blank" href="https://stackedit.io/app#">
+            <a target="_blank" href="https://stackedit.io/app#" class="text-blue-500">
                 {{ 'admin.manage-doctor.guide_3' | translate }}
             </a>
         </span>
@@ -102,7 +128,7 @@
                 nz-input
                 class="rounded h-[400px] markdown-block text-lg"
                 [(ngModel)]="markdown"
-                placeholder="Nhập thông tin chi tiết ở dạng markdown vào đây"
+                placeholder="{{ 'admin.manage-doctor.guide_4' | translate }}"
             ></textarea>
             <div class="h-[400px] border border-gray-500 rounded overflow-auto">
                 <markdown class="" [data]="markdown"></markdown>

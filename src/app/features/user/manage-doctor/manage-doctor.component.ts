@@ -35,15 +35,35 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
 
     handleSelectedDoctor(value) {
         this.userService.getDetailInfoDoctor(value).subscribe((res) => {
-            if (res && res['errCode'] === 0 && res['data'] && res['data'].Markdown) {
-                let data = res['data'].Markdown;
-                this.markdown = data.contentMarkdown;
-                this.description = data.description;
-                this.hasOldData = true;
-            } else {
-                this.markdown = '';
-                this.description = '';
-                this.hasOldData = false;
+            console.log(res);
+            if (res && res['errCode'] === 0 && res['data']) {
+                if (res['data'].Markdown) {
+                    let data = res['data'].Markdown;
+                    this.markdown = data.contentMarkdown;
+                    this.description = data.description;
+                    this.hasOldData = true;
+                } else {
+                    this.markdown = '';
+                    this.description = '';
+                    this.hasOldData = false;
+                }
+
+                if (res['data'].Doctor_Info) {
+                    let data = res['data'].Doctor_Info;
+                    this.selectedPrice = data.priceId;
+                    this.selectedPayment = data.paymentId;
+                    this.selectedProvince = data.provinceId;
+                    this.nameClinic = data.nameClinic;
+                    this.addressClinic = data.addressClinic;
+                    this.note = data.note;
+                } else {
+                    this.selectedPrice = null;
+                    this.selectedPayment = null;
+                    this.selectedProvince = null;
+                    this.nameClinic = '';
+                    this.addressClinic = '';
+                    this.note = '';
+                }
             }
         });
     }
@@ -85,6 +105,13 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
             description: this.description,
             doctorId: this.selectedDoctor,
             action: this.hasOldData ? 'EDIT' : 'CREATE',
+
+            selectedPrice: this.selectedPrice,
+            selectedPayment: this.selectedPayment,
+            selectedProvince: this.selectedProvince,
+            nameClinic: this.nameClinic,
+            addressClinic: this.addressClinic,
+            note: this.note,
         };
         this.showSpinner();
         this.userService.saveDetailDoctor(body).subscribe((res) => {
@@ -92,6 +119,7 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
             if (res && res['errCode'] === 0) {
                 this.toastr.success(res['errMessage']);
             } else {
+                console.log(res);
                 this.toastr.error('Error ..!');
             }
         });
