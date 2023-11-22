@@ -59,4 +59,8 @@ export class UserService extends BaseService {
     getExtraInfoDoctorById(doctorId) {
         return this.http.get(`${this.baseUrl}/api/get-extra-info-doctor-by-id?doctorId=${doctorId}`);
     }
+
+    getProfileDoctorById(doctorId) {
+        return this.http.get(`${this.baseUrl}/api/get-profile-doctor-by-id?doctorId=${doctorId}`);
+    }
 }

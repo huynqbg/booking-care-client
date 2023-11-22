@@ -31,10 +31,9 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
         this.handleSelectDate(this.selectedDate);
     }
 
-    handleClickScheduleTime(data) {
-        console.log(data);
+    handleClickScheduleTime(dataTime) {
         const modal = this.dialog.open(DoctorBookingModalComponent, {
-            data: { data },
+            data: { dataTime },
             width: '800px',
         });
 
@@ -81,7 +80,6 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
         });
         this.userService.getSchedulesDoctorByDate(doctorId, valueDate).subscribe((res) => {
             if (res && res['errCode'] === 0) this.availableTime = res['data'];
-            console.log(this.availableTime);
         });
     }
 

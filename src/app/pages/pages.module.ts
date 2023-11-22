@@ -24,6 +24,7 @@ import { DoctorScheduleComponent } from './home-page/out-standing-doctor/doctor-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DoctorExtraInfoComponent } from './home-page/out-standing-doctor/doctor-extra-info/doctor-extra-info.component';
 import { DoctorBookingModalComponent } from './home-page/out-standing-doctor/doctor-schedule/doctor-booking-modal/doctor-booking-modal.component';
+import { DoctorProfileComponent } from './home-page/out-standing-doctor/doctor-profile/doctor-profile.component';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { DoctorBookingModalComponent } from './home-page/out-standing-doctor/doc
         DoctorScheduleComponent,
         DoctorExtraInfoComponent,
         DoctorBookingModalComponent,
+        DoctorProfileComponent,
     ],
     imports: [
         CommonModule,

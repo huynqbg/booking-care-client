@@ -8,6 +8,19 @@
         </div>
     </div>
     <div class="container m-auto my-3">
+        <ng-container>
+            <div class="">
+                <app-doctor-profile [profileDoctor]="dataProfileDoctor"></app-doctor-profile>
+                <div *ngIf="dataProfileDoctor.Doctor_Info">
+                    Giá khám:
+                    {{
+                        language === 'vi'
+                            ? dataProfileDoctor.Doctor_Info.priceData.valueVi + ' VNĐ'
+                            : dataProfileDoctor.Doctor_Info.priceData.valueEn + ' USD'
+                    }}
+                </div>
+            </div>
+        </ng-container>
         <form class="grid grid-cols-2 gap-4">
             <div>
                 <label for="">Họ tên</label>

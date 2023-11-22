@@ -6,6 +6,7 @@
     <div class="doctor-detail-container my-0">
         <div class="intro-doctor flex">
             <div
+                *ngIf="detailDoctor.image"
                 class="content-left bg w-[120px] h-[120px] rounded-full mx-5 my-2 bg-center bg-no-repeat bg-cover"
                 [ngStyle]="{ 'background-image': 'url(' + detailDoctor.image + ')' }"
             ></div>

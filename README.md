@@ -27,3 +27,4 @@
 -   Khi sử dụng container của tailwind css thì phải dùng thêm m-auto để content được căn giữa.
 
 -   cách kill 1 port đang chạy với npx: command line: npx kill-port 8080
+-   Để xử lí bất đồng bộ hay độ chậm trễ của API hay việc truyền dữ liệu giữa các component bị chậm (relationship component or non-relationship component) thì hãy viết logic vào onChanges
