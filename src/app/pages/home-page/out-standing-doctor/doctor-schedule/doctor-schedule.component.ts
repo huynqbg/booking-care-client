@@ -1,8 +1,10 @@
 import { Component, Injector, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { AppComponentBase } from '@core/component-base/app-component-base';
 import { LANGUAGES } from '@core/constant';
 import { UserService } from '@shared/services/user.service';
 import * as moment from 'moment';
+import { DoctorBookingModalComponent } from './doctor-booking-modal/doctor-booking-modal.component';
 
 @Component({
     selector: 'app-doctor-schedule',
@@ -14,7 +16,7 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
     listDate: Array<any> = [];
     availableTime: Array<any> = [];
 
-    constructor(injector: Injector, private userService: UserService) {
+    constructor(injector: Injector, private userService: UserService, private dialog: MatDialog) {
         super(injector);
     }
 
@@ -27,6 +29,20 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
         this.setArrDate();
         this.selectedDate = this.listDate[0].value;
         this.handleSelectDate(this.selectedDate);
+    }
+
+    handleClickScheduleTime(data) {
+        console.log(data);
+        const modal = this.dialog.open(DoctorBookingModalComponent, {
+            data: { data },
+            width: '800px',
+        });
+
+        modal.afterClosed().subscribe((results) => {
+            if (results) {
+                console.log(results);
+            }
+        });
     }
 
     setArrDate() {
@@ -65,6 +81,7 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
         });
         this.userService.getSchedulesDoctorByDate(doctorId, valueDate).subscribe((res) => {
             if (res && res['errCode'] === 0) this.availableTime = res['data'];
+            console.log(this.availableTime);
         });
     }
 

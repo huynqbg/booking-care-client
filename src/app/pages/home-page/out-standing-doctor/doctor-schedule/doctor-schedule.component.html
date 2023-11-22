@@ -24,6 +24,7 @@
                         {{ language === 'vi' ? 'min-w-[120px]' : 'min-w-[170px]' }} 
                         rounded-[2px] font-semibold text-slate-900 hover:bg-cyan-500 hover:text-white"
                         *ngFor="let time of availableTime"
+                        (click)="handleClickScheduleTime(time)"
                     >
                         {{ language === 'vi' ? time.timeTypeData.valueVi : time.timeTypeData.valueEn }}
                     </button>

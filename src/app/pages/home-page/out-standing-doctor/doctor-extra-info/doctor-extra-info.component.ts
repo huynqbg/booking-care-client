@@ -34,7 +34,6 @@ export class DoctorExtraInfoComponent extends AppComponentBase implements OnInit
                 this.extraInforDoctor = res['data'];
                 this.priceClinic = res['data'].priceData;
                 this.paymentMethod = res['data'].paymentData;
-                console.log(this.extraInforDoctor);
             }
         });
     }
