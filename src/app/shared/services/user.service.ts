@@ -55,4 +55,8 @@ export class UserService extends BaseService {
     getSchedulesDoctorByDate(doctorId, date) {
         return this.http.get(`${this.baseUrl}/api/get-schedule-doctor-by-date?doctorId=${doctorId}&date=${date}`);
     }
+
+    getExtraInfoDoctorById(doctorId) {
+        return this.http.get(`${this.baseUrl}/api/get-extra-info-doctor-by-id?doctorId=${doctorId}`);
+    }
 }

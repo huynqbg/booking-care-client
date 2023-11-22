@@ -76,6 +76,14 @@
             "no_schedule": "Bác sĩ không có lịch hẹn trong thời gian này, vui lòng chọn thời gian khác!",
             "choose": "Chọn ",
             "book_free": " và đặt (miễn phí)"
+        },
+
+        "extra_info_doctor": {
+            "address": "Địa chỉ khám",
+            "price": "Giá khám",
+            "showDetail": "Xem chi tiết",
+            "hiddenDetail": "Ẩn bảng giá",
+            "payment": "Người bệnh có thể thanh toán chi phí qua hình thức: "
         }
     },
 
