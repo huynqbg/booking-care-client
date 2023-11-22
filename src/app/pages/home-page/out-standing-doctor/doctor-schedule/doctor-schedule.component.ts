@@ -5,6 +5,7 @@ import { LANGUAGES } from '@core/constant';
 import { UserService } from '@shared/services/user.service';
 import * as moment from 'moment';
 import { DoctorBookingModalComponent } from './doctor-booking-modal/doctor-booking-modal.component';
+import CommonUntils from '@core/utils/ultils';
 
 @Component({
     selector: 'app-doctor-schedule',
@@ -55,7 +56,7 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
                     object['label'] = today;
                 } else {
                     let labelVi = moment(new Date()).add(i, 'days').locale('vi').format('dddd - DD/MM');
-                    object['label'] = this.capitalizeFirstLetter(labelVi);
+                    object['label'] = CommonUntils.capitalizeFirstLetter(labelVi);
                 }
             }
             if (this.language === LANGUAGES.EN) {
@@ -83,7 +84,7 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
         });
     }
 
-    capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+    // capitalizeFirstLetter(string) {
+    //     return string.charAt(0).toUpperCase() + string.slice(1);
+    // }
 }

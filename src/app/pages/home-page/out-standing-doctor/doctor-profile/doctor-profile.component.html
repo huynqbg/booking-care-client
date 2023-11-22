@@ -11,13 +11,18 @@
                 {{ nameDoctor }}
             </div>
             <div class="down pt-2">
-                <span>
+                <span *ngIf="isShowDescription">
                     {{
                         profileDoctor.Markdown && profileDoctor.Markdown.description
                             ? profileDoctor.Markdown.description
                             : ''
                     }}
                 </span>
+
+                <ng-container *ngIf="dataTime">
+                    <div *ngIf="timeSchedule && daySchedule">{{ timeSchedule }} - {{ daySchedule }}</div>
+                    <div>Miễn phí đặt lịch</div>
+                </ng-container>
             </div>
         </div>
     </div>

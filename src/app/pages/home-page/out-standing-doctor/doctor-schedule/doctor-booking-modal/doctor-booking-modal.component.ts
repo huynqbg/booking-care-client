@@ -11,6 +11,7 @@ import { UserService } from '@shared/services/user.service';
 export class DoctorBookingModalComponent extends AppComponentBase implements OnInit {
     doctorId: string | number;
     dataProfileDoctor: any = {};
+    dataTime: any = {};
 
     constructor(
         injector: Injector,
@@ -28,8 +29,8 @@ export class DoctorBookingModalComponent extends AppComponentBase implements OnI
 
     renderApi() {
         if (this.data && this.data.dataTime) {
+            this.dataTime = this.data.dataTime;
             this.doctorId = this.data.dataTime.doctorId;
-            console.log(this.data.dataTime);
         }
         if (this.doctorId) {
             this.showSpinner();
@@ -37,7 +38,6 @@ export class DoctorBookingModalComponent extends AppComponentBase implements OnI
                 this.hideSpinner();
                 if (res && res['errCode'] === 0) {
                     this.dataProfileDoctor = res['data'];
-                    console.log(this.dataProfileDoctor);
                 }
             });
         }

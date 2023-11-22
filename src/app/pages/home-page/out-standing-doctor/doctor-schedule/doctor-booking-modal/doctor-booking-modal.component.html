@@ -10,7 +10,11 @@
     <div class="container m-auto my-3">
         <ng-container>
             <div class="">
-                <app-doctor-profile [profileDoctor]="dataProfileDoctor"></app-doctor-profile>
+                <app-doctor-profile
+                    [profileDoctor]="dataProfileDoctor"
+                    [isShowDescription]="false"
+                    [dataTime]="dataTime"
+                ></app-doctor-profile>
                 <div *ngIf="dataProfileDoctor.Doctor_Info">
                     Giá khám:
                     {{
