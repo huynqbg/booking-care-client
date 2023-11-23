@@ -2,7 +2,9 @@ import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AppComponentBase } from '@core/component-base/app-component-base';
+import CommonUntils from '@core/utils/ultils';
 import { UserService } from '@shared/services/user.service';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-doctor-booking-modal',
@@ -71,6 +73,8 @@ export class DoctorBookingModalComponent extends AppComponentBase implements OnI
     handleConfirmBooking() {
         let valueForm = this.formGroup.value;
         let dateFormat = new Date(valueForm.birthday).getTime();
+        let timeBuild = this.buildTimeBooking(this.dataTime);
+        let nameDoctor = this.buildDoctorName(this.dataTime);
 
         const body = {
             fullName: valueForm.fullName,
@@ -82,14 +86,59 @@ export class DoctorBookingModalComponent extends AppComponentBase implements OnI
             selectedGender: valueForm.gender,
             doctorId: this.doctorId,
             timeType: this.dataTime.timeType,
+            language: this.language,
+            timeString: timeBuild,
+            doctorName: nameDoctor,
         };
+
+        this.showSpinner();
         this.userService.postPatientBookAppointment(body).subscribe((res) => {
+            this.hideSpinner();
             if (res && res['errCode'] === 0) {
                 this.modal.close(true);
-                this.toastr.success(res['errMessage']);
+                this.toastr.success('Đặt lịch thành công');
             } else {
-                this.toastr.error(res['errMessage']);
+                this.toastr.error('Có lỗi xảy ra, vui lòng thử lại sau');
             }
         });
+    }
+
+    buildTimeBooking(dataTime) {
+        let daySchedule = '';
+        let timeSchedule = '';
+        if (dataTime) {
+            if (this.language === 'vi') {
+                daySchedule = moment
+                    .unix(+dataTime.date / 1000)
+                    .locale('vi')
+                    .format('dddd - DD/MM/YYYY');
+                timeSchedule = dataTime.timeTypeData.valueVi;
+            } else if (this.language === 'en') {
+                daySchedule = moment.unix(+dataTime.date / 1000).format('dddd - DD/MM/YYYY');
+                timeSchedule = dataTime.timeTypeData.valueEn;
+            } else {
+                daySchedule = '';
+                timeSchedule = '';
+            }
+            if (daySchedule) {
+                daySchedule = CommonUntils.capitalizeFirstLetter(daySchedule);
+            }
+            return `${timeSchedule} - ${daySchedule}`;
+        }
+        return '';
+    }
+
+    buildDoctorName(dataProfileDoctor) {
+        let nameDoctor = '';
+        if (dataProfileDoctor) {
+            if (this.language === 'vi') {
+                nameDoctor = ` ${dataProfileDoctor.doctorData.lastName} ${dataProfileDoctor.doctorData.firstName}`;
+            } else if (this.language === 'en') {
+                nameDoctor = ` ${dataProfileDoctor.doctorData.firstName} ${dataProfileDoctor.doctorData.lastName}`;
+            } else {
+                nameDoctor = '';
+            }
+        }
+        return nameDoctor;
     }
 }
