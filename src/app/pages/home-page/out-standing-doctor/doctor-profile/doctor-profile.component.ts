@@ -22,7 +22,6 @@ export class DoctorProfileComponent extends AppComponentBase implements OnInit, 
 
     ngOnChanges(changes: SimpleChanges): void {
         this.renderApi();
-        console.log(this.dataTime);
     }
 
     ngOnInit() {

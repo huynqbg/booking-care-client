@@ -63,4 +63,8 @@ export class UserService extends BaseService {
     getProfileDoctorById(doctorId) {
         return this.http.get(`${this.baseUrl}/api/get-profile-doctor-by-id?doctorId=${doctorId}`);
     }
+
+    postPatientBookAppointment(data) {
+        return this.http.post(`${this.baseUrl}/api/patient-book-appointment`, data);
+    }
 }

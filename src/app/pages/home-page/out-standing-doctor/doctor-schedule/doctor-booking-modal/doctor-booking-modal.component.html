@@ -1,6 +1,6 @@
 <div class="">
     <div class="flex justify-between border-b border-gray-400">
-        <h2 class="!mb-0">Thông tin đặt lịch khám bệnh</h2>
+        <h2 class="!mb-0">{{ 'patient.booking-modal.title' | translate }}</h2>
         <div class="">
             <button mat-dialog-close class="hover:bg-red-500 flex items-center rounded hover:text-white">
                 <mat-icon>close</mat-icon>
@@ -16,7 +16,7 @@
                     [dataTime]="dataTime"
                 ></app-doctor-profile>
                 <div *ngIf="dataProfileDoctor.Doctor_Info">
-                    Giá khám:
+                    {{ 'patient.booking-modal.price' | translate }}:
                     {{
                         language === 'vi'
                             ? dataProfileDoctor.Doctor_Info.priceData.valueVi + ' VNĐ'
@@ -25,42 +25,57 @@
                 </div>
             </div>
         </ng-container>
-        <form class="grid grid-cols-2 gap-4">
+        <form class="grid grid-cols-2 gap-4" [formGroup]="formGroup">
             <div>
-                <label for="">Họ tên</label>
-                <input type="text" nz-input />
+                <label for="">{{ 'patient.booking-modal.name' | translate }}</label>
+                <input type="text" nz-input formControlName="fullName" />
             </div>
             <div>
-                <label for="">Số điện thoại</label>
-                <input type="text" nz-input />
+                <label for="">{{ 'patient.booking-modal.phone' | translate }}</label>
+                <input type="number" nz-input formControlName="phoneNumber" />
             </div>
             <div>
-                <label for="">Email</label>
-                <input type="text" nz-input />
+                <label for="">{{ 'patient.booking-modal.email' | translate }}</label>
+                <input type="email" nz-input formControlName="email" />
             </div>
             <div>
-                <label for="">Địa chỉ liên hệ</label>
-                <input type="text" nz-input />
+                <label for="">{{ 'patient.booking-modal.address' | translate }}</label>
+                <input type="text" nz-input formControlName="address" />
             </div>
             <div class="col-span-2">
-                <label for="">Lý do khám</label>
-                <input type="text" nz-input />
+                <label for="">{{ 'patient.booking-modal.reason' | translate }}</label>
+                <input type="text" nz-input formControlName="reason" />
             </div>
             <div>
-                <label for="">Ngày sinh</label>
-                <input type="text" nz-input />
+                <label for="">{{ 'patient.booking-modal.birthday' | translate }}</label>
+                <nz-date-picker
+                    class="w-full"
+                    nzFormat="dd-MM-yyyy"
+                    nzPlaceHolder="Select your birthday"
+                    formControlName="birthday"
+                ></nz-date-picker>
             </div>
             <div>
-                <label for="">Giới tính</label>
-                <input type="text" nz-input />
+                <label for="">{{ 'patient.booking-modal.gender' | translate }}</label>
+                <nz-select class="w-full" nzPlaceHolder="Choose gender" formControlName="gender">
+                    <nz-option
+                        *ngFor="let gender of listGender"
+                        [nzValue]="gender.keyMap"
+                        [nzLabel]="language === 'vi' ? gender.valueVi : gender.valueEn"
+                    ></nz-option>
+                </nz-select>
             </div>
             <div class="h-[50px]"></div>
         </form>
     </div>
     <div class="border-t border-gray-400">
         <div class="flex justify-end mt-3">
-            <button class="btn btn-primary mr-2">Xác nhận</button>
-            <button mat-dialog-close class="btn btn-warning">Thoát</button>
+            <button class="btn btn-primary mr-2" (click)="handleConfirmBooking()">
+                {{ 'patient.booking-modal.btnConfirm' | translate }}
+            </button>
+            <button mat-dialog-close class="btn btn-warning">
+                {{ 'patient.booking-modal.btnCancel' | translate }}
+            </button>
         </div>
     </div>
 </div>

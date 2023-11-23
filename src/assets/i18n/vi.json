@@ -84,6 +84,21 @@
             "showDetail": "Xem chi tiết",
             "hiddenDetail": "Ẩn bảng giá",
             "payment": "Người bệnh có thể thanh toán chi phí qua hình thức: "
+        },
+
+        "booking-modal": {
+            "title": "Thông tin đặt lich khám bệnh",
+            "name": "Họ và tên",
+            "phone": "Số điện thoại",
+            "email": "Email",
+            "address": "Địa chỉ liên lạc",
+            "reason": "Lý do khám",
+            "birthday": "Ngày sinh",
+            "gender": "Giới tính",
+            "btnConfirm": "Xác nhận",
+            "btnCancel": "Hủy",
+            "freeBooking": "Đặt lịch miễn phí",
+            "price": "Giá khám"
         }
     },
 

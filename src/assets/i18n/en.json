@@ -84,6 +84,21 @@
             "showDetail": "See details",
             "hiddenDetail": "Hide details",
             "payment": "Patients can pay costs in the form of: "
+        },
+
+        "booking-modal": {
+            "title": "Information on scheduling medical examinations",
+            "name": "Full Name",
+            "phone": "Phone Number",
+            "email": "Email",
+            "address": "Contact Address",
+            "reason": "Reason for Examination",
+            "birthday": "Date of birth",
+            "gender": "Gender",
+            "btnConfirm": "Confirm",
+            "btnCancel": "Cancel",
+            "freeBooking": "Free Booking",
+            "price": "Examination price"
         }
     },
 
