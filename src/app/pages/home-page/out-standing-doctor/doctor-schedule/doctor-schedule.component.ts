@@ -40,7 +40,7 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
 
         modal.afterClosed().subscribe((results) => {
             if (results) {
-                console.log(results);
+                console.log('Đóng modal thành công');
             }
         });
     }
@@ -79,12 +79,10 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
         this._route.paramMap.subscribe((param) => {
             doctorId = param.get('id');
         });
+        this.showSpinner();
         this.userService.getSchedulesDoctorByDate(doctorId, valueDate).subscribe((res) => {
+            this.hideSpinner();
             if (res && res['errCode'] === 0) this.availableTime = res['data'];
         });
     }
-
-    // capitalizeFirstLetter(string) {
-    //     return string.charAt(0).toUpperCase() + string.slice(1);
-    // }
 }

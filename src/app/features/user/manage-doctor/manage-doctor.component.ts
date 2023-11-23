@@ -35,7 +35,6 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
 
     handleSelectedDoctor(value) {
         this.userService.getDetailInfoDoctor(value).subscribe((res) => {
-            console.log(res);
             if (res && res['errCode'] === 0 && res['data']) {
                 if (res['data'].Markdown) {
                     let data = res['data'].Markdown;
@@ -83,7 +82,6 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
         this.userService.getAllCode('PRICE').subscribe((res) => {
             if (res && res['errCode'] === 0) {
                 this.listPrice = res['data'];
-                console.log(this.listPrice);
             }
         });
         this.userService.getAllCode('PAYMENT').subscribe((res) => {
