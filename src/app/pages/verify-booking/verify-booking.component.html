@@ -1,0 +1,24 @@
+<div class="w-full h-full">
+    <ng-container *ngIf="statusVerify === false">
+        <h1 class="uppercase text-[50px] justify-center flex items-center text-red-600 h-full w-full">
+            Loading data ...
+        </h1>
+    </ng-container>
+
+    <ng-container *ngIf="statusVerify === true">
+        <div class="h-full w-full">
+            <h1
+                class="uppercase text-[50px] justify-center flex items-center text-red-600 h-full w-full"
+                *ngIf="errCode !== 0"
+            >
+                Lịch hẹn không tồn tại hoặc đã được xác nhận
+            </h1>
+            <h1
+                class="uppercase text-[50px] justify-center flex items-center text-red-600 h-full w-full"
+                *ngIf="errCode === 0"
+            >
+                Xác nhận lịch hẹn thành công
+            </h1>
+        </div>
+    </ng-container>
+</div>

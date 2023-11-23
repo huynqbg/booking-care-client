@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { VerifyBookingComponent } from './pages/verify-booking/verify-booking.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full',
-    },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     {
         path: 'system',
         loadChildren: () => import('./features/user/user.module').then((m) => m.UserModule),
@@ -26,6 +23,10 @@ const routes: Routes = [
     {
         path: 'error',
         loadChildren: () => import('./features/errors/errors.module').then((m) => m.ErrorsModule),
+    },
+    {
+        path: 'verify-booking',
+        component: VerifyBookingComponent,
     },
     {
         path: '**',

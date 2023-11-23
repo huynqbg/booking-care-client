@@ -67,4 +67,8 @@ export class UserService extends BaseService {
     postPatientBookAppointment(data) {
         return this.http.post(`${this.baseUrl}/api/patient-book-appointment`, data);
     }
+
+    postVerifyBookAppointment(data) {
+        return this.http.post(`${this.baseUrl}/api/verify-book-appointment`, data);
+    }
 }

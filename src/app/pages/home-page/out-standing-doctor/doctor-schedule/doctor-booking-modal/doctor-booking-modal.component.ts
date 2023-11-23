@@ -96,7 +96,7 @@ export class DoctorBookingModalComponent extends AppComponentBase implements OnI
             this.hideSpinner();
             if (res && res['errCode'] === 0) {
                 this.modal.close(true);
-                this.toastr.success('Đặt lịch thành công');
+                this.toastr.success('Đặt lịch thành công, vui lòng kiểm tra email để xác nhận');
             } else {
                 this.toastr.error('Có lỗi xảy ra, vui lòng thử lại sau');
             }
