@@ -61,7 +61,8 @@
 
     "homepage": {
         "out_standing_doctor": "Last week's featured doctor",
-        "more_info": "More infor"
+        "more_info": "More infor",
+        "speciality_popular": "Popular specialties"
     },
 
     "manage-schedule": {

@@ -34,6 +34,10 @@ export class ManageSpecialtyComponent extends AppComponentBase implements OnInit
             this.hideSpinner();
             if (res && res['errCode'] === 0) {
                 this.toastr.success('Create new specialty success!');
+                this.name = '';
+                this.imageBase64 = '';
+                this.descriptionHTML = '';
+                this.descriptionMarkdown = '';
             } else {
                 this.toastr.error('Create new specialty fail!');
             }

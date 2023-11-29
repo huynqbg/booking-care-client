@@ -75,4 +75,8 @@ export class UserService extends BaseService {
     createNewSpecialty(data) {
         return this.http.post(`${this.baseUrl}/api/create-new-specialty`, data);
     }
+
+    getAllSpecialty() {
+        return this.http.get(`${this.baseUrl}/api/get-all-specialty`);
+    }
 }
