@@ -16,9 +16,17 @@ import { UserReduxComponent } from './user-redux/user-redux.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { ManageDoctorComponent } from './manage-doctor/manage-doctor.component';
+import { ManageSpecialtyComponent } from './manage-specialty/manage-specialty.component';
 
 @NgModule({
-    declarations: [UserComponent, UserManageComponent, UserModalComponent, UserReduxComponent, ManageDoctorComponent],
+    declarations: [
+        UserComponent,
+        UserManageComponent,
+        UserModalComponent,
+        UserReduxComponent,
+        ManageDoctorComponent,
+        ManageSpecialtyComponent,
+    ],
     imports: [
         CommonModule,
         MaterialModule,
