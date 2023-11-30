@@ -18,10 +18,14 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
     selectedPrice = null;
     selectedPayment = null;
     selectedProvince = null;
+    selectedSpecialty = null;
+    selectedClinic = null;
     listDoctors: Array<any> = [];
     listPrice: Array<any> = [];
     listPayment: Array<any> = [];
     listProvince: Array<any> = [];
+    listSpecialty: Array<any> = [];
+    listClinic: Array<any> = [];
     hasOldData: boolean = false;
 
     constructor(injector: Injector, private userService: UserService) {
@@ -94,6 +98,12 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
                 this.listProvince = res['data'];
             }
         });
+        this.userService.getAllSpecialty().subscribe((res) => {
+            if (res && res['errCode'] === 0) {
+                this.listSpecialty = res['data'];
+                console.log(this.listSpecialty);
+            }
+        });
     }
 
     submit() {
@@ -110,6 +120,8 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
             nameClinic: this.nameClinic,
             addressClinic: this.addressClinic,
             note: this.note,
+            clinicId: this.selectedClinic ? this.selectedClinic : '',
+            specialtyId: this.selectedSpecialty,
         };
         this.showSpinner();
         this.userService.saveDetailDoctor(body).subscribe((res) => {
@@ -118,7 +130,7 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
                 this.toastr.success(res['errMessage']);
             } else {
                 console.log(res);
-                this.toastr.error('Error ..!');
+                this.toastr.error(res['errMessage'], 'Error');
             }
         });
     }

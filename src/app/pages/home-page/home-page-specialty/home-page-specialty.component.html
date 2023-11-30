@@ -7,7 +7,10 @@
         <div class="section-body">
             <swiper [config]="configSlide">
                 <ng-template swiperSlide *ngFor="let specialty of listSpecialty">
-                    <div class="section-customize cursor-pointer hover:text-[#45c3d2]">
+                    <div
+                        class="section-customize cursor-pointer hover:text-[#45c3d2]"
+                        routerLink="/home/specialty-detail/{{ specialty.id }}"
+                    >
                         <div
                             class="bg-image section-specialty"
                             [ngStyle]="{ 'background-image': 'url(' + specialty.image + ')' }"

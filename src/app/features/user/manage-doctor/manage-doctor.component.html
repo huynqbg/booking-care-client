@@ -110,6 +110,40 @@
                 />
             </nz-form-control>
         </nz-form-item>
+
+        <div>
+            <label> {{ 'admin.manage-doctor.specialty' | translate }} </label>
+            <nz-form-control>
+                <nz-select
+                    [(ngModel)]="selectedSpecialty"
+                    nzShowSearch
+                    nzPlaceHolder="{{ 'admin.manage-doctor.specialty' | translate }}"
+                >
+                    <nz-option
+                        *ngFor="let specialty of listSpecialty"
+                        [nzLabel]="specialty.name"
+                        [nzValue]="specialty.id"
+                    ></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </div>
+
+        <div>
+            <label> {{ 'admin.manage-doctor.clinic' | translate }} </label>
+            <nz-form-control>
+                <nz-select
+                    [(ngModel)]="selectedClinic"
+                    nzShowSearch
+                    nzPlaceHolder="{{ 'admin.manage-doctor.clinic' | translate }}"
+                >
+                    <nz-option
+                        *ngFor="let clinic of listClinic"
+                        [nzLabel]="clinic.name"
+                        [nzValue]="clinic.id"
+                    ></nz-option>
+                </nz-select>
+            </nz-form-control>
+        </div>
     </div>
     <div class="mt-1">
         <h2 class="mb-1 text-cyan-700 text-base !m-0" translate="admin.manage-doctor.detail_info"></h2>
@@ -126,11 +160,11 @@
         <div class="grid grid-cols-2 mt-3 gap-6">
             <textarea
                 nz-input
-                class="rounded h-[400px] markdown-block text-lg"
+                class="rounded h-[300px] markdown-block text-lg"
                 [(ngModel)]="markdown"
                 placeholder="{{ 'admin.manage-doctor.guide_4' | translate }}"
             ></textarea>
-            <div class="h-[400px] border border-gray-500 rounded overflow-auto">
+            <div class="h-[300px] border border-gray-500 rounded overflow-auto">
                 <markdown class="" [data]="markdown"></markdown>
             </div>
         </div>

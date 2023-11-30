@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DoctorExtraInfoComponent } from './home-page/out-standing-doctor/doctor-extra-info/doctor-extra-info.component';
 import { DoctorBookingModalComponent } from './home-page/out-standing-doctor/doctor-schedule/doctor-booking-modal/doctor-booking-modal.component';
 import { DoctorProfileComponent } from './home-page/out-standing-doctor/doctor-profile/doctor-profile.component';
+import { SpecialtyDetailComponent } from './home-page/home-page-specialty/specialty-detail/specialty-detail.component';
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import { DoctorProfileComponent } from './home-page/out-standing-doctor/doctor-p
         DoctorExtraInfoComponent,
         DoctorBookingModalComponent,
         DoctorProfileComponent,
+        SpecialtyDetailComponent,
     ],
     imports: [
         CommonModule,
