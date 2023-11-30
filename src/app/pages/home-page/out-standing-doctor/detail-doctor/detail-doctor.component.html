@@ -29,11 +29,11 @@
         </div>
         <div class="schedule-doctor flex min-h-[200px] py-3">
             <div class="content-left w-[55%]">
-                <app-doctor-schedule></app-doctor-schedule>
+                <app-doctor-schedule [doctorId]="detailDoctor.id"></app-doctor-schedule>
             </div>
-
+            <div class="w-[1px] bg-gray-200"></div>
             <div class="content-right w-[45%]">
-                <app-doctor-extra-info></app-doctor-extra-info>
+                <app-doctor-extra-info [doctorId]="detailDoctor.id"></app-doctor-extra-info>
             </div>
         </div>
         <div

@@ -1,7 +1,8 @@
-import { Component, Injector, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Injector, Input, OnChanges, OnInit } from '@angular/core';
 import { AppComponentBase } from '@core/component-base/app-component-base';
 import * as moment from 'moment';
 import CommonUntils from '@core/utils/ultils';
+import { UserService } from '@shared/services/user.service';
 
 @Component({
     selector: 'app-doctor-profile',
@@ -9,39 +10,47 @@ import CommonUntils from '@core/utils/ultils';
     styleUrls: ['./doctor-profile.component.scss'],
 })
 export class DoctorProfileComponent extends AppComponentBase implements OnInit, OnChanges {
-    @Input() profileDoctor: any = {};
+    @Input() doctorId: any;
     @Input() dataTime: any = {};
     @Input() isShowDescription: boolean;
+
+    profileDoctor: any = {};
     nameDoctor: string = '';
     daySchedule: string = '';
     timeSchedule: string = '';
 
-    constructor(injector: Injector) {
+    constructor(injector: Injector, private userService: UserService) {
         super(injector);
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
+    ngOnChanges(): void {
         this.renderApi();
     }
 
-    ngOnInit() {
-        this.language = localStorage.getItem('LANGUAGE') || 'vi';
-    }
+    ngOnInit() {}
 
     renderApi() {
-        // get api profileDoctor from parent component
-        this.showSpinner();
-        if (this.profileDoctor) {
-            this.hideSpinner();
-            let positionData = this.profileDoctor.positionData;
+        this.language = localStorage.getItem('LANGUAGE') || 'vi';
+        if (this.doctorId) {
+            this.showSpinner();
+            this.userService.getProfileDoctorById(this.doctorId).subscribe((res) => {
+                this.hideSpinner();
+                if (res && res['errCode'] === 0) {
+                    this.profileDoctor = res['data'];
 
-            if (this.language === 'vi') {
-                this.nameDoctor = `${positionData.valueVi}: ${this.profileDoctor.lastName} ${this.profileDoctor.firstName}`;
-            } else if (this.language === 'en') {
-                this.nameDoctor = `${positionData.valueEn}: ${this.profileDoctor.firstName} ${this.profileDoctor.lastName}`;
-            } else {
-                this.nameDoctor = '';
-            }
+                    if (this.profileDoctor) {
+                        let positionData = this.profileDoctor.positionData;
+
+                        if (this.language === 'vi') {
+                            this.nameDoctor = `${positionData.valueVi}: ${this.profileDoctor.lastName} ${this.profileDoctor.firstName}`;
+                        } else if (this.language === 'en') {
+                            this.nameDoctor = `${positionData.valueEn}: ${this.profileDoctor.firstName} ${this.profileDoctor.lastName}`;
+                        } else {
+                            this.nameDoctor = '';
+                        }
+                    }
+                }
+            });
         }
 
         // get api dataTime from parent component

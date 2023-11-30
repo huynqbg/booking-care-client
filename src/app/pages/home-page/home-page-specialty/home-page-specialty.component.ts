@@ -24,11 +24,9 @@ export class HomePageSpecialtyComponent extends AppComponentBase implements OnIn
     renderApi() {
         this.showSpinner();
         this.userService.getAllSpecialty().subscribe((res) => {
-            console.log(res);
             this.hideSpinner();
             if (res && res['errCode'] === 0) {
                 this.listSpecialty = res['data'];
-                console.log(this.listSpecialty);
             }
         });
     }

@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, Injector, Input, OnChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AppComponentBase } from '@core/component-base/app-component-base';
 import { LANGUAGES } from '@core/constant';
@@ -12,7 +12,8 @@ import CommonUntils from '@core/utils/ultils';
     templateUrl: './doctor-schedule.component.html',
     styleUrls: ['./doctor-schedule.component.scss'],
 })
-export class DoctorScheduleComponent extends AppComponentBase implements OnInit {
+export class DoctorScheduleComponent extends AppComponentBase implements OnInit, OnChanges {
+    @Input() doctorId: any;
     selectedDate: any;
     listDate: Array<any> = [];
     availableTime: Array<any> = [];
@@ -21,8 +22,13 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
         super(injector);
     }
 
-    ngOnInit() {
+    ngOnChanges(): void {
+        this.doctorId;
         this.render();
+    }
+
+    ngOnInit() {
+        // this.render();
     }
 
     render() {
@@ -75,12 +81,12 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit 
     }
 
     handleSelectDate(valueDate) {
-        let doctorId;
-        this._route.paramMap.subscribe((param) => {
-            doctorId = param.get('id');
-        });
+        // let doctorId;
+        // this._route.paramMap.subscribe((param) => {
+        //     doctorId = param.get('id');
+        // });
         this.showSpinner();
-        this.userService.getSchedulesDoctorByDate(doctorId, valueDate).subscribe((res) => {
+        this.userService.getSchedulesDoctorByDate(this.doctorId, valueDate).subscribe((res) => {
             this.hideSpinner();
             if (res && res['errCode'] === 0) this.availableTime = res['data'];
         });

@@ -3,5 +3,23 @@
 </div>
 
 <div class="container m-auto mt-20">
-    <p>specialty-detail works!</p>
+    <div class="decription-specialty border border-red-600 h-[200px]"></div>
+    <div
+        class="each-doctor flex w-full min-h-[300px] my-4 p-[10px] bg-white shadow rounded-lg"
+        *ngFor="let id of arrDoctorId"
+    >
+        <div class="dt-content-left w-1/2 border-r border-gray-300">
+            <div class="profile-doctor">
+                <app-doctor-profile [doctorId]="id" [isShowDescription]="true" [dataTime]="null"></app-doctor-profile>
+            </div>
+        </div>
+        <div class="dt-content-right w-1/2 p-[10px]">
+            <div class="doctor-schedule">
+                <app-doctor-schedule [doctorId]="id"></app-doctor-schedule>
+            </div>
+            <div class="doctor-extra-info border-t border-gray-300 mt-[10px] pt-[10px]">
+                <app-doctor-extra-info [doctorId]="id"></app-doctor-extra-info>
+            </div>
+        </div>
+    </div>
 </div>
