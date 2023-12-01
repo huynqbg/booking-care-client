@@ -17,6 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { ManageDoctorComponent } from './manage-doctor/manage-doctor.component';
 import { ManageSpecialtyComponent } from './manage-specialty/manage-specialty.component';
+import { ManageClinicComponent } from './manage-clinic/manage-clinic.component';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { ManageSpecialtyComponent } from './manage-specialty/manage-specialty.co
         UserReduxComponent,
         ManageDoctorComponent,
         ManageSpecialtyComponent,
+        ManageClinicComponent,
     ],
     imports: [
         CommonModule,

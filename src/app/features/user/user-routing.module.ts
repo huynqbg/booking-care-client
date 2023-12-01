@@ -6,6 +6,7 @@ import { UserReduxComponent } from './user-redux/user-redux.component';
 import { AuthGuard } from '@core/guard/auth.guard';
 import { ManageDoctorComponent } from './manage-doctor/manage-doctor.component';
 import { ManageSpecialtyComponent } from './manage-specialty/manage-specialty.component';
+import { ManageClinicComponent } from './manage-clinic/manage-clinic.component';
 
 const routes: Routes = [
     {
@@ -35,6 +36,12 @@ const routes: Routes = [
             {
                 path: 'manage-specialty',
                 component: ManageSpecialtyComponent,
+                canActivate: [AuthGuard],
+            },
+
+            {
+                path: 'manage-clinic',
+                component: ManageClinicComponent,
                 canActivate: [AuthGuard],
             },
         ],

@@ -1,0 +1,51 @@
+<div class="manage-specialty-container">
+    <div class="ms-title text-center mt-[10px] uppercase text-[17px] font-semibold">Quản lí phòng khám</div>
+
+    <div class="add-new-specialty grid grid-cols-2 gap-4 mt-5">
+        <div>
+            <label for="">Tên phòng khám</label>
+            <input type="text" nz-input [(ngModel)]="name" placeholder="Tên phòng khám" />
+        </div>
+
+        <div class="flex flex-col">
+            <label for="">Ảnh phòng khám</label>
+            <input class="mt-1" type="file" (change)="handleImage($event)" />
+        </div>
+
+        <div>
+            <label for="">Địa chỉ phòng khám</label>
+            <input type="text" nz-input [(ngModel)]="address" placeholder="Địa chỉ phòng khám" />
+        </div>
+    </div>
+    <div class="mt-3 pb-3">
+        <div class="flex items-center justify-between">
+            <div>
+                <h2 class="mb-1 text-cyan-700 text-base !m-0" translate="admin.manage-doctor.detail_info"></h2>
+                <span class="mb-2 text-red-600 text-base">
+                    {{ 'admin.manage-doctor.guide_1' | translate }}
+                </span>
+                <br />
+                <span class="text-danger mt-1">
+                    {{ 'admin.manage-doctor.guide_2' | translate }}
+                    <a target="_blank" href="https://stackedit.io/app#" class="text-blue-500">
+                        {{ 'admin.manage-doctor.guide_3' | translate }}
+                    </a>
+                </span>
+            </div>
+            <div class="my-2">
+                <button class="btn btn-primary min-w-[150px]" (click)="submit()">Lưu thông tin</button>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 mt-6 gap-6">
+            <textarea
+                nz-input
+                class="rounded h-[400px] markdown-block text-lg"
+                [(ngModel)]="descriptionMarkdown"
+                placeholder="{{ 'admin.manage-doctor.guide_4' | translate }}"
+            ></textarea>
+            <div class="h-[400px] border border-gray-500 rounded overflow-auto">
+                <markdown class="" [data]="descriptionMarkdown"></markdown>
+            </div>
+        </div>
+    </div>
+</div>
