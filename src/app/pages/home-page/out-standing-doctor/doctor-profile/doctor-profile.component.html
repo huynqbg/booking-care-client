@@ -1,10 +1,19 @@
 <ng-container *ngIf="profileDoctor">
     <div class="intro-doctor flex">
-        <div
-            *ngIf="profileDoctor.image"
-            class="content-left bg w-[100px] h-[100px] rounded-full mr-5 my-2 bg-center bg-no-repeat bg-cover"
-            [ngStyle]="{ 'background-image': 'url(' + profileDoctor.image + ')' }"
-        ></div>
+        <div>
+            <div
+                *ngIf="profileDoctor.image"
+                class="content-left bg w-[100px] h-[100px] rounded-full mr-5 my-2 bg-center bg-no-repeat bg-cover mb-2"
+                [ngStyle]="{ 'background-image': 'url(' + profileDoctor.image + ')' }"
+            ></div>
+            <a
+                *ngIf="isShowDetailLink"
+                routerLink="/home/doctor-detail/{{ doctorId }}"
+                class="text-[16px] text-cyan-600 ml-3"
+            >
+                Xem thêm
+            </a>
+        </div>
 
         <div class="content-right w-4/5 flex flex-col pl-2">
             <div class="up pt-4 text-xl font-semibold">

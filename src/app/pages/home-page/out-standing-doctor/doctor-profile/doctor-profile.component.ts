@@ -13,6 +13,7 @@ export class DoctorProfileComponent extends AppComponentBase implements OnInit, 
     @Input() doctorId: any;
     @Input() dataTime: any = {};
     @Input() isShowDescription: boolean;
+    @Input() isShowDetailLink: boolean = false;
 
     profileDoctor: any = {};
     nameDoctor: string = '';
@@ -24,6 +25,7 @@ export class DoctorProfileComponent extends AppComponentBase implements OnInit, 
     }
 
     ngOnChanges(): void {
+        this.isShowDetailLink;
         this.renderApi();
     }
 
