@@ -3,7 +3,27 @@
 </div>
 
 <div class="container m-auto mt-20">
-    <div class="decription-specialty border border-red-600 h-[200px]"></div>
+    <div class="decription-specialty border border-red-600" *ngIf="dataDetailSpecialty">
+        <h1 class="font-semibold">{{ dataDetailSpecialty.name }}</h1>
+        <div [innerHTML]="dataDetailSpecialty.descriptionHTML"></div>
+    </div>
+    <div class="search-sp-doctor">
+        <label> {{ 'admin.manage-doctor.province' | translate }} </label>
+        <nz-form-control>
+            <nz-select
+                [(ngModel)]="selectedProvince"
+                nzShowSearch
+                nzPlaceHolder="{{ 'admin.manage-doctor.province' | translate }}"
+                (ngModelChange)="handleSelectProvince($event)"
+            >
+                <nz-option
+                    *ngFor="let province of listProvince"
+                    [nzLabel]="language === 'vi' ? province.valueVi : province.valueEn"
+                    [nzValue]="province.keyMap"
+                ></nz-option>
+            </nz-select>
+        </nz-form-control>
+    </div>
     <div
         class="each-doctor flex w-full min-h-[300px] my-4 p-[10px] bg-white shadow rounded-lg"
         *ngFor="let id of arrDoctorId"

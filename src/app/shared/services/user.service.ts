@@ -79,4 +79,8 @@ export class UserService extends BaseService {
     getAllSpecialty() {
         return this.http.get(`${this.baseUrl}/api/get-all-specialty`);
     }
+
+    getAllDetailSpecialtyById(data) {
+        return this.http.get(`${this.baseUrl}/api/get-detail-specialty-by-id?id=${data.id}&location=${data.location}`);
+    }
 }

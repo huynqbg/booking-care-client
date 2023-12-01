@@ -53,12 +53,14 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
 
                 if (res['data'].Doctor_Info) {
                     let data = res['data'].Doctor_Info;
+                    console.log(data);
                     this.selectedPrice = data.priceId;
                     this.selectedPayment = data.paymentId;
                     this.selectedProvince = data.provinceId;
                     this.nameClinic = data.nameClinic;
                     this.addressClinic = data.addressClinic;
                     this.note = data.note;
+                    this.selectedSpecialty = data.specialtyId;
                 } else {
                     this.selectedPrice = null;
                     this.selectedPayment = null;
@@ -66,6 +68,7 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
                     this.nameClinic = '';
                     this.addressClinic = '';
                     this.note = '';
+                    this.selectedSpecialty = null;
                 }
             }
         });
@@ -119,7 +122,7 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
             nameClinic: this.nameClinic,
             addressClinic: this.addressClinic,
             note: this.note,
-            clinicId: this.selectedClinic ? this.selectedClinic : '',
+            clinicId: this.selectedClinic ? this.selectedClinic : null,
             specialtyId: this.selectedSpecialty,
         };
         this.showSpinner();
