@@ -1,0 +1,21 @@
+// Dùng :host ::ng-deep để có thể css những tag của component khác bị chứa bởi component này
+
+:host ::ng-deep .decription-specialty {
+    h1 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    h2 {
+        line-height: 1;
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    ul {
+        font-size: 16px;
+    }
+}

@@ -26,6 +26,7 @@ import { DoctorExtraInfoComponent } from './home-page/out-standing-doctor/doctor
 import { DoctorBookingModalComponent } from './home-page/out-standing-doctor/doctor-schedule/doctor-booking-modal/doctor-booking-modal.component';
 import { DoctorProfileComponent } from './home-page/out-standing-doctor/doctor-profile/doctor-profile.component';
 import { SpecialtyDetailComponent } from './home-page/home-page-specialty/specialty-detail/specialty-detail.component';
+import { ClinicDetailComponent } from './home-page/medical-facility/clinic-detail/clinic-detail.component';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,7 @@ import { SpecialtyDetailComponent } from './home-page/home-page-specialty/specia
         DoctorBookingModalComponent,
         DoctorProfileComponent,
         SpecialtyDetailComponent,
+        ClinicDetailComponent,
     ],
     imports: [
         CommonModule,

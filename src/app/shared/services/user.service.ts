@@ -87,4 +87,12 @@ export class UserService extends BaseService {
     createNewClinic(data) {
         return this.http.post(`${this.baseUrl}/api/create-new-clinic`, data);
     }
+
+    getAllClinic() {
+        return this.http.get(`${this.baseUrl}/api/get-all-clinics`);
+    }
+
+    getAllDetailClinicById(data) {
+        return this.http.get(`${this.baseUrl}/api/get-detail-clinic-by-id?id=${data.id}`);
+    }
 }

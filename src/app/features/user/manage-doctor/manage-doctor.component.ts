@@ -53,7 +53,6 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
 
                 if (res['data'].Doctor_Info) {
                     let data = res['data'].Doctor_Info;
-                    console.log(data);
                     this.selectedPrice = data.priceId;
                     this.selectedPayment = data.paymentId;
                     this.selectedProvince = data.provinceId;
@@ -61,6 +60,7 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
                     this.addressClinic = data.addressClinic;
                     this.note = data.note;
                     this.selectedSpecialty = data.specialtyId;
+                    this.selectedClinic = data.clinicId;
                 } else {
                     this.selectedPrice = null;
                     this.selectedPayment = null;
@@ -69,6 +69,7 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
                     this.addressClinic = '';
                     this.note = '';
                     this.selectedSpecialty = null;
+                    this.selectedClinic = null;
                 }
             }
         });
@@ -104,6 +105,12 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
         this.userService.getAllSpecialty().subscribe((res) => {
             if (res && res['errCode'] === 0) {
                 this.listSpecialty = res['data'];
+            }
+        });
+        this.userService.getAllClinic().subscribe((res) => {
+            if (res && res['errCode'] === 0) {
+                this.listClinic = res['data'];
+                console.log(this.listClinic);
             }
         });
     }

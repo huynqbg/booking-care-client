@@ -1,0 +1,42 @@
+<div class="bg-gray-200">
+    <div class="header">
+        <app-header [isShowBanner]="false"></app-header>
+    </div>
+
+    <div class="container m-auto h-full relative top-[90px]">
+        <div class="decription-specialty shadow p-3 mt-4 bg-white rounded" *ngIf="dataDetailClinic">
+            <h1 class="font-semibold">{{ dataDetailClinic.name }}</h1>
+            <div [innerHTML]="dataDetailClinic.descriptionHTML"></div>
+        </div>
+
+        <ng-container *ngIf="arrDoctorId && arrDoctorId.length > 0; else notAvalibleDoctor">
+            <div
+                class="each-doctor flex w-full min-h-[300px] my-4 p-[10px] bg-white shadow rounded-lg"
+                *ngFor="let id of arrDoctorId"
+            >
+                <div class="dt-content-left w-1/2 border-r border-gray-300">
+                    <div class="profile-doctor">
+                        <app-doctor-profile
+                            [doctorId]="id"
+                            [isShowDescription]="true"
+                            [isShowDetailLink]="true"
+                            [dataTime]="null"
+                        ></app-doctor-profile>
+                    </div>
+                </div>
+                <div class="dt-content-right w-1/2 p-[10px]">
+                    <div class="doctor-schedule pl-4">
+                        <app-doctor-schedule [doctorId]="id"></app-doctor-schedule>
+                    </div>
+                    <div class="doctor-extra-info border-t border-gray-300 mt-[10px] pt-[10px]">
+                        <app-doctor-extra-info [doctorId]="id"></app-doctor-extra-info>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-template #notAvalibleDoctor>
+            <div class="h-[50px] text-red-600 text-[20px]">Hiện không có bác sĩ nào</div>
+        </ng-template>
+    </div>
+</div>
