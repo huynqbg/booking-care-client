@@ -1,5 +1,5 @@
 <div class="relative h-full top-[20px] bottom-0">
-    <h1 class="text-center">Quản lý đặt lịch khám bệnh của bệnh nhân</h1>
+    <h1 class="text-center uppercase">Quản lý đặt lịch khám bệnh của bệnh nhân</h1>
 
     <div class="">
         <div class="w-1/3">
@@ -33,7 +33,26 @@
                         <td>{{ patient.patientData.address }}</td>
                         <td>{{ patient.patientData.genderData.valueVi }}</td>
                         <td>
-                            <button class="btn btn-primary">Xác nhận</button>
+                            <button class="btn btn-primary" (click)="handleOpenModal(patient)">Xác nhận</button>
+                            <nz-modal
+                                [(nzVisible)]="isOpenModal"
+                                nzTitle="Gửi đơn thuốc"
+                                (nzOnCancel)="handleCancelModal()"
+                                (nzOnOk)="handleConfirmModal()"
+                            >
+                                <ng-container *nzModalContent>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="">Email bệnh nhân</label>
+                                            <input nz-input type="email" [(ngModel)]="emailPatient" />
+                                        </div>
+                                        <div>
+                                            <label for="">Chọn ảnh đơn thuốc</label>
+                                            <input class="mt-1" type="file" (change)="handleImage($event)" />
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </nz-modal>
                         </td>
                     </tr>
                 </tbody>

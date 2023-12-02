@@ -110,7 +110,6 @@ export class ManageDoctorComponent extends AppComponentBase implements OnInit {
         this.userService.getAllClinic().subscribe((res) => {
             if (res && res['errCode'] === 0) {
                 this.listClinic = res['data'];
-                console.log(this.listClinic);
             }
         });
     }

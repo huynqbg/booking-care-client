@@ -47,7 +47,6 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit,
 
         modal.afterClosed().subscribe((results) => {
             if (results) {
-                console.log('Đóng modal thành công');
             }
         });
     }

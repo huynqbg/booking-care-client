@@ -101,4 +101,8 @@ export class UserService extends BaseService {
             `${this.baseUrl}/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}`,
         );
     }
+
+    sendRemedyToPatient(data) {
+        return this.http.post(`${this.baseUrl}/api/send-remedy`, data);
+    }
 }
