@@ -1,3 +1,48 @@
 <div class="relative h-full top-[20px] bottom-0">
     <h1 class="text-center">Quản lý đặt lịch khám bệnh của bệnh nhân</h1>
+
+    <div class="">
+        <div class="w-1/3">
+            <label for="">Chọn ngày</label>
+            <nz-date-picker
+                class="w-full"
+                nzFormat="dd-MM-yyyy"
+                [nzDisabledDate]="disabledDate"
+                [(ngModel)]="chooseDate"
+                (ngModelChange)="handleChooseDate($event)"
+            ></nz-date-picker>
+        </div>
+
+        <div class="mt-4">
+            <nz-table #dataTable [nzData]="listPatients">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Thời gian</th>
+                        <th>Họ và tên</th>
+                        <th>Địa chỉ</th>
+                        <th>Giới tính</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="listPatients && listPatients.length > 0; else notAvailablePatient">
+                    <tr *ngFor="let patient of dataTable.data; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ patient.timeTypeDataPatient.valueVi }}</td>
+                        <td>{{ patient.patientData.firstName }}</td>
+                        <td>{{ patient.patientData.address }}</td>
+                        <td>{{ patient.patientData.genderData.valueVi }}</td>
+                        <td>
+                            <button class="btn btn-primary">Xác nhận</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <ng-template #notAvailablePatient>
+                    <tr>
+                        <td colspan="6" class="text-center text-[16px]">Không có bệnh nhân nào đặt lịch</td>
+                    </tr>
+                </ng-template>
+            </nz-table>
+        </div>
+    </div>
 </div>

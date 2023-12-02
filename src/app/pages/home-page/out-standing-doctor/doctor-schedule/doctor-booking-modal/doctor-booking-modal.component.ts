@@ -72,7 +72,7 @@ export class DoctorBookingModalComponent extends AppComponentBase implements OnI
 
     handleConfirmBooking() {
         let valueForm = this.formGroup.value;
-        let dateFormat = new Date(valueForm.birthday).getTime();
+        let dateFormat = new Date(valueForm.birthday.toDateString()).getTime();
         let timeBuild = this.buildTimeBooking(this.dataTime);
         let nameDoctor = this.buildDoctorName(this.dataTime);
 
@@ -82,7 +82,8 @@ export class DoctorBookingModalComponent extends AppComponentBase implements OnI
             email: valueForm.email,
             address: valueForm.address,
             reason: valueForm.reason,
-            date: dateFormat,
+            date: this.dataTime.date, // ngày đặt lịch
+            birthday: dateFormat, // ngày sinh của bệnh nhân
             selectedGender: valueForm.gender,
             doctorId: this.doctorId,
             timeType: this.dataTime.timeType,

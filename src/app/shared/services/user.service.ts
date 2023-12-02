@@ -95,4 +95,10 @@ export class UserService extends BaseService {
     getAllDetailClinicById(data) {
         return this.http.get(`${this.baseUrl}/api/get-detail-clinic-by-id?id=${data.id}`);
     }
+
+    getAllPatientForDoctor(data) {
+        return this.http.get(
+            `${this.baseUrl}/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}`,
+        );
+    }
 }
