@@ -12,9 +12,10 @@ import { DoctorComponent } from './doctor.component';
 import { SharedModule } from '@shared/shared.module';
 
 import { ManageScheduleComponent } from './manage-schedule/manage-schedule.component';
+import { ManagePatientComponent } from './manage-patient/manage-patient.component';
 
 @NgModule({
-    declarations: [DoctorComponent, ManageScheduleComponent],
+    declarations: [DoctorComponent, ManageScheduleComponent, ManagePatientComponent],
     imports: [
         CommonModule,
         DoctorRoutingRoutes,

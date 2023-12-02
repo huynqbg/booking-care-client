@@ -41,8 +41,8 @@ export class DoctorScheduleComponent extends AppComponentBase implements OnInit,
     handleClickScheduleTime(dataTime) {
         const modal = this.dialog.open(DoctorBookingModalComponent, {
             data: { dataTime },
-            width: '80%',
-            height: '90%',
+            width: '95%',
+            height: '95%',
         });
 
         modal.afterClosed().subscribe((results) => {
