@@ -4,12 +4,6 @@
 -   Resposive
 -   Upgrade to angular version 14.
 -   Fixbug 1 bệnh nhân chỉ đặt được 1 lịch hẹn (backend)
--   Optimize Code (chia component để dễ maintain), tối ưu lại cấu trúc code
-
-# Fix
-
--   fix upload image in user-reduce => done
--   css lại login form => done
 
 # Note:
 
