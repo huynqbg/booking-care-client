@@ -7,15 +7,11 @@ export const USER_ROLE = {
 export const adminMenu = [
     {
         // quản lý người dùng
-        name: 'menu.admin.manage-user',
+        name: 'menu.admin.user',
         menus: [
             {
-                name: 'menu.admin.crud',
-                link: '/system/admin/user-manage',
-            },
-            {
-                name: 'menu.admin.crud-redux',
-                link: '/system/admin/user-redux',
+                name: 'menu.admin.manage-user',
+                link: '/system/admin/manage-user',
             },
             {
                 name: 'menu.admin.manage-doctor',

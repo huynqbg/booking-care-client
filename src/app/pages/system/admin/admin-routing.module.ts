@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { UserManageComponent } from './user-manage/user-manage.component';
-import { UserReduxComponent } from './user-redux/user-redux.component';
 import { AuthGuard } from '@core/guard/auth.guard';
 import { ManageDoctorComponent } from './manage-doctor/manage-doctor.component';
 import { ManageSpecialtyComponent } from './manage-specialty/manage-specialty.component';
 import { ManageClinicComponent } from './manage-clinic/manage-clinic.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
 
 const routes: Routes = [
     {
@@ -15,17 +14,12 @@ const routes: Routes = [
         children: [
             {
                 path: '',
-                redirectTo: 'user-redux',
+                redirectTo: 'manage-user',
                 pathMatch: 'full',
             },
             {
-                path: 'user-manage',
-                component: UserManageComponent,
-                canActivate: [AuthGuard],
-            },
-            {
-                path: 'user-redux',
-                component: UserReduxComponent,
+                path: 'manage-user',
+                component: ManageUserComponent,
                 canActivate: [AuthGuard],
             },
             {

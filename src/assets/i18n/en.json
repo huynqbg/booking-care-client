@@ -25,11 +25,11 @@
 
     "menu": {
         "admin": {
-            "manage-user": "Users System",
+            "user": "Users System",
             "manage-doctor": "Manage doctors",
             "manage-admin": "Manage admins",
             "crud": "CRUD user",
-            "crud-redux": "CRUD Redux",
+            "manage-user": "Manage Users",
             "clinic": "Clinics",
             "manage-clinic": "Manage Clinics",
             "specialty": "Specialties",

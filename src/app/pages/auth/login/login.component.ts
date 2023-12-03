@@ -47,7 +47,7 @@ export class LoginComponent extends AppComponentBase implements OnInit {
                     let userInfo = JSON.parse(localStorage.getItem('userInfo')).user;
                     let userRole = userInfo.roleId;
                     if (userRole === USER_ROLE.ADMIN) {
-                        this.router.navigate(['system/admin/user-redux']);
+                        this.router.navigate(['system/admin/manage-user']);
                     } else if (userRole === USER_ROLE.DOCTOR) {
                         this.router.navigate(['system/doctor/manage-schedule']);
                     }

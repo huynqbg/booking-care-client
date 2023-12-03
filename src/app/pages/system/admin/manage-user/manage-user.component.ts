@@ -6,11 +6,11 @@ import { UserService } from '@shared/services/user.service';
 import { Buffer } from 'buffer';
 
 @Component({
-    selector: 'app-user-redux',
-    templateUrl: './user-redux.component.html',
-    styleUrls: ['./user-redux.component.scss'],
+    selector: 'app-manage-user',
+    templateUrl: './manage-user.component.html',
+    styleUrls: ['./manage-user.component.scss'],
 })
-export class UserReduxComponent extends AppComponentBase implements OnInit {
+export class ManageUserComponent extends AppComponentBase implements OnInit {
     previewImgURL: string = '';
     isEdit: boolean = false;
     userId: any;
