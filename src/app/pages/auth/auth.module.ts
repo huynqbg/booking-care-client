@@ -4,22 +4,25 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { NgZorroAntdModule } from '@core/zorro/ng-zorro-antd.module';
-import { MaterialModule } from '@core/material/material.module';
-
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 
+// module material
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 @NgModule({
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    NgZorroAntdModule,
-    HttpClientModule,
-    MaterialModule,
-  ],
-  declarations: [AuthComponent, LoginComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        AuthRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatIconModule,
+        MatInputModule,
+        MatFormFieldModule,
+    ],
+    declarations: [AuthComponent, LoginComponent],
 })
 export class AuthModule {}

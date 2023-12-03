@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
-import { MaterialModule } from '@core/material/material.module';
-import { NgZorroAntdModule } from '@core/zorro/ng-zorro-antd.module';
-
 import { AdminRoutingRoutes } from './admin-routing.module';
 
 import { AdminComponent } from './admin.component';
@@ -18,6 +15,15 @@ import { MarkdownModule } from 'ngx-markdown';
 import { ManageDoctorComponent } from './manage-doctor/manage-doctor.component';
 import { ManageSpecialtyComponent } from './manage-specialty/manage-specialty.component';
 import { ManageClinicComponent } from './manage-clinic/manage-clinic.component';
+import { MatIconModule } from '@angular/material/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @NgModule({
     declarations: [
@@ -31,11 +37,18 @@ import { ManageClinicComponent } from './manage-clinic/manage-clinic.component';
     ],
     imports: [
         CommonModule,
-        MaterialModule,
-        NgZorroAntdModule,
+        NzInputModule,
+        NzSelectModule,
+        NzFormModule,
+        NzDrawerModule,
+        NzButtonModule,
+        NzDatePickerModule,
+        NzIconModule,
+        NzTableModule,
         AdminRoutingRoutes,
         ReactiveFormsModule,
         FormsModule,
+        MatIconModule,
         HttpClientModule,
         SharedModule,
         TranslateModule,

@@ -6,8 +6,6 @@ import { HomeRoutes } from './home.routing';
 import { SharedModule } from '@shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { MaterialModule } from '@core/material/material.module';
-import { NgZorroAntdModule } from '@core/zorro/ng-zorro-antd.module';
 import { SwiperModule } from 'swiper/angular';
 
 import { HomeComponent } from './home.component';
@@ -27,6 +25,12 @@ import { DoctorBookingModalComponent } from './components/doctor-schedule/doctor
 import { DoctorProfileComponent } from './components/doctor-profile/doctor-profile.component';
 import { SpecialtyDetailComponent } from './specialty/specialty-detail/specialty-detail.component';
 import { ClinicDetailComponent } from './medical-clinic/clinic-detail/clinic-detail.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 @NgModule({
     declarations: [
@@ -49,8 +53,12 @@ import { ClinicDetailComponent } from './medical-clinic/clinic-detail/clinic-det
     imports: [
         CommonModule,
         HomeRoutes,
-        NgZorroAntdModule,
-        MaterialModule,
+        NzSelectModule,
+        NzInputModule,
+        NzFormModule,
+        NzDatePickerModule,
+        MatDialogModule,
+        MatIconModule,
         FormsModule,
         ReactiveFormsModule,
         TranslateModule,

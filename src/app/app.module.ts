@@ -13,7 +13,6 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import en from '@angular/common/locales/en';
 import { IconsProviderModule } from './icons-provider.module';
-import { MaterialModule } from '@core/material/material.module';
 
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -37,7 +36,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         CommonModule,
         BrowserAnimationsModule,
         IconsProviderModule,
-        MaterialModule,
         ToastrModule.forRoot(),
         NgxSpinnerModule,
         TranslateModule.forRoot({
