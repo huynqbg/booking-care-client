@@ -13,7 +13,6 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
 import { ManageDoctorComponent } from './manage-doctor/manage-doctor.component';
 import { ManageSpecialtyComponent } from './manage-specialty/manage-specialty.component';
 import { ManageClinicComponent } from './manage-clinic/manage-clinic.component';
-import { MatIconModule } from '@angular/material/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -44,7 +43,6 @@ import { NzTableModule } from 'ng-zorro-antd/table';
         AdminRoutingRoutes,
         ReactiveFormsModule,
         FormsModule,
-        MatIconModule,
         HttpClientModule,
         SharedModule,
         TranslateModule,
