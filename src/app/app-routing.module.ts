@@ -6,23 +6,19 @@ const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     {
         path: 'system',
-        loadChildren: () => import('./features/user/user.module').then((m) => m.UserModule),
-    },
-    {
-        path: 'doctor',
-        loadChildren: () => import('./features/doctor/doctor.module').then((m) => m.DoctorModule),
+        loadChildren: () => import('./pages/system/system.module').then((m) => m.SystemModule),
     },
     {
         path: 'auth',
-        loadChildren: () => import('./features/auth/auth.module').then((m) => m.AuthModule),
+        loadChildren: () => import('./pages/auth/auth.module').then((m) => m.AuthModule),
     },
     {
         path: 'home',
-        loadChildren: () => import('./pages/pages.module').then((m) => m.PagesModule),
+        loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
     },
     {
         path: 'error',
-        loadChildren: () => import('./features/errors/errors.module').then((m) => m.ErrorsModule),
+        loadChildren: () => import('./pages/errors/errors.module').then((m) => m.ErrorsModule),
     },
     {
         path: 'verify-booking',

@@ -1,10 +1,3 @@
-export const PATH = {
-    HOME: '/',
-    LOGIN: '/login',
-    LOG_OUT: '/logout',
-    SYSTEM: '/system',
-};
-
 export const USER_ROLE = {
     ADMIN: 'R1',
     DOCTOR: 'R2',
@@ -18,24 +11,20 @@ export const adminMenu = [
         menus: [
             {
                 name: 'menu.admin.crud',
-                link: '/system/user-manage',
+                link: '/system/admin/user-manage',
             },
             {
                 name: 'menu.admin.crud-redux',
-                link: '/system/user-redux',
+                link: '/system/admin/user-redux',
             },
             {
                 name: 'menu.admin.manage-doctor',
-                link: '/system/manage-doctor',
+                link: '/system/admin/manage-doctor',
             },
-            // {
-            //     name: 'menu.admin.manage-admin',
-            //     link: '/system/user-admin',
-            // },
             {
                 // Quản lý kế hoạch khám bệnh của Bác sĩ
                 name: 'menu.doctor.manage-schedule',
-                link: '/doctor/manage-schedule',
+                link: '/system/doctor/manage-schedule',
             },
         ],
     },
@@ -45,7 +34,7 @@ export const adminMenu = [
         menus: [
             {
                 name: 'menu.admin.manage-clinic',
-                link: '/system/manage-clinic',
+                link: '/system/admin/manage-clinic',
             },
         ],
     },
@@ -55,7 +44,7 @@ export const adminMenu = [
         menus: [
             {
                 name: 'menu.admin.manage-specialty',
-                link: '/system/manage-specialty',
+                link: '/system/admin/manage-specialty',
             },
         ],
     },
@@ -65,7 +54,7 @@ export const adminMenu = [
         menus: [
             {
                 name: 'menu.admin.manage-handbook',
-                link: '/system/manage-handbook',
+                link: '/system/admin/manage-handbook',
             },
         ],
     },
@@ -78,13 +67,13 @@ export const doctorMenu = [
             // Quản lý kế hoạch khám bệnh của Bác sĩ
             {
                 name: 'menu.doctor.manage-schedule',
-                link: '/doctor/manage-schedule',
+                link: '/system/doctor/manage-schedule',
             },
 
             // Quản lý bệnh nhân của Bác sĩ
             {
                 name: 'menu.doctor.manage-patient',
-                link: '/doctor/manage-patient',
+                link: '/system/doctor/manage-patient',
             },
         ],
     },
@@ -95,17 +84,6 @@ export const LANGUAGES = {
     EN: 'en',
 };
 
-export const manageActions = {
-    ADD: 'ADD',
-    EDIT: 'EDIT',
-    DELETE: 'DELETE',
-};
-
 export const dateFormat = {
     dateVN: 'dd/MM/yyyy',
-};
-
-export const YesNoObj = {
-    YES: 'Y',
-    NO: 'N',
 };
