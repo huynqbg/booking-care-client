@@ -201,7 +201,7 @@ export class ManageUserComponent extends AppComponentBase implements OnInit {
 
     getGender() {
         this.showSpinner();
-        this.userService.getAllCode('gender').subscribe((res) => {
+        this.userService.getAllCode('GENDER').subscribe((res) => {
             this.hideSpinner();
             if (res && res['errCode'] === 0) {
                 this.genderList = res['data'];
@@ -211,7 +211,7 @@ export class ManageUserComponent extends AppComponentBase implements OnInit {
 
     getPosition() {
         this.showSpinner();
-        this.userService.getAllCode('position').subscribe((res) => {
+        this.userService.getAllCode('POSITION').subscribe((res) => {
             this.hideSpinner();
             if (res && res['errCode'] === 0) {
                 this.positionList = res['data'];
@@ -221,7 +221,7 @@ export class ManageUserComponent extends AppComponentBase implements OnInit {
 
     getRole() {
         this.showSpinner();
-        this.userService.getAllCode('role').subscribe((res) => {
+        this.userService.getAllCode('ROLE').subscribe((res) => {
             this.hideSpinner();
             if (res && res['errCode'] === 0) {
                 this.roleList = res['data'];
